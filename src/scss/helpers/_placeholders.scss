@@ -1,0 +1,15 @@
+@use '../variables/flexProperties' as p;
+@use '../helpers/mixins' as *;
+%center {
+    @include center;
+}
+$justify-content: nth(nth(p.$flex, 1), 2);
+$align-items: nth(nth(p.$flex, 2), 2);
+$flex-direction: nth(nth(p.$flex, 3), 2);
+@each $x in $justify-content {
+    @each $y in $align-items {
+        @each $direction in $flex-direction {
+            @include flex-builder($x, $y, $direction);
+        }
+    }
+}

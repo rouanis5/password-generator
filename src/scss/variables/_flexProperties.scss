@@ -1,0 +1,32 @@
+$flex:(
+    justify-content: (
+        flex-start,
+        flex-end,
+        center,
+        space-between,
+        space-around,
+        space-evenly,
+        initial,
+        inherit,
+        null
+    ),
+    align-items: (
+        stretch,
+        center,
+        flex-start,
+        flex-end,
+        baseline,
+        initial,
+        inherit,
+        null
+    ),
+    flex-direction: (
+        row,
+        row-reverse,
+        column,
+        column-reverse,
+        initial,
+        inherit,
+        null
+    )
+);

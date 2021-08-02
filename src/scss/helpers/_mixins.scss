@@ -1,0 +1,98 @@
+@use "sass:list";
+@use "sass:math";
+@mixin pseudo($pseudo, $content, $pos) {
+    position: relative;
+    &::#{$pseudo} {
+        content: $content;
+        position: $pos;
+        @content;
+    }
+}
+@mixin before($content: "", $pos: absolute) {
+    @include pseudo(before, $content, $pos) {
+        @content;
+    }
+}
+@mixin after($content: "", $pos: absolute) {
+    @include pseudo(after, $content, $pos) {
+        @content;
+    }
+}
+@mixin flex-builder($x, $y, $direction) {
+    %flex-#{$x}-#{$y}-#{$direction} {
+        display: flex;
+        @if ($x != null and $y != null) {
+            justify-content: $x;
+            align-items: $y;
+        } @else if($x != null) {
+            justify-content: $x;
+        } @else if($y != null) {
+            align-items: $y;
+        }
+        @if ($direction != null) {
+            flex-direction: $direction;
+        }
+    }
+}
+@mixin flex($x: null, $y: $x, $direction: null) {
+    @if not list.index($justify-content, $x) {
+        @error "justify-content: #{$x}; does not exist !!!";
+    } @else if not list.index($align-items, $y) {
+        @error "align-items: #{$y}; does not exist !!!";
+    } @else if not list.index($flex-direction, $direction) {
+        @error "flex-direction: #{$direction}; does not exist !!!";
+    }
+    @extend %flex-#{$x}-#{$y}-#{$direction};
+    @content;
+}
+@mixin center($hadPosition: false) {
+    @if not $hadPosition {
+        position: absolute;
+    }
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@mixin size($width: null, $height: $width) {
+    @if ($width != null and $height != null) {
+        width: $width;
+        height: $height;
+    } @else if($width != null) {
+        width: $width;
+    } @else if($height != null) {
+        height: $height;
+    }
+}
+@mixin mq($screen, $attr: max) {
+    @if ($attr != max and $attr != min) {
+        @error "#{$attr} not acceptable, use max or min";
+    }
+    @media screen and (#{$attr}-width: #{$screen}) {
+        @content;
+    }
+}
+
+// an old project
+// $xl: 1366px;
+// $lg: 1055px;
+// $md: 799px;
+// $sm: 576px;
+// $screens: (
+//     $xl: 1014px,
+//     $lg: 769px,
+//     $md: 480px,
+//     $sm: 352px,
+// );
+// @each $screen, $width in $screens {
+//     @include mq(#{$screen}) {
+//         .container {
+//             max-width: #{$width};
+//         }
+//     }
+//     @if ($screen == $sm) {
+//         @include mq($width + 28,min) {
+//             .container {width: 90%}
+//             .hide-xs {display: none}
+//         }
+//     }
+// }
