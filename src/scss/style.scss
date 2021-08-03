@@ -1,1 +1,9 @@
+@use './base/init';
 @use './variables/_colors.scss';
+
+@import "./helpers/mixins";
+
+//pages
+@import "./pages/header";
+
+@import "./helpers/placeholders";
