@@ -1,11 +1,28 @@
+$themes: ("light", "dark");
 $colors: (
     #{null}: (
             cyan: #407bff,
             grey: #dedede,
             white: #ffffff,
+            primary: (
+                var(--clr-cyan),
+                #0a1836,
+            ),
+            background: (
+                #f2f2f2,
+                #212121,
+            ),
+            title: (
+                var(--clr--cyan),
+                var(--clr--white),
+            ),
         ),
     font: (
         one: #4d4d4d,
+        two: (
+            var(--clr-font-one),
+            var(--clr--white),
+        ),
     ),
     button: (
         grey: #b8b8b8,
@@ -23,31 +40,30 @@ $colors: (
         facebook: #3b5998,
         instagram: #e95950,
         linkedin: #007bb5,
+        github: (
+            #212121,
+            var(--clr--white),
+        ),
     )
 );
 //creating css variables
 :root {
     @each $group, $content in $colors {
         @each $color, $hex in $content {
-            --clr-#{$group}-#{"" + $color}: #{$hex};
+            @if (length($hex) == 1) {
+                --clr-#{$group}-#{"" + $color}: #{$hex};
+            }
         }
     }
 }
-$themes: (
-    // color: (on light theme , on dark theme
-    primary: (var(--clr-cyan), #0a1836),
-    background: (#f2f2f2, #212121),
-    title: (var(--clr--cyan), var(--clr--white)),
-    font-two: (var(--clr-font-one), var(--clr--white)),
-    social-github: (#212121, var(--clr--white))
-);
-body.light {
-    @each $color, $hex in $themes {
-        --clr-#{'' + $color}: #{nth($hex, 1)};
-    }
-}
-body.dark {
-    @each $color, $hex in $themes {
-        --clr-#{'' + $color}: #{nth($hex, 1)};
+@each $theme in $themes {
+    body.#{$theme} {
+        @each $group, $content in $colors {
+            @each $color, $hex in $content {
+                @if (length($hex) == 2) {
+                    --clr-#{$group}-#{"" + $color}: #{nth($hex, index($themes, $theme))};
+                }
+            }
+        }
     }
 }
