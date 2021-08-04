@@ -1,5 +1,7 @@
 @use "sass:list";
 @use "sass:math";
+@use '../variables/flexProperties' as p;
+
 @mixin pseudo($pseudo, $content, $pos) {
     position: relative;
     &::#{$pseudo} {
@@ -35,11 +37,11 @@
     }
 }
 @mixin flex($x: null, $y: $x, $direction: null) {
-    @if not list.index($justify-content, $x) {
+    @if not list.index(p.$justify-content, $x) {
         @error "justify-content: #{$x}; does not exist !!!";
-    } @else if not list.index($align-items, $y) {
+    } @else if not list.index(p.$align-items, $y) {
         @error "align-items: #{$y}; does not exist !!!";
-    } @else if not list.index($flex-direction, $direction) {
+    } @else if not list.index(p.$flex-direction, $direction) {
         @error "flex-direction: #{$direction}; does not exist !!!";
     }
     @extend %flex-#{$x}-#{$y}-#{$direction};

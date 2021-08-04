@@ -4,3 +4,9 @@
     box-sizing: border-box;
     font-family: "Roboto", Helvetica, sans-serif;
 }
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background: var(--clr--bg);
+}

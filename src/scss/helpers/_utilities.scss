@@ -1,0 +1,11 @@
+@use "sass:math";
+.container {
+    width: math.div(4, 6) * 100%;
+    margin-inline: auto;
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}

@@ -1,0 +1,72 @@
+h1 {
+    color: var(--clr--title);
+}
+header {
+    height: clamp(900px, 100vh, 1166px);
+    .container {
+        @extend %center;
+    }
+    p {
+        color: var(--clr-f-2);
+        font-weight: $fw-light;
+        font-size: $fs5;
+        line-height: 20px;
+    }
+    .title p {
+        font-size: $fs3;
+        line-height: 25px;
+    }
+}
+.generator {
+    font-size: $fs3;
+    .screen {
+        position: relative;
+    }
+    input {
+        width: 100%;
+        height: $input-h;
+        background: var(--clr--grey);
+        border-radius: $radius;
+        &,
+        &:focus {
+            outline: none;
+            border: none;
+        }
+    }
+    label {
+        @include flex(center);
+        color: var(--clr--white);
+        position: absolute;
+        top: 0;
+        right: 0;
+        @include size($input-h);
+        background: var(--clr-btn-grey);
+        border-radius: $radius;
+    }
+    .buttons {
+        @include flex(space-between, null);
+    }
+    button {
+        @include flex(space-between, center);
+        height: $input-h;
+        width: calc(50% - 4.5px);
+        border-radius: $radius;
+        color: var(--clr--white);
+        padding: 13px 18px;
+        &,
+        &:active {
+            border: none;
+            outline: none;
+        }
+        &:nth-child(1) {
+            background: var(--clr-btn-blue);
+        }
+        &:nth-child(2) {
+            background: var(--clr-crd-green);
+        }
+    }
+}
+header .img {
+    background: var(--clr--cyan);
+    border-radius: $radius;
+}

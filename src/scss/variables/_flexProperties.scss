@@ -1,4 +1,4 @@
-$flex:(
+$flex: (
     justify-content: (
         flex-start,
         flex-end,
@@ -8,7 +8,7 @@ $flex:(
         space-evenly,
         initial,
         inherit,
-        null
+        null,
     ),
     align-items: (
         stretch,
@@ -18,7 +18,7 @@ $flex:(
         baseline,
         initial,
         inherit,
-        null
+        null,
     ),
     flex-direction: (
         row,
@@ -27,6 +27,9 @@ $flex:(
         column-reverse,
         initial,
         inherit,
-        null
-    )
+        null,
+    ),
 );
+$justify-content: nth(nth($flex, 1), 2);
+$align-items: nth(nth($flex, 2), 2);
+$flex-direction: nth(nth($flex, 3), 2);
