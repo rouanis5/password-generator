@@ -1,3 +1,36 @@
-img {
-    max-width: 100%;
+.aboutUs {
+    background: url("../images/AboutUs/1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    @include before {
+        inset: 0;
+        @include size(100%);
+        background: var(--clr--cyan);
+        z-index: -1;
+        opacity: 0.66;
+    }
+}
+.profile {
+    @include size(66.66vw);
+    max-width: 249px;
+    max-height: 249px;
+    margin-inline: auto;
+    border-radius: $radius;
+    background: var(--clr--bg);
+    h3 {
+        color: var(--clr--title);
+    }
+    .img {
+        background: var(--clr--primary);
+        opacity: 0.9;
+        border-radius: $radius;
+        img {
+            max-width: 80%;
+        }
+    }
+    .content {
+        display: none;
+    }
 }
