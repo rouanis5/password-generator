@@ -7,6 +7,7 @@
 }
 .container {
     width: math.div(4, 6) * 100%;
+    max-width: 923px;
     margin-inline: auto;
 }
 a {
