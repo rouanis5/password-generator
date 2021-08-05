@@ -2,10 +2,6 @@ h1 {
     color: var(--clr--title);
 }
 header {
-    height: clamp(900px, 100vh, 1166px);
-    .container {
-        @extend %center;
-    }
     p {
         color: var(--clr-f-2);
         font-weight: $fw-light;
@@ -67,6 +63,28 @@ header {
     }
 }
 header .img {
-    background: var(--clr--cyan);
-    border-radius: $radius;
+    @include before {
+        @extend %center;
+        background: var(--clr--cyan);
+        border-radius: $radius;
+        z-index: -1;
+        width: 94.6%;
+        padding-top: 94.6%;
+    }
+}
+.readMore {
+    font-size: 14px;
+    text-align: center;
+    color: var(--clr--title);
+    bottom: 68px;
+    i {
+        display: block;
+        font-size: 24px;
+        &:nth-of-type(1) {
+            opacity: 0.6;
+        }
+        &:nth-of-type(2) {
+            margin-top: -14px;
+        }
+    }
 }

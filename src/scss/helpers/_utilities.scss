@@ -1,4 +1,10 @@
 @use "sass:math";
+.parent {
+    position: relative;
+    padding-top: 68px;
+    padding-bottom: 68px;
+    // @include flex(center);
+}
 .container {
     width: math.div(4, 6) * 100%;
     margin-inline: auto;
