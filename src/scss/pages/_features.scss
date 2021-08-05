@@ -1,3 +1,48 @@
+@use "sass:list";
 .features {
     background: var(--clr--primary);
+    h2 {
+        color: var(--clr--white);
+    }
+    ul {
+        @include flex(space-evenly, center) {
+            flex-wrap: wrap;
+        }
+    }
+    .card {
+        @include size(231px);
+        border-radius: $radius;
+        background: var(--clr--white);
+        margin-top: 56px;
+        padding: 29px;
+        //a smart way to generate colors for each card
+        //no need to indexes
+        @each $group, $content in $colors {
+            @if ($group == crd) {
+                $i: 1;
+                @each $color, $hex in $content {
+                    @if (length($hex) == 1) {
+                        &:nth-of-type(#{$i}) h3 {
+                            color: var(--clr-#{$group}-#{"" + $color});
+                        }
+                        &:nth-of-type(#{$i}).active {
+                            background: var(--clr-#{$group}-#{"" + $color});
+                        }
+                        $i: $i + 1;
+                    }
+                }
+            }
+        }
+        //another; we need indexes, if crd change his place the loop will not work
+        // @for $i from 1 through 6 {.card:nth-child(#{$i}) h3{
+        //   color: var(--clr-crd-#{nth(nth(nth(nth($colors, 4), 2), $i), 1)});}}
+        &.active {
+            h3 {
+                color: var(--clr--white);
+            }
+            img {
+                opacity: 0.2;
+            }
+        }
+    }
 }
