@@ -16,3 +16,20 @@ a {
 li {
     list-style: none;
 }
+button {
+    &,
+    &:active {
+        border: none;
+        outline: none;
+    }
+}
+.img.bg {
+    @include before {
+        @extend %center;
+        background: var(--clr--cyan);
+        border-radius: $radius;
+        z-index: -1;
+        width: 94.6%;
+        padding-top: 94.6%;
+    }
+}

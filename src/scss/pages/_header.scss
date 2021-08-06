@@ -50,27 +50,12 @@ header {
         border-radius: $radius;
         color: var(--clr--white);
         padding: 13px 18px;
-        &,
-        &:active {
-            border: none;
-            outline: none;
-        }
         &:nth-child(1) {
             background: var(--clr-btn-blue);
         }
         &:nth-child(2) {
             background: var(--clr-crd-green);
         }
-    }
-}
-header .img {
-    @include before {
-        @extend %center;
-        background: var(--clr--cyan);
-        border-radius: $radius;
-        z-index: -1;
-        width: 94.6%;
-        padding-top: 94.6%;
     }
 }
 .readMore {

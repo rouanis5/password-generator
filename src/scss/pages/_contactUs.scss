@@ -1,0 +1,34 @@
+.contactUs {
+    .container > *:not(:last-child) {
+        margin-bottom: 33px;
+    }
+    h2 {
+        font-size: $fs2;
+        color: var(--clr--title);
+    }
+    color: var(--clr-f-2);
+    li {
+        @include flex(null, center);
+        &:not(:last-child) {
+            margin-bottom: 14px;
+        }
+        span {
+            font-size: $fs-contact;
+            color: var(--clr--white);
+            background: var(--clr-crd-yellow);
+            padding: 3px 11px;
+            border-radius: $radius;
+        }
+    }
+    p {
+        padding-left: 9px;
+    }
+    button {
+        background: var(--clr-crd-green);
+        color: var(--clr--white);
+        border-radius: $radius;
+        padding: 7px;
+        width: 100%;
+        font-size: $fs-contact;
+    }
+}
