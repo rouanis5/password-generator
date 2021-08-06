@@ -2,6 +2,14 @@ h1 {
     color: var(--clr--title);
 }
 header {
+    .container {
+        @include flex(space-around, center) {
+            flex-wrap: wrap;
+        }
+        & > * {
+            flex-basis: 450px;
+        }
+    }
     p {
         color: var(--clr-f-2);
         font-weight: $fw-light;
@@ -9,10 +17,18 @@ header {
         text-align: center;
         line-height: 20px;
     }
+    .title h1 {
+        margin: 0;
+        margin-bottom: 9px;
+        line-height: 35px;
+    }
     .title p {
         font-size: $fs3;
         line-height: 25px;
     }
+}
+.left_box > * {
+    margin-bottom: 24px;
 }
 .generator {
     font-size: $fs3;
@@ -24,6 +40,7 @@ header {
         height: $input-h;
         background: var(--clr--grey);
         border-radius: $radius;
+        margin-bottom: 9px;
         &,
         &:focus {
             outline: none;
@@ -61,6 +78,7 @@ header {
 .readMore {
     font-size: $fs5;
     text-align: center;
+    margin-top: 43px;
     color: var(--clr--title);
     bottom: 68px;
     i {

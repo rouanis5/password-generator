@@ -21,33 +21,35 @@
     <body class="dark">
         <header class="parent">
             <div class="container">
-                <div class="title">
-                    <h1>Password generator</h1>
-                    <p>Generate secure, random passwords to stay safe online</p>
+                <div class="left_box">
+                    <div class="title">
+                        <h1>Password generator</h1>
+                        <p>Generate secure, random passwords to stay safe online</p>
+                    </div>
+                    <form class="generator">
+                        <div class="screen">
+                            <input type="text" name="fgenerator" id="generator" />
+                            <label for="fgenerator">
+                                <i class="fas fa-clipboard"></i>
+                            </label>
+                        </div>
+                        <div class="buttons">
+                            <button type="submit">
+                                Settings
+                                <i class="fas fa-cog"></i>
+                            </button>
+                            <button type="submit">
+                                Generate
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <hr />
+                    <p>
+                        Remember your password with the first character of each word in
+                        the generated sentence
+                    </p>
                 </div>
-                <form class="generator">
-                    <div class="screen">
-                        <input type="text" name="fgenerator" id="generator" />
-                        <label for="fgenerator">
-                            <i class="fas fa-clipboard"></i>
-                        </label>
-                    </div>
-                    <div class="buttons">
-                        <button type="submit">
-                            Settings
-                            <i class="fas fa-cog"></i>
-                        </button>
-                        <button type="submit">
-                            Generate
-                            <i class="fas fa-check-circle"></i>
-                        </button>
-                    </div>
-                </form>
-                <hr />
-                <p>
-                    Remember your password with the first character of each word in the
-                    generated sentence
-                </p>
                 <div class="img bg">
                     <img
                         src="./images/Home/1v2.svg"
