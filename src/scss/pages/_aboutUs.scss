@@ -3,6 +3,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     z-index: 1;
     @include before {
         inset: 0;
@@ -14,23 +15,92 @@
 }
 .profile {
     @include size(66.66vw);
-    max-width: 249px;
-    max-height: 249px;
+    @include max-size(384px);
     margin-inline: auto;
     border-radius: $radius;
     background: var(--clr--bg);
     h3 {
+        font-size: $fs3;
         color: var(--clr--title);
+    }
+    .public {
+        @include flex(null, null, column);
+        h3 {
+            margin: auto;
+        }
     }
     .img {
         background: var(--clr--primary);
         opacity: 0.9;
-        border-radius: $radius;
+        border-radius: $radius $radius 0 0;
         img {
-            max-width: 80%;
+            display: block;
+            margin-inline: auto;
+            max-width: 85.7%;
         }
     }
     .content {
         display: none;
+        p {
+            color: var(--clr-f-2);
+            margin-inline: 8.3%;
+        }
+        ul {
+            @include flex(space-between, null);
+            margin: auto;
+            width: 63.3%;
+            overflow: hidden;
+            li {
+                @include flex(center);
+                @include size(48px);
+                &,
+                a {
+                    transform: translateY(50%);
+                }
+                &:hover,
+                &:hover a {
+                    transform: translateY(0);
+                }
+                a {
+                    color: var(--clr--white);
+                    font-size: $fs3;
+                }
+                &:last-child a {
+                    color: var(--clr--bg);
+                }
+                @each $group, $content in $colors {
+                    @if ($group == sm) {
+                        $i: 1;
+                        @each $color, $hex in $content {
+                            @if (length($hex) == 1) {
+                                &:nth-of-type(#{$i}) {
+                                    background: var(--clr-#{$group}-#{"" + $color});
+                                }
+                                $i: $i + 1;
+                            }
+                            @if (length($hex) == 2) {
+                                &:nth-of-type(#{$i}) {
+                                    background: var(
+                                        --clr-#{$group}-#{"" + nth($color, 1)}
+                                    );
+                                }
+                                $i: $i + 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.active {
+        height: auto;
+        max-height: unset;
+        .public {
+            height: 66.66vw;
+            max-height: 384px;
+        }
+        .content {
+            display: block;
+        }
     }
 }

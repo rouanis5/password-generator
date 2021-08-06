@@ -65,6 +65,16 @@
         height: $height;
     }
 }
+@mixin max-size($width: null, $height: $width) {
+    @if ($width != null and $height != null) {
+        max-width: $width;
+        max-height: $height;
+    } @else if($width != null) {
+        max-width: $width;
+    } @else if($height != null) {
+        max-height: $height;
+    }
+}
 @mixin mq($screen, $attr: max) {
     @if ($attr != max and $attr != min) {
         @error "#{$attr} not acceptable, use max or min";
