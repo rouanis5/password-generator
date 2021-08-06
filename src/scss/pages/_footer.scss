@@ -1,0 +1,50 @@
+.footer__main {
+    .container {
+        @include flex(space-around, center) {
+            flex-wrap: wrap;
+        }
+        & > * {
+            flex-basis: 170px;
+        }
+        & > *:not(:last-child) {
+            margin: 25px 0;
+        }
+    }
+    .img {
+        @include flex(center, null);
+    }
+    img {
+        width: 100%;
+        @include max-size(128px);
+        border: solid 3px var(--clr--title);
+        border-radius: $radius;
+    }
+    h3 {
+        color: var(--clr--title);
+    }
+    li,
+    a {
+        color: var(--clr-f-2);
+        text-align: center;
+        font-weight: $fw-light;
+    }
+    a {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+.copyrights {
+    color: var(--clr--white);
+    background: var(--clr--primary);
+    border-bottom: solid 7px var(--clr--bg);
+    padding: 21px 0;
+    .container {
+        @include flex(space-around, center) {
+            flex-wrap: wrap;
+        }
+    }
+    i {
+        color: var(--clr-crd-red);
+    }
+}
