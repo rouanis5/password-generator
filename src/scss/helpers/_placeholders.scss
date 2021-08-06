@@ -1,6 +1,23 @@
 @use "sass:list";
 @use '../variables/flexProperties' as p;
 @use '../helpers/mixins' as *;
+//animations -------------
+%on_click {
+    transform: scale(0.95);
+}
+%on_click2 {
+    transform: scale(1.2);
+}
+%hover_rotation {
+    animation: rotation $animation-t linear infinite;
+}
+%hover_scale {
+    animation: scale $trans linear infinite alternate;
+}
+%animation_moveY {
+    animation: moveY 2 * $trans linear infinite alternate;
+}
+//------------------------------
 %center {
     @include center;
 }

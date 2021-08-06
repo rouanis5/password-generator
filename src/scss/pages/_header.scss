@@ -51,6 +51,11 @@ header {
         right: 0;
         @include size($input-h);
         border-radius: $radius;
+        &:active {
+            i {
+                @extend %on_click2;
+            }
+        }
     }
 }
 .generator {
@@ -73,11 +78,25 @@ header {
         border-radius: $radius;
         color: var(--clr--white);
         padding: 13px 18px;
+        cursor: pointer;
         &:nth-child(1) {
             background: var(--clr-btn-blue);
+            &:hover {
+                i {
+                    @extend %hover_rotation;
+                }
+            }
         }
         &:nth-child(2) {
             background: var(--clr-crd-green);
+            &:hover {
+                i {
+                    @extend %hover_scale;
+                }
+            }
+        }
+        &:focus {
+            @extend %on_click;
         }
     }
 }
@@ -104,6 +123,7 @@ header {
     color: var(--clr--title);
     bottom: 68px;
     i {
+        @extend %animation_moveY;
         display: block;
         font-size: $fs3;
         &:nth-of-type(1) {
