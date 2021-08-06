@@ -47,6 +47,7 @@ header {
     label {
         @include flex(center);
         position: absolute;
+        cursor: pointer;
         top: 0;
         right: 0;
         @include size($input-h);
