@@ -26,7 +26,7 @@
                         <h1>Password generator</h1>
                         <p>Generate secure, random passwords to stay safe online</p>
                     </div>
-                    <form class="generator">
+                    <form class="generator __clipboard">
                         <div class="screen">
                             <input type="text" name="fgenerator" id="generator" />
                             <label for="fgenerator">
@@ -45,10 +45,18 @@
                         </div>
                     </form>
                     <hr />
-                    <p>
-                        Remember your password with the first character of each word in
-                        the generated sentence
-                    </p>
+                    <form class="remember __clipboard">
+                        <p>
+                            Remember your password with the first character of each word
+                            in the generated sentence
+                        </p>
+                        <div class="screen">
+                            <input type="text" name="fremember" id="remember" />
+                            <label for="fremember">
+                                <i class="fas fa-clipboard"></i>
+                            </label>
+                        </div>
+                    </form>
                 </div>
                 <div class="img bg">
                     <img

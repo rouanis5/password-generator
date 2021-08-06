@@ -1,5 +1,8 @@
 h1 {
     color: var(--clr--title);
+    margin: 0;
+    margin-bottom: 9px;
+    line-height: 35px;
 }
 header {
     .container {
@@ -17,11 +20,6 @@ header {
         text-align: center;
         line-height: 20px;
     }
-    .title h1 {
-        margin: 0;
-        margin-bottom: 9px;
-        line-height: 35px;
-    }
     .title p {
         font-size: $fs3;
         line-height: 25px;
@@ -30,17 +28,16 @@ header {
 .left_box > * {
     margin-bottom: 24px;
 }
-.generator {
+.__clipboard {
     font-size: $fs3;
     .screen {
         position: relative;
     }
     input {
         width: 100%;
+        padding: 2px $radius;
         height: $input-h;
-        background: var(--clr--grey);
         border-radius: $radius;
-        margin-bottom: 9px;
         &,
         &:focus {
             outline: none;
@@ -49,13 +46,22 @@ header {
     }
     label {
         @include flex(center);
-        color: var(--clr--white);
         position: absolute;
         top: 0;
         right: 0;
         @include size($input-h);
-        background: var(--clr-btn-grey);
         border-radius: $radius;
+    }
+}
+.generator {
+    input {
+        color: var(--clr-f-1); //1
+        background: var(--clr--grey); //1
+        margin-bottom: 9px; //1
+    }
+    label {
+        color: var(--clr--white); //1
+        background: var(--clr-btn-grey); //1
     }
     .buttons {
         @include flex(space-between, null);
@@ -73,6 +79,22 @@ header {
         &:nth-child(2) {
             background: var(--clr-crd-green);
         }
+    }
+}
+.remember {
+    input {
+        background: var(--clr--bg);
+        color: var(--clr-f-2);
+        &,
+        &:focus {
+            border: 3px solid var(--clr--grey);
+        }
+    }
+    label {
+        color: var(--clr-btn-grey);
+    }
+    p {
+        margin-bottom: 9px;
     }
 }
 .readMore {
