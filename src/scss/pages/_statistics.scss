@@ -1,0 +1,39 @@
+.statistics {
+    background: var(--clr--primary);
+    color: var(--clr--white);
+    ul {
+        @include flex(space-between, null);
+    }
+    li {
+        @include flex(center) {
+            flex-wrap: wrap;
+        }
+    }
+    .square {
+        @include size(81px);
+        @include flex(center);
+        background: var(--clr--white);
+        color: var(--clr--primary);
+        border-radius: $radius;
+        font-size: $fs1;
+        div {
+            @include flex(center, center, column);
+            line-height: 32px;
+        }
+        span {
+            font-weight: $fw-bold;
+        }
+    }
+    .details {
+        margin: 8px;
+        line-height: 30px;
+    }
+    h5,
+    h4 {
+        font-weight: $fw-regular;
+        font-size: 40px;
+    }
+    h4 {
+        font-size: $fs3;
+    }
+}
