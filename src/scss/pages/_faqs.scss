@@ -26,13 +26,16 @@
 }
 .question {
     @include flex(null, center);
+    position: relative;
     background: var(--clr--white);
     border-radius: $radius;
     p {
         font-weight: $fw-bold;
+        margin-left: $qst-h;
     }
 }
 .chevron {
+    position: absolute;
     min-width: $qst-h;
     min-height: $qst-h;
     height: 100%;
@@ -55,7 +58,7 @@
     p.answer {
         display: none;
         margin-left: $qst-h;
-        &:active {
+        &.active {
             display: block;
         }
     }
