@@ -70,12 +70,18 @@ header {
         background: var(--clr-btn-grey); //1
     }
     .buttons {
-        @include flex(space-between, null);
+        margin-inline: 0 - $btn-m;
+        @include flex(space-between, null) {
+            flex-wrap: wrap;
+        }
     }
     button {
         @include flex(space-between, center);
         height: $input-h;
-        width: calc(50% - 4.5px);
+        margin-inline: $btn-m;
+        margin-top: 9px;
+        min-width: 165px;
+        flex-grow: 1;
         border-radius: $radius;
         color: var(--clr--white);
         padding: 13px 18px;
