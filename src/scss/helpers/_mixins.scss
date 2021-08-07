@@ -82,11 +82,11 @@
         max-height: $height;
     }
 }
-@mixin mq($screen, $attr: max) {
+@mixin mq($screen, $attr: min) {
     @if ($attr != max and $attr != min) {
         @error "#{$attr} not acceptable, use max or min";
     }
-    @media screen and (#{$attr}-width: #{$screen}) {
+    @media (#{$attr}-width: #{$screen}) {
         @content;
     }
 }
