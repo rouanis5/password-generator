@@ -10,15 +10,38 @@
         }
     }
     .card {
-        @include size(231px);
-        border-radius: $radius;
-        background: var(--clr--white);
+        // @include flex(space-between, null, column);
+        @include flex(null, center, column);
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        max-width: 231px;
+        min-height: 231px;
         margin-top: 56px;
         padding: 29px;
-        @include flex(space-between, null, column);
+        border-radius: $radius;
+        background: var(--clr--white);
+        cursor: pointer;
         box-shadow: 2px 2px 2px #00000040;
         //a smart way to generate colors for each card
         //no need to indexes
+        &:hover img {
+            animation: moveTop 2 * $trans linear infinite alternate;
+        }
+        p {
+            display: none;
+            margin-top: 25px;
+            color: var(--clr--white);
+            text-align: center;
+            font-size: $fs6;
+            line-height: 16.4px;
+        }
+        img {
+            @extend %center-x;
+            top: $top-img;
+            min-height: 173px;
+            width: calc(100% - 58px);
+        }
         @each $group, $content in $colors {
             @if ($group == crd) {
                 $i: 1;
@@ -42,8 +65,12 @@
             h3 {
                 color: var(--clr--white);
             }
+            p {
+                display: block;
+            }
             img {
                 opacity: 0.2;
+                animation: none;
             }
         }
     }

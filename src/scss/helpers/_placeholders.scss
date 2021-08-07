@@ -21,6 +21,9 @@
 %center {
     @include center;
 }
+%center-x {
+    @include center-x;
+}
 @each $x in p.$justify-content {
     @each $y in p.$align-items {
         @each $direction in p.$flex-direction {
