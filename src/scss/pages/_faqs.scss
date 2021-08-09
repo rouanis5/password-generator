@@ -27,6 +27,7 @@
 .question {
     @include flex(null, center);
     position: relative;
+    min-height: $qst-h;
     background: var(--clr--white);
     border-radius: $radius;
     p {
@@ -36,21 +37,20 @@
 }
 .chevron {
     position: absolute;
+    top: 0;
+    left: 0;
     min-width: $qst-h;
-    min-height: $qst-h;
     height: 100%;
-    background: var(--clr--cyan);
-    border-radius: $radius;
-    @include flex(center);
     label {
+        @include size(100%);
+        background: var(--clr--cyan);
+        border-radius: $radius;
+        @include flex(center);
         font-size: $fs3;
         color: var(--clr--white);
     }
     input {
         display: none;
-        &:checked + label i {
-            transform: scaleY(-1);
-        }
     }
 }
 //the answer paragraph
@@ -58,8 +58,14 @@
     p.answer {
         display: none;
         margin-left: $qst-h;
-        &.active {
-            display: block;
-        }
+    }
+}
+// :onclick
+.faqs li.active {
+    input + label i {
+        transform: scaleY(-1);
+    }
+    p.answer {
+        display: block;
     }
 }
