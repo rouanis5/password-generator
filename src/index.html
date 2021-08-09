@@ -18,8 +18,35 @@
         />
         <link rel="stylesheet" href="./scss/style.scss" />
     </head>
-    <body class="dark">
-        <header class="parent">
+    <body class="light">
+        <div class="topnav">
+            <div class="container">
+                <div class="logo">
+                    <div class="img"><img src="./images/logo.jpg" alt="imo logo" /></div>
+                    <h3>IMO</h3>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#main">Main</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#faqs">Faqs</a></li>
+                        <li><a href="#aboutUs">About us</a></li>
+                        <li><a href="#contactUs">Contact</a></li>
+                        <li>
+                            <button id="switchTheme">
+                                <i class="fas fa-sun"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <header class="parent" id="main">
             <div class="container">
                 <div class="left_box">
                     <div class="title">
@@ -71,7 +98,7 @@
                 <i class="fas fa-chevron-down"></i>
             </div>
         </header>
-        <div class="features parent">
+        <div class="features parent" id="features">
             <div class="container">
                 <h2>Features</h2>
                 <ul>
@@ -140,7 +167,7 @@
                 </ul>
             </div>
         </div>
-        <div class="faqs parent">
+        <div class="faqs parent" id="faqs">
             <div class="container">
                 <h2>FAQs</h2>
                 <ul class="column">
@@ -257,7 +284,7 @@
                 </ul>
             </div>
         </div>
-        <div class="aboutUs parent">
+        <div class="aboutUs parent" id="aboutUs">
             <div class="container">
                 <div class="profile">
                     <div class="public">
@@ -300,7 +327,7 @@
                 </div>
             </div>
         </div>
-        <div class="contactUs parent">
+        <div class="contactUs parent" id="contactUs">
             <div class="container">
                 <h2>Need help? Have some question? suggestion?</h2>
                 <ul class="column">
@@ -308,9 +335,11 @@
                         <span>1</span>
                         <p>
                             First, check out our fun
-                            <a href="#">FAQs</a>
+                            <a href="#faqs">FAQs</a>
                             &
-                            <a href="#">Help Guides</a>
+                            <a href="https://www.instagram.com/med.ouanis42"
+                                >Help Guides</a
+                            >
                             ...
                         </p>
                     </li>
@@ -318,7 +347,7 @@
                         <span>2</span>
                         <p>
                             Still have a quick question? Get an instant reply on
-                            <a href="#">Instagram</a>
+                            <a href="">Instagram</a>
                             ...
                         </p>
                     </li>

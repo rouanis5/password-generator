@@ -4,7 +4,8 @@
 @import "./variables/constants";
 @import "./helpers/mixins";
 @import "./base/typography";
-
+//components
+@import "./components/topnav";
 //pages
 @import "./pages/header";
 @import "./pages/features";

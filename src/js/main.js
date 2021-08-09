@@ -4,6 +4,7 @@ let answers = document.querySelectorAll(".faqs li");
 let profile = document.querySelector(".aboutUs .profile");
 let profile_public = document.querySelector(".aboutUs .profile .public");
 
+const theme = localStorage.getItem("theme");
 let feature_card = document.querySelectorAll(".features .card");
 
 function faq_answer(i) {
@@ -34,3 +35,16 @@ for (let i = 0; i < feature_card.length; i++) {
         show_card(i);
     };
 }
+//change between themes and creating a local storage
+function changeTheme() {
+    if (document.body.classList.value == "light") {
+        document.body.classList.value = "dark";
+    } else {
+        document.body.classList.value = "light";
+    }
+    localStorage.setItem("theme", document.body.classList.value);
+}
+if (theme) {
+    document.body.classList.value = theme;
+}
+switchTheme.onclick = changeTheme;

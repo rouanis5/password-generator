@@ -1,0 +1,57 @@
+.topnav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    padding: 10px 0;
+    background: var(--clr--bg);
+    // box-shadow: 0px -4px 16px #00000054;
+    box-shadow: 0px -6px 16px #0000009e;
+    .container {
+        @include flex(space-between, center);
+    }
+    .logo {
+        @include flex(center);
+        .img {
+            @include flex(center);
+            @include size(48px);
+            border-radius: $radius;
+            background: var(--clr--title);
+        }
+        img {
+            @include size(100%);
+            border-radius: 50%;
+            border: 2px solid var(--clr--title);
+        }
+        h3 {
+            margin-left: 7px;
+            color: var(--clr--title);
+        }
+    }
+    nav {
+        width: 80%;
+        max-width: 519px;
+        ul {
+            @include flex(space-between, center);
+        }
+    }
+    li {
+        a,
+        button {
+            background: var(--clr--title);
+            @include flex(center);
+            display: inline-block;
+            color: var(--clr--bg);
+            border-radius: $radius;
+            font-size: 14px;
+            @include size(29px);
+        }
+        background: transparent;
+        a {
+            width: 75px;
+        }
+        button {
+            cursor: pointer;
+        }
+    }
+}
