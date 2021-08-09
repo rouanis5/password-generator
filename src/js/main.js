@@ -1,5 +1,7 @@
-questions = document.querySelectorAll(".faqs .question input");
-answers = document.querySelectorAll(".faqs li");
+let questions = document.querySelectorAll(".faqs .question input");
+let answers = document.querySelectorAll(".faqs li");
+let profile = document.querySelector(".aboutUs .profile");
+let profile_public = document.querySelector(".aboutUs .profile .public");
 
 function faq_answer(i) {
     for (let j = 0; j < questions.length; j++) {
@@ -13,3 +15,6 @@ for (let i = 0; i < questions.length; i++) {
         faq_answer(i);
     };
 }
+profile_public.onclick = function () {
+    profile.classList.toggle("active");
+};

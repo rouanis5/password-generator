@@ -20,8 +20,12 @@
     border-radius: $radius;
     background: var(--clr--bg);
     .public {
+        cursor: pointer;
         width: 100%;
         position: relative;
+        h3 {
+            user-select: none;
+        }
     }
     h3 {
         color: var(--clr--title);
@@ -117,6 +121,17 @@
         display: flex;
         .img {
             width: 100%;
+            @include before("IDJA MOHAMED OUANIS") {
+                @include center;
+                color: var(--clr--white);
+                position: absolute;
+                font-size: clamp(40px, 5vw, 90px);
+                text-align: center;
+                width: 100%;
+                font-weight: $fw-bold;
+                opacity: 0.33;
+                z-index: -1;
+            }
             img {
                 width: 249px;
                 max-height: 249px;
@@ -124,12 +139,7 @@
         }
         .public {
             h3 {
-                position: absolute;
-                font-size: clamp(40px, 5vw, 90px);
-                opacity: 0.33;
-                width: 100%;
-                z-index: 0;
-                @include center;
+                display: none;
             }
         }
         .content {
@@ -148,6 +158,9 @@
             }
         }
         &.active {
+            .img::before {
+                display: none;
+            }
             .content {
                 display: flex !important;
             }

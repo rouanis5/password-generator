@@ -43,9 +43,10 @@
     height: 100%;
     label {
         @include size(100%);
+        @include flex(center);
+        cursor: pointer;
         background: var(--clr--cyan);
         border-radius: $radius;
-        @include flex(center);
         font-size: $fs3;
         color: var(--clr--white);
     }
