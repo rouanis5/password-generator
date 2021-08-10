@@ -5,7 +5,10 @@ let profile = document.querySelector(".aboutUs .profile");
 let profile_public = document.querySelector(".aboutUs .profile .public");
 
 const theme = localStorage.getItem("theme");
+
 let feature_card = document.querySelectorAll(".features .card");
+
+let topnavLinks = document.querySelectorAll(".topnav .links a");
 
 function faq_answer(i) {
     for (let j = 0; j < questions.length; j++) {
@@ -48,3 +51,12 @@ if (theme) {
     document.body.classList.value = theme;
 }
 switchTheme.onclick = changeTheme;
+
+menu.onclick = function () {
+    topnav.classList.toggle("active");
+};
+for (let i = 0; i < topnavLinks.length; i++) {
+    topnavLinks[i].onclick = function () {
+        topnav.classList.toggle("active");
+    };
+}

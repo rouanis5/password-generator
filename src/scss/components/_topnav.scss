@@ -2,13 +2,15 @@
     width: 100%;
     position: fixed;
     top: 0;
-    z-index: 5;
+    z-index: 7;
     padding: 10px 0;
     background: var(--clr--bg);
-    // box-shadow: 0px -4px 16px #00000054;
     box-shadow: 0px -6px 16px #0000009e;
     .container {
         @include flex(space-between, center);
+    }
+    .left {
+        @include flex(space-between, null);
     }
     .logo {
         @include flex(center);
@@ -28,11 +30,12 @@
             color: var(--clr--title);
         }
     }
-    nav {
-        width: 80%;
-        max-width: 519px;
+    .buttons {
+        .menu {
+            margin-left: 11.5px;
+        }
         ul {
-            @include flex(space-between, center);
+            @include flex(space-between, null);
         }
     }
     li {
@@ -40,7 +43,6 @@
         button {
             background: var(--clr--title);
             @include flex(center);
-            display: inline-block;
             color: var(--clr--bg);
             border-radius: $radius;
             font-size: 14px;
@@ -48,10 +50,73 @@
         }
         background: transparent;
         a {
-            width: 75px;
+            min-width: 75px;
         }
         button {
             cursor: pointer;
+        }
+    }
+    .links {
+        display: none;
+        background: var(--clr--bg);
+        position: fixed;
+        top: 68px;
+        right: 50%;
+        width: 100%;
+        padding: 11.5px 0;
+        transform: translateX(50%);
+        z-index: -1;
+        box-shadow: 0 -2px #0000009e;
+        ul {
+            width: 66.66%;
+        }
+        li {
+            margin: 11.5px 0;
+        }
+        li,
+        a {
+            width: 100%;
+        }
+    }
+    @include mq(900px) {
+        .left {
+            width: 88%;
+            max-width: 519px;
+            justify-content: flex-end !important;
+        }
+        .links {
+            width: 88%;
+            display: block;
+            position: static;
+            box-shadow: unset;
+            padding: 0;
+            transform: unset;
+            li {
+                margin: unset;
+                width: 72px;
+            }
+            ul {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+            }
+        }
+        .buttons {
+            width: 10%;
+            ul {
+                justify-content: flex-end !important;
+            }
+        }
+        .menu {
+            display: none;
+        }
+    }
+    &.active {
+        .links {
+            @include flex(center);
+        }
+        .menu {
+            transform: rotate(90deg);
         }
     }
 }
