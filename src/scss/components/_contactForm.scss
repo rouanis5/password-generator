@@ -10,6 +10,7 @@
     background: #000000dd;
     backdrop-filter: blur(10px);
     .container {
+        position: relative;
         max-width: 530px;
         min-height: 538px;
         @extend %center;
