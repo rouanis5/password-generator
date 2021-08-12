@@ -23,6 +23,10 @@
     p {
         padding-left: 9px;
     }
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
     button {
         background: var(--clr-crd-green);
         color: var(--clr--white);

@@ -1,3 +1,4 @@
+let tabletWidth = "900px";
 let questions = document.querySelectorAll(".faqs .question input");
 let answers = document.querySelectorAll(".faqs li");
 
@@ -10,7 +11,11 @@ let feature_card = document.querySelectorAll(".features .card");
 
 let topnavLinks = document.querySelectorAll(".topnav .links a");
 function topnavDef() {
-    topnav.classList.toggle("active");
+    if (window.matchMedia(`(max-width: ${tabletWidth})`).matches) {
+        topnav.classList.toggle("active");
+    } else {
+        topnav.classList.remove("active");
+    }
     popupForm.classList.remove("active");
 }
 
