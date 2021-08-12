@@ -116,7 +116,7 @@
         }
     }
 }
-@include mq(900px) {
+@include mq($md) {
     .profile {
         display: flex;
         .img {

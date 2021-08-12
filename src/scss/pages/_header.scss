@@ -6,11 +6,12 @@ h1 {
 }
 header {
     .container {
-        @include flex(space-around, center) {
-            flex-wrap: wrap;
-        }
-        & > * {
-            flex-basis: 450px;
+        @include mq($lg) {
+            display: flex;
+            align-items: center;
+            & > * {
+                flex-basis: 50%;
+            }
         }
     }
     p {

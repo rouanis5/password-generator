@@ -78,7 +78,7 @@
             width: 100%;
         }
     }
-    @include mq(900px) {
+    @include mq($md) {
         .left {
             width: 88%;
             max-width: 519px;
