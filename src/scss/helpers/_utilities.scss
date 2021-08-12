@@ -1,10 +1,21 @@
 @use "sass:math";
 .parent {
-    padding-top: 68px;
-    padding-bottom: 68px;
+    // padding-top: 68px;
+    // padding-bottom: 68px;
+    padding: 89px 0;
+    /* padding-bottom: 109px; */
 }
 .container {
-    width: math.div(4, 6) * 100%;
+    width: 95%;
+    @include mq($sm) {
+        width: math.div(10, 12) * 100%;
+    }
+    @include mq($md) {
+        width: math.div(9, 12) * 100%;
+    }
+    @include mq($lg) {
+        width: math.div(8, 12) * 100%;
+    }
     max-width: 923px;
     margin-inline: auto;
 }
