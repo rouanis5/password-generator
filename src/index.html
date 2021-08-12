@@ -407,6 +407,37 @@
                 </ul>
             </div>
         </div>
+        <div class="contactForm">
+            <div class="container">
+                <i class="close fas fa-times-circle"></i>
+                <h3>Contact us</h3>
+                <p>
+                    Thank you for your interest in our services. Please fill out the form
+                    below
+                </p>
+                <form class="form" action="form.py" method="post">
+                    <input
+                        type="text"
+                        name="fsubject"
+                        id="subject"
+                        placeholder="Subject"
+                    />
+                    <input type="text" name="fname" id="name" placeholder="Your name" />
+                    <input
+                        type="email"
+                        name="femail"
+                        id="email"
+                        placeholder="Your email"
+                    />
+                    <textarea
+                        name="fmessage"
+                        id="message"
+                        placeholder="Message"
+                    ></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
         <footer>
             <div class="footer__main parent">
                 <div class="container">
