@@ -9,6 +9,10 @@ const theme = localStorage.getItem("theme");
 let feature_card = document.querySelectorAll(".features .card");
 
 let topnavLinks = document.querySelectorAll(".topnav .links a");
+function topnavDef() {
+    topnav.classList.toggle("active");
+    popupForm.classList.remove("active");
+}
 
 function faq_answer(i) {
     for (let j = 0; j < questions.length; j++) {
@@ -17,26 +21,15 @@ function faq_answer(i) {
     }
     answers[i].classList.toggle("active");
 }
-for (let i = 0; i < questions.length; i++) {
-    questions[i].onclick = function () {
-        faq_answer(i);
-    };
+function popupFormDef() {
+    popupForm.classList.toggle("active");
 }
-profile_public.onclick = function () {
-    profile.classList.toggle("active");
-};
-
 function show_card(i) {
     for (let j = 0; j < feature_card.length; j++) {
         if (j === i) continue;
         feature_card[j].classList.remove("active");
     }
     feature_card[i].classList.toggle("active");
-}
-for (let i = 0; i < feature_card.length; i++) {
-    feature_card[i].onclick = function () {
-        show_card(i);
-    };
 }
 //change between themes and creating a local storage
 function changeTheme() {
@@ -51,12 +44,23 @@ if (theme) {
     document.body.classList.value = theme;
 }
 switchTheme.onclick = changeTheme;
-
-menu.onclick = function () {
-    topnav.classList.toggle("active");
-};
-for (let i = 0; i < topnavLinks.length; i++) {
-    topnavLinks[i].onclick = function () {
-        topnav.classList.toggle("active");
+for (let i = 0; i < questions.length; i++) {
+    questions[i].onclick = function () {
+        faq_answer(i);
     };
 }
+profile_public.onclick = function () {
+    profile.classList.toggle("active");
+};
+
+for (let i = 0; i < feature_card.length; i++) {
+    feature_card[i].onclick = function () {
+        show_card(i);
+    };
+}
+menu.onclick = topnavDef;
+for (let i = 0; i < topnavLinks.length; i++) {
+    topnavLinks[i].onclick = topnavDef;
+}
+emailButton.onclick = popupFormDef;
+ClosePopupForm.onclick = popupFormDef;

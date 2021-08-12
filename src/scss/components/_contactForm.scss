@@ -1,4 +1,8 @@
 .contactForm {
+    display: none;
+    &.active {
+        display: block;
+    }
     position: fixed;
     top: 68px;
     left: 0;
