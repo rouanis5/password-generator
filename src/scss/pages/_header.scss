@@ -5,15 +5,6 @@ h1 {
     line-height: 35px;
 }
 header {
-    .container {
-        @include mq($lg) {
-            display: flex;
-            align-items: center;
-            & > * {
-                flex-basis: 50%;
-            }
-        }
-    }
     p {
         color: var(--clr-f-2);
         font-weight: $fw-light;
@@ -25,8 +16,29 @@ header {
         font-size: $fs3;
         line-height: 25px;
     }
+    @include mq($lg) {
+        h1,
+        p {
+            text-align: left;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+        }
+        .left_box {
+            width: 51.6%;
+        }
+        .img {
+            width: 100% - 51.6;
+            &::before {
+                top: 0 !important;
+                left: 100% !important;
+                transform: translate(-100%, 0) !important;
+            }
+        }
+    }
 }
-.left_box > * {
+.left_box > *:not(:last-child) {
     margin-bottom: 24px;
 }
 .__clipboard {
@@ -110,6 +122,7 @@ header {
 }
 .remember {
     input {
+        visibility: hidden;
         background: var(--clr--bg);
         color: var(--clr-f-2);
         &,
@@ -118,6 +131,7 @@ header {
         }
     }
     label {
+        visibility: hidden;
         color: var(--clr-btn-grey);
     }
     p {
