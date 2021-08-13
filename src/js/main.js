@@ -69,3 +69,8 @@ for (let i = 0; i < topnavLinks.length; i++) {
 }
 emailButton.onclick = popupFormDef;
 ClosePopupForm.onclick = popupFormDef;
+
+//sticky navbar
+window.onscroll = function () {
+    topnav.classList.toggle("sticky", window.scrollY > 68);
+};

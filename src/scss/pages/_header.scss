@@ -5,6 +5,9 @@ h1 {
     line-height: 35px;
 }
 header {
+    .container:nth-child(2) {
+        margin-top: 45px;
+    }
     p {
         color: var(--clr-f-2);
         font-weight: $fw-light;
