@@ -16,6 +16,7 @@
 .profile {
     overflow: hidden;
     min-height: 249px;
+    max-width: 384px;
     margin-inline: auto;
     border-radius: $radius;
     background: var(--clr--bg);
@@ -119,6 +120,7 @@
 @include mq($md) {
     .profile {
         display: flex;
+        max-width: unset;
         .img {
             width: 100%;
             @include before("IDJA MOHAMED OUANIS") {
