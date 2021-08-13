@@ -50,6 +50,10 @@
                 margin-bottom: 15px;
             }
         }
+        h2 {
+            text-align: left;
+            font-size: clamp(10px, 3vw, #{$fs2});
+        }
         button {
             max-width: 144px;
             margin-inline: auto;
@@ -69,6 +73,8 @@
                 top: 0 !important;
                 left: 0 !important;
                 transform: unset !important;
+                padding-top: 0 !important;
+                height: 100%;
             }
         }
     }
