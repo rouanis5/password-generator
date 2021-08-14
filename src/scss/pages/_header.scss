@@ -5,6 +5,9 @@ h1 {
     line-height: 35px;
 }
 header {
+    @include mq($md, max) {
+        padding-top: 8.5px !important;
+    }
     .container:nth-child(2) {
         margin-top: 45px;
     }
