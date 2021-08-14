@@ -13,6 +13,8 @@ let topnavLinks = document.querySelectorAll(".topnav .links a");
 
 let settingsBtn = document.querySelectorAll(".settings ul li.button");
 
+let pTop = 68;
+//function to show or hide menu
 function topnavDef() {
     if (window.matchMedia(`(max-width: ${tabletWidth})`).matches) {
         topnav.classList.toggle("active");
@@ -21,7 +23,12 @@ function topnavDef() {
     }
     popupForm.classList.remove("active");
 }
-
+//go to a location minus the top padding
+function goLocation(link) {
+    let id = link.getAttribute("data-id");
+    let element = document.getElementById(id);
+    window.scrollTo(0, element.offsetTop - pTop);
+}
 function faq_answer(i) {
     for (let j = 0; j < questions.length; j++) {
         if (j === i) continue;
@@ -68,7 +75,10 @@ for (let i = 0; i < feature_card.length; i++) {
 }
 menu.onclick = topnavDef;
 for (let i = 0; i < topnavLinks.length; i++) {
-    topnavLinks[i].onclick = topnavDef;
+    topnavLinks[i].onclick = function () {
+        topnavDef();
+        goLocation(this);
+    };
 }
 emailButton.onclick = popupFormDef;
 ClosePopupForm.onclick = popupFormDef;
@@ -93,3 +103,10 @@ showSettings.onclick = function () {
 applySettings.onclick = function () {
     main.classList.remove("active");
 };
+//footer navigation
+let footerNavLinks = document.querySelectorAll("#footerNav a");
+for (let i = 0; i < footerNavLinks.length; i++) {
+    footerNavLinks[i].onclick = function () {
+        goLocation(this);
+    };
+}
