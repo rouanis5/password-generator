@@ -69,11 +69,11 @@
                             </label>
                         </div>
                         <div class="buttons">
-                            <button type="submit">
+                            <button type="button" id="showSettings">
                                 Settings
                                 <i class="fas fa-cog"></i>
                             </button>
-                            <button type="submit">
+                            <button type="button">
                                 Generate
                                 <i class="fas fa-check-circle"></i>
                             </button>
@@ -92,6 +92,52 @@
                             </label>
                         </div>
                     </form>
+                </div>
+                <div class="hidden">
+                    <div class="settings">
+                        <h3>
+                            settings
+                            <i class="fas fa-cog"></i>
+                        </h3>
+                        <ul>
+                            <li class="button">
+                                <h4>1</h4>
+                                <div class="right">
+                                    <h5>Numbers</h5>
+                                    <h6></h6>
+                                </div>
+                            </li>
+                            <li class="button">
+                                <h4>a</h4>
+                                <div class="right">
+                                    <h5>Lowercase</h5>
+                                    <h6></h6>
+                                </div>
+                            </li>
+                            <li class="button">
+                                <h4>A</h4>
+                                <div class="right">
+                                    <h5>Uppercase</h5>
+                                    <h6></h6>
+                                </div>
+                            </li>
+                            <li class="button">
+                                <h4>#</h4>
+                                <div class="right">
+                                    <h5>Symbols</h5>
+                                    <h6></h6>
+                                </div>
+                            </li>
+                            <li class="button">
+                                <h4>~</h4>
+                                <div class="right">
+                                    <h5>Ambiguous</h5>
+                                    <h6></h6>
+                                </div>
+                            </li>
+                        </ul>
+                        <button type="submit">Apply</button>
+                    </div>
                 </div>
                 <div class="img bg">
                     <img
@@ -459,11 +505,11 @@
                                 </a>
                             </li>
                             <li>
-                                <i class="fas fa-map-marker-alt"></i>
+                                <i class="fas fa-phone-alt"></i>
                                 <a href="#">+213-559-175-931</a>
                             </li>
                             <li>
-                                <i class="fas fa-phone-alt"></i>
+                                <i class="fas fa-map-marker-alt"></i>
                                 <a href="#">Algeria</a>
                             </li>
                         </ul>
@@ -471,10 +517,11 @@
                     <section>
                         <h3>Navigation</h3>
                         <ul>
-                            <li><a href="#">Main</a></li>
-                            <li><a href="#">Features</a></li>
-                            <li><a href="#">FAQs</a></li>
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="#main">Main</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#faqs">FAQs</a></li>
+                            <li><a href="#aboutUs">About Us</a></li>
+                            <li><a href="#contactUs">Contact Us</a></li>
                         </ul>
                     </section>
                     <section>
@@ -507,7 +554,13 @@
                     <section>
                         <h3>Links</h3>
                         <ul>
-                            <li><a href="#">Github</a></li>
+                            <li>
+                                <a
+                                    href="https://github.com/rouanis5/password-generator"
+                                    target="_blank"
+                                    >Github</a
+                                >
+                            </li>
                             <li><a href="#">License</a></li>
                         </ul>
                     </section>
