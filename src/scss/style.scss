@@ -4,9 +4,12 @@
 @import "./variables/constants";
 @import "./helpers/mixins";
 @import "./base/typography";
+
 //components
 @import "./components/topnav";
 @import "./components/contactForm";
+@import "./components/settings";
+
 //pages
 @import "./pages/header";
 @import "./pages/features";
