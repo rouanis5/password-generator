@@ -43,10 +43,10 @@
             padding: 12px 16px;
             outline: 0;
             border: none;
-            background: var(--clr--grey);
+            background: var(--clr--cyan30);
             &,
             &::placeholder {
-                color: var(--clr-f-1);
+                color: var(--clr-f-2);
             }
             &::placeholder {
                 font-weight: $fw-light;
@@ -59,8 +59,9 @@
             }
         }
         button {
-            background: var(--clr--cyan);
+            background: var(--clr--primary);
             color: var(--clr--white);
+            cursor: pointer;
         }
     }
     textarea {

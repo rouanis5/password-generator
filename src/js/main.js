@@ -72,5 +72,7 @@ ClosePopupForm.onclick = popupFormDef;
 
 //sticky navbar
 window.onscroll = function () {
-    topnav.classList.toggle("sticky", window.scrollY > 68);
+    if (popupForm.classList.value != "contactForm active") {
+        topnav.classList.toggle("sticky", window.scrollY > 68);
+    }
 };

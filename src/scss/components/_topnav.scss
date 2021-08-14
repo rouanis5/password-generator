@@ -3,11 +3,18 @@
     top: 0;
     z-index: 7;
     padding: 10px 0;
+    position: relative;
     &.sticky {
         position: fixed;
-        background: var(--clr--bg);
-        box-shadow: 0px -6px 16px #0000009e;
-        margin-bottom: 0;
+        box-shadow: 0px 4px 10px -5px #0000009e;
+        background: var(--clr--primary);
+        .logo,
+        .buttons {
+            --clr--title: var(--clr--white);
+        }
+        i {
+            color: var(--clr--primary);
+        }
         //add padding to the next element
         & + * {
             padding-top: 68px;
@@ -66,16 +73,17 @@
     .links {
         display: none;
         background: var(--clr--bg);
-        position: fixed;
+        position: absolute;
         top: 68px;
         right: 50%;
         width: 100%;
         padding: 11.5px 0;
         transform: translateX(50%);
         z-index: -1;
-        box-shadow: 0 -2px #0000009e;
+        box-shadow: 0px 4px 10px -5px #0000009e;
         ul {
-            width: 66.66%;
+            // width: 66.66%;
+            display: block;
         }
         li {
             margin: 11.5px 0;
@@ -86,6 +94,12 @@
         }
     }
     @include mq($md) {
+        &.sticky {
+            --clr--title: var(--clr--white);
+            a {
+                color: var(--clr--primary);
+            }
+        }
         .left {
             width: 88%;
             max-width: 519px;
@@ -99,6 +113,7 @@
             box-shadow: unset;
             padding: 0;
             transform: unset;
+            background: unset;
             li {
                 margin: unset;
                 width: 72px;
