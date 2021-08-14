@@ -4,7 +4,7 @@
     border-radius: $radius;
     margin-inline: auto;
     max-width: 335px;
-    $padding: 30px;
+    box-shadow: 0px 4px 10px -5px #0000009e;
     h3,
     h4,
     h5,
@@ -14,12 +14,12 @@
     h3 {
         font-size: $fs-contact;
         color: var(--clr-f-1);
-        padding-top: $padding;
-        padding-inline: $padding;
+        padding-top: $p-settings;
+        padding-inline: $p-settings;
     }
     ul {
         display: grid;
-        padding-inline: $padding;
+        padding-inline: $p-settings;
         grid-template-columns: 1fr 1fr;
         gap: 20px 31px;
         margin: 20px 0;
@@ -71,5 +71,10 @@
         font-size: $fs3;
         cursor: pointer;
         border-radius: 0 0 $radius $radius;
+    }
+    &:hover {
+        i {
+            @extend %hover_rotation;
+        }
     }
 }

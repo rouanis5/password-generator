@@ -5,11 +5,32 @@ h1 {
     line-height: 35px;
 }
 header {
+    &.active {
+        .hidden {
+            display: block;
+            @include mq($lg) {
+                width: -$w-leftBox + 100;
+                padding-top: -$w-leftBox + 100;
+                position: relative;
+                .settings {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+            }
+        }
+        .img.bg {
+            display: none;
+        }
+    }
     @include mq($md, max) {
         padding-top: 8.5px !important;
     }
     .container:nth-child(2) {
         margin-top: 45px;
+    }
+    .hidden {
+        display: none;
     }
     p {
         color: var(--clr-f-2);
@@ -32,10 +53,10 @@ header {
             align-items: center;
         }
         .left_box {
-            width: 51.6%;
+            width: $w-leftBox;
         }
         .img {
-            width: 100% - 51.6;
+            width: -$w-leftBox + 100;
             &::before {
                 top: 0 !important;
                 left: 100% !important;
@@ -121,7 +142,7 @@ header {
                 }
             }
         }
-        &:focus {
+        &:active {
             @extend %on_click;
         }
     }

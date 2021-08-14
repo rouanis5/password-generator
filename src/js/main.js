@@ -10,6 +10,9 @@ const theme = localStorage.getItem("theme");
 let feature_card = document.querySelectorAll(".features .card");
 
 let topnavLinks = document.querySelectorAll(".topnav .links a");
+
+let settingsBtn = document.querySelectorAll(".settings ul li.button");
+
 function topnavDef() {
     if (window.matchMedia(`(max-width: ${tabletWidth})`).matches) {
         topnav.classList.toggle("active");
@@ -75,4 +78,18 @@ window.onscroll = function () {
     if (popupForm.classList.value != "contactForm active") {
         topnav.classList.toggle("sticky", window.scrollY > 68);
     }
+};
+
+//settings functions
+for (let i = 0; i < settingsBtn.length; i++) {
+    settingsBtn[i].onclick = function () {
+        settingsBtn[i].classList.toggle("active");
+    };
+}
+showSettings.onclick = function () {
+    // main.classList.value = "parent active";
+    main.classList.toggle("active");
+};
+applySettings.onclick = function () {
+    main.classList.remove("active");
 };
