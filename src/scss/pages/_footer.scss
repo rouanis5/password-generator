@@ -4,10 +4,11 @@
         grid-gap: 50px;
         justify-content: center;
         justify-items: center;
-        @include mq($sm) {
+        @include mq($sm - 180px) {
             grid-template-columns: repeat(2, 1fr);
         }
-        @include mq($md) {
+
+        @include mq($sm) {
             grid-template-columns: repeat(3, 1fr);
         }
         @include mq($lg) {
