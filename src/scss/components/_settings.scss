@@ -1,0 +1,75 @@
+@use 'sass:list';
+.settings {
+    background: var(--clr--white);
+    border-radius: $radius;
+    margin-inline: auto;
+    max-width: 335px;
+    $padding: 30px;
+    h3,
+    h4,
+    h5,
+    h6 {
+        text-align: left;
+    }
+    h3 {
+        font-size: $fs-contact;
+        color: var(--clr-f-1);
+        padding-top: $padding;
+        padding-inline: $padding;
+    }
+    ul {
+        display: grid;
+        padding-inline: $padding;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 31px;
+        margin: 20px 0;
+    }
+    li {
+        background: var(--clr-btn-grey);
+        padding: 14px;
+        border-radius: $radius;
+        color: var(--clr--white);
+        min-height: 71px;
+        @include flex(null, center);
+        user-select: none;
+        cursor: pointer;
+        &:active {
+            @extend %on_click;
+        }
+        &.active {
+            $buttons-clr: (red, yellow, green, cyan, black);
+            @each $color in $buttons-clr {
+                &:nth-of-type(#{list.index($buttons-clr,$color)}) {
+                    background: var(--clr-crd-#{$color});
+                }
+            }
+            h6::before {
+                content: "Enabled";
+            }
+        }
+    }
+    h4 {
+        font-size: $fs2;
+        margin-right: 6px;
+    }
+    h5 {
+        font-weight: $fw-regular;
+        font-size: 13px;
+    }
+    h6 {
+        @include before("Disabled");
+        font-weight: $fw-light;
+        font-size: 12px;
+        min-height: 13.6px;
+    }
+    button {
+        background: var(--clr-btn-blue);
+        color: var(--clr--white);
+        min-height: 63px;
+        @include flex(center);
+        width: 100%;
+        font-size: $fs3;
+        cursor: pointer;
+        border-radius: 0 0 $radius $radius;
+    }
+}
