@@ -5,7 +5,7 @@ let answers = document.querySelectorAll(".faqs li");
 let profile = document.querySelector(".aboutUs .profile");
 let profile_public = document.querySelector(".aboutUs .profile .public");
 
-const theme = localStorage.getItem("theme");
+const themePasswordGenerator = localStorage.getItem("themePasswordGenerator");
 
 let feature_card = document.querySelectorAll(".features .card");
 
@@ -46,10 +46,10 @@ function changeTheme() {
     } else {
         document.body.classList.value = "light";
     }
-    localStorage.setItem("theme", document.body.classList.value);
+    localStorage.setItem("themePasswordGenerator", document.body.classList.value);
 }
-if (theme) {
-    document.body.classList.value = theme;
+if (themePasswordGenerator) {
+    document.body.classList.value = themePasswordGenerator;
 }
 switchTheme.onclick = changeTheme;
 for (let i = 0; i < questions.length; i++) {
