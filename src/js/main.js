@@ -157,7 +157,7 @@ generate.onclick = function () {
     if (Is_changed) {
         charList = "";
         for (let i = 0; i < settingsBtn.length; i++) {
-            if (settingsBtn[i].classList.value === "button active") {
+            if (settingsBtn[i].classList.contains("active")) {
                 charList += characters[i];
             }
         }
