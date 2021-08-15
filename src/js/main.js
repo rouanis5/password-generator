@@ -81,7 +81,7 @@ for (let i = 0; i < topnavLinks.length; i++) {
     };
 }
 emailButton.onclick = popupFormDef;
-ClosePopupForm.onclick = popupFormDef;
+closePopupForm.onclick = popupFormDef;
 
 //sticky navbar
 window.onscroll = function () {
@@ -100,9 +100,19 @@ showSettings.onclick = function () {
     // main.classList.value = "parent active";
     main.classList.toggle("active");
 };
-applySettings.onclick = function () {
+closeSettings.onclick = function () {
     main.classList.remove("active");
 };
+let minPlus = document.querySelectorAll(".settings .select button");
+let passLength = document.getElementById("passLength");
+for (let i = 0; i < minPlus.length; i++) {
+    minPlus[i].onclick = function () {
+        let op = minPlus[i].getAttribute("data-op");
+        let num = passLength.textContent;
+        let result = parseInt(num) + parseInt(op);
+        if (result >= 6 && result <= 99) passLength.textContent = result;
+    };
+}
 //footer navigation
 let footerNavLinks = document.querySelectorAll("#footerNav a");
 for (let i = 0; i < footerNavLinks.length; i++) {

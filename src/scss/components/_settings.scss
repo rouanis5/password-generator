@@ -14,15 +14,16 @@
     h3 {
         font-size: $fs-contact;
         color: var(--clr-f-1);
-        padding-top: $p-settings;
-        padding-inline: $p-settings;
+    }
+    .title {
+        @include flex(space-between, center);
+        padding: $p-settings $p-settings 0;
     }
     ul {
         display: grid;
-        padding-inline: $p-settings;
+        padding: 20px $p-settings $p-settings;
         grid-template-columns: 1fr 1fr;
-        gap: 20px 31px;
-        margin: 20px 0;
+        gap: 20px $p-settings;
     }
     li {
         background: var(--clr-btn-grey);
@@ -33,7 +34,7 @@
         @include flex(null, center);
         user-select: none;
         cursor: pointer;
-        &:active {
+        &.button:active {
             @extend %on_click;
         }
         &.active {
@@ -62,19 +63,30 @@
         font-size: 12px;
         min-height: 13.6px;
     }
-    button {
-        background: var(--clr-btn-blue);
-        color: var(--clr--white);
-        min-height: 63px;
-        @include flex(center);
-        width: 100%;
-        font-size: $fs3;
-        cursor: pointer;
-        border-radius: 0 0 $radius $radius;
-    }
     &:hover {
-        i {
+        h3 i {
             @extend %hover_rotation;
+        }
+    }
+    .select {
+        background: var(--clr-crd-purple);
+        @include flex(space-between, center);
+        cursor: initial;
+        button {
+            font-size: $fs3;
+            background: none;
+            color: var(--clr-crd-purple);
+            background: var(--clr--white);
+            border-radius: $radius;
+            @include size(21px);
+            @include flex(center);
+            transition: background 0.2s ease;
+            &:hover {
+                background: var(--clr--grey);
+            }
+        }
+        h4 {
+            margin: 0;
         }
     }
 }
