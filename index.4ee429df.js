@@ -394,6 +394,7 @@ let pTop = 68;
 let minPlus = document.querySelectorAll(".settings .select button");
 let footerNavLinks = document.querySelectorAll("#footerNav a");
 let screen = document.getElementById("screen");
+let copyPermition = false;
 //function to show or hide menu
 function topnavDef() {
     if (window.matchMedia(`(max-width: ${tabletWidth})`).matches) topnav.classList.toggle("active");
@@ -425,11 +426,13 @@ function show_card(i) {
 }
 //function to copy to the clipboard
 function copyTextDef(copyText) {
-    // Select the text field
-    copyText.select();
-    copyText.setSelectionRange(0, 99); // For mobile devices
-    //Copy the text inside the text field
-    document.execCommand("copy");
+    if (copyPermition) {
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99); // For mobile devices
+        //Copy the text inside the text field
+        document.execCommand("copy");
+    }
 }
 //change between themes and creating a local storage
 function changeTheme() {
@@ -496,8 +499,13 @@ generate.onclick = function() {
     password = "";
     passLengthInt = parseInt(passLength.textContent);
     for(let i6 = 0; i6 < settingsBtn.length; i6++)if (settingsBtn[i6].classList.value === "button active") charList += characters[i6];
-    if (charList !== "") for(let i7 = 0; i7 < passLengthInt; i7++)password += charList[Math.round(Math.random() * (charList.length - 1))];
-    else password = "Click the settings button below";
+    if (charList !== "") {
+        for(let i7 = 0; i7 < passLengthInt; i7++)password += charList[Math.round(Math.random() * (charList.length - 1))];
+        copyPermition = true;
+    } else {
+        password = "Click the settings button below";
+        copyPermition = false;
+    }
     screen.value = password;
 };
 copyScreen.onclick = function() {
