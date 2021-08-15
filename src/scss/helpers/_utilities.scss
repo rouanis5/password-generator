@@ -24,10 +24,14 @@ li {
     list-style: none;
 }
 button {
+    cursor: pointer;
     &,
     &:active {
         border: none;
         outline: none;
+    }
+    &:active {
+        @extend %on_click;
     }
 }
 .img.bg {

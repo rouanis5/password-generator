@@ -1,0 +1,10 @@
+.close {
+    font-size: $fs3;
+    color: var(--clr-crd-red);
+    background: var(--clr--white);
+    border-radius: 50%;
+    cursor: pointer;
+    &:active {
+        @extend %on_click;
+    }
+}
