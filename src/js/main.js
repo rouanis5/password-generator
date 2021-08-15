@@ -52,6 +52,16 @@ function show_card(i) {
     }
     feature_card[i].classList.toggle("active");
 }
+
+//function to copy to the clipboard
+function copyTextDef(copyText) {
+    // Select the text field
+    copyText.select();
+    copyText.setSelectionRange(0, 99); // For mobile devices
+    //Copy the text inside the text field
+    document.execCommand("copy");
+}
+
 //change between themes and creating a local storage
 function changeTheme() {
     if (document.body.classList.value == "light") {
@@ -150,7 +160,11 @@ generate.onclick = function () {
             password += charList[Math.round(Math.random() * (charList.length - 1))];
         }
     } else {
-        password = "Click the settings button";
+        password = "Click the settings button below";
     }
     screen.value = password;
+};
+
+copyScreen.onclick = function () {
+    copyTextDef(screen);
 };
