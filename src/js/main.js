@@ -5,15 +5,21 @@ let answers = document.querySelectorAll(".faqs li");
 let profile = document.querySelector(".aboutUs .profile");
 let profile_public = document.querySelector(".aboutUs .profile .public");
 
-const themePasswordGenerator = localStorage.getItem("themePasswordGenerator");
+let themePasswordGenerator = localStorage.getItem("themePasswordGenerator");
 
 let feature_card = document.querySelectorAll(".features .card");
 
 let topnavLinks = document.querySelectorAll(".topnav .links a");
 
 let settingsBtn = document.querySelectorAll(".settings ul li.button");
-
 let pTop = 68;
+
+let minPlus = document.querySelectorAll(".settings .select button");
+
+let footerNavLinks = document.querySelectorAll("#footerNav a");
+
+let screen = document.getElementById("screen");
+
 //function to show or hide menu
 function topnavDef() {
     if (window.matchMedia(`(max-width: ${tabletWidth})`).matches) {
@@ -103,8 +109,6 @@ showSettings.onclick = function () {
 closeSettings.onclick = function () {
     main.classList.remove("active");
 };
-let minPlus = document.querySelectorAll(".settings .select button");
-let passLength = document.getElementById("passLength");
 for (let i = 0; i < minPlus.length; i++) {
     minPlus[i].onclick = function () {
         let op = minPlus[i].getAttribute("data-op");
@@ -114,9 +118,39 @@ for (let i = 0; i < minPlus.length; i++) {
     };
 }
 //footer navigation
-let footerNavLinks = document.querySelectorAll("#footerNav a");
 for (let i = 0; i < footerNavLinks.length; i++) {
     footerNavLinks[i].onclick = function () {
         goLocation(this);
     };
 }
+
+//generator
+let password = "";
+let passwordLength = 12;
+let characters = [
+    "0123456789",
+    "abcdefghijklmnopqrstuvwxyz",
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    "!@#$%^&*_-+=",
+    "{}[]()/\\'\"`~,;:.<>",
+];
+
+let charList = "";
+generate.onclick = function () {
+    charList = "";
+    password = "";
+    passLengthInt = parseInt(passLength.textContent);
+    for (let i = 0; i < settingsBtn.length; i++) {
+        if (settingsBtn[i].classList.value === "button active") {
+            charList += characters[i];
+        }
+    }
+    if (charList !== "") {
+        for (let i = 0; i < passLengthInt; i++) {
+            password += charList[Math.round(Math.random() * (charList.length - 1))];
+        }
+    } else {
+        password = "Click the settings button";
+    }
+    screen.value = password;
+};
