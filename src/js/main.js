@@ -20,6 +20,8 @@ let footerNavLinks = document.querySelectorAll("#footerNav a");
 
 let screen = document.getElementById("screen");
 let copyPermition = false;
+let Is_changed = true;
+let charList = "";
 
 //function to show or hide menu
 function topnavDef() {
@@ -113,6 +115,7 @@ window.onscroll = function () {
 for (let i = 0; i < settingsBtn.length; i++) {
     settingsBtn[i].onclick = function () {
         settingsBtn[i].classList.toggle("active");
+        Is_changed = true;
     };
 }
 showSettings.onclick = function () {
@@ -148,15 +151,17 @@ let characters = [
     "{}[]()/\\'\"`~,;:.<>",
 ];
 
-let charList = "";
 generate.onclick = function () {
-    charList = "";
     password = "";
     passLengthInt = parseInt(passLength.textContent);
-    for (let i = 0; i < settingsBtn.length; i++) {
-        if (settingsBtn[i].classList.value === "button active") {
-            charList += characters[i];
+    if (Is_changed) {
+        charList = "";
+        for (let i = 0; i < settingsBtn.length; i++) {
+            if (settingsBtn[i].classList.value === "button active") {
+                charList += characters[i];
+            }
         }
+        Is_changed = false;
     }
     if (charList !== "") {
         for (let i = 0; i < passLengthInt; i++) {
@@ -169,7 +174,6 @@ generate.onclick = function () {
     }
     screen.value = password;
 };
-
 copyScreen.onclick = function () {
     copyTextDef(screen);
 };
