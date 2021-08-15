@@ -19,6 +19,7 @@ let minPlus = document.querySelectorAll(".settings .select button");
 let footerNavLinks = document.querySelectorAll("#footerNav a");
 
 let screen = document.getElementById("screen");
+let copyPermition = false;
 
 //function to show or hide menu
 function topnavDef() {
@@ -55,11 +56,13 @@ function show_card(i) {
 
 //function to copy to the clipboard
 function copyTextDef(copyText) {
-    // Select the text field
-    copyText.select();
-    copyText.setSelectionRange(0, 99); // For mobile devices
-    //Copy the text inside the text field
-    document.execCommand("copy");
+    if (copyPermition) {
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99); // For mobile devices
+        //Copy the text inside the text field
+        document.execCommand("copy");
+    }
 }
 
 //change between themes and creating a local storage
@@ -159,8 +162,10 @@ generate.onclick = function () {
         for (let i = 0; i < passLengthInt; i++) {
             password += charList[Math.round(Math.random() * (charList.length - 1))];
         }
+        copyPermition = true;
     } else {
         password = "Click the settings button below";
+        copyPermition = false;
     }
     screen.value = password;
 };
