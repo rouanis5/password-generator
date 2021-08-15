@@ -111,33 +111,37 @@
                 </div>
                 <div class="hidden">
                     <div class="settings">
-                        <h3>
-                            settings
-                            <i class="fas fa-cog"></i>
-                        </h3>
+                        <div class="title">
+                            <h3>
+                                settings
+                                <i class="fas fa-cog"></i>
+                            </h3>
+                            <i class="close fas fa-times-circle" id="closeSettings"></i>
+                        </div>
+
                         <ul>
-                            <li class="button">
+                            <li class="button active">
                                 <h4>1</h4>
                                 <div class="right">
                                     <h5>Numbers</h5>
                                     <h6></h6>
                                 </div>
                             </li>
-                            <li class="button">
+                            <li class="button active">
                                 <h4>a</h4>
                                 <div class="right">
                                     <h5>Lowercase</h5>
                                     <h6></h6>
                                 </div>
                             </li>
-                            <li class="button">
+                            <li class="button active">
                                 <h4>A</h4>
                                 <div class="right">
                                     <h5>Uppercase</h5>
                                     <h6></h6>
                                 </div>
                             </li>
-                            <li class="button">
+                            <li class="button active">
                                 <h4>#</h4>
                                 <div class="right">
                                     <h5>Symbols</h5>
@@ -151,8 +155,12 @@
                                     <h6></h6>
                                 </div>
                             </li>
+                            <li class="select">
+                                <button type="button" data-op="-1">−</button>
+                                <h4 id="passLength">12</h4>
+                                <button type="button" data-op="1">+</button>
+                            </li>
                         </ul>
-                        <button type="submit" id="applySettings">Apply</button>
                     </div>
                 </div>
                 <div class="img bg">
@@ -476,7 +484,7 @@
         </div>
         <div class="contactForm" id="popupForm">
             <div class="container">
-                <i class="close fas fa-times-circle" id="ClosePopupForm"></i>
+                <i class="close fas fa-times-circle" id="closePopupForm"></i>
                 <h3>Contact us</h3>
                 <p>
                     Thank you for your interest in our services. Please fill out the form
