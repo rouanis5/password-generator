@@ -3,7 +3,6 @@
     background: var(--clr--white);
     border-radius: $radius;
     margin-inline: auto;
-    max-width: 335px;
     box-shadow: 0px 4px 10px -5px #0000009e;
     h3,
     h4,
@@ -20,18 +19,27 @@
         padding: $p-settings $p-settings 0;
     }
     ul {
-        display: grid;
         padding: 20px $p-settings $p-settings;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px $p-settings;
+        li {
+            margin-bottom: 20px;
+        }
+        @include mq($mq-settings) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px $p-settings;
+            li {
+                margin: 0;
+                justify-content: unset !important;
+            }
+        }
     }
     li {
+        @include flex(center);
         background: var(--clr-btn-grey);
         padding: 14px;
         border-radius: $radius;
         color: var(--clr--white);
         min-height: 71px;
-        @include flex(null, center);
         user-select: none;
         cursor: pointer;
         &.button:active {
@@ -70,7 +78,7 @@
     }
     .select {
         background: var(--clr-crd-purple);
-        @include flex(space-between, center);
+        justify-content: space-between !important;
         cursor: initial;
         button {
             font-size: $fs3;
