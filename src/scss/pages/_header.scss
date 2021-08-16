@@ -75,7 +75,7 @@ header {
     }
     input {
         width: 100%;
-        padding: 2px $radius;
+        padding: 2px $input-h 2px $radius;
         height: $input-h;
         border-radius: $radius;
         &,
@@ -150,11 +150,22 @@ header {
 .remember {
     input {
         visibility: hidden;
-        background: var(--clr--bg);
         color: var(--clr-f-2);
+        font-size: $fs4;
         &,
-        &:focus {
+        &:focus,
+        & + label {
             border: 3px solid var(--clr--grey);
+            background: var(--clr--bg);
+        }
+        &.active,
+        &.active + label {
+            visibility: visible;
+        }
+        &.red,
+        &.red + label {
+            --clr--grey: var(--clr-crd-red);
+            --clr-btn-grey: var(--clr-crd-red);
         }
     }
     label {

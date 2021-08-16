@@ -756,7 +756,6 @@ export const wordMap = [
         "set",
         "settle",
         "seven",
-        "sex",
         "shall",
         "share",
         "she",
@@ -984,7 +983,7 @@ export const wordMap = [
         "write",
         "wrong",
     ],
-    ["x", "xerox"],
+    ["x", "xbox"],
     ["year", "yes", "yesterday", "yet", "you", "young"],
     ["zebra", "zed", "zone", "zoo", "zoom"],
 ];
