@@ -8,7 +8,9 @@ header {
     &.active {
         .hidden {
             display: block;
+            margin-top: 24px;
             @include mq($lg) {
+                margin-top: 10px;
                 width: -$w-leftBox + 100;
                 padding-top: -$w-leftBox + 100;
                 position: relative;
@@ -16,6 +18,7 @@ header {
                     position: absolute;
                     top: 0;
                     right: 0;
+                    margin-top: 0 !important;
                 }
             }
         }
@@ -109,6 +112,12 @@ header {
         color: var(--clr-f-1); //1
         background: var(--clr--grey); //1
         margin-bottom: 9px; //1
+        &.red,
+        &.red + label {
+            --clr--grey: var(--clr-crd-red);
+            --clr-btn-grey: var(--clr-crd-red);
+            --clr-f-1: var(--clr--white);
+        }
     }
     label {
         color: var(--clr--white); //1
@@ -167,10 +176,11 @@ header {
         &.active + label {
             visibility: visible;
         }
-        &.red,
-        &.red + label {
-            --clr--grey: var(--clr-crd-red);
-            --clr-btn-grey: var(--clr-crd-red);
+        &.yellow,
+        &.yellow + label {
+            --clr--grey: var(--clr-crd-yellow);
+            --clr-btn-grey: var(--clr-crd-yellow);
+            --clr-f-2: var(--clr-crd-yellow);
         }
     }
     label {

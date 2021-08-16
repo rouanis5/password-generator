@@ -22,6 +22,7 @@ let footerNavLinks = document.querySelectorAll("#footerNav a");
 let screen = document.getElementById("screen");
 let isAllowed = false;
 let Is_changed = true;
+let noLetters = true;
 let charList = "";
 
 //function to show or hide menu
@@ -59,7 +60,8 @@ function show_card(i) {
 
 //function to copy to the clipboard
 function copyTextDef(copyText) {
-    if (isAllowed) {
+    let message = "copied successfully 💪💪";
+    if (copyText.value !== message) {
         let tmp = copyText.value;
         // Select the text field
         copyText.select();
@@ -69,7 +71,7 @@ function copyTextDef(copyText) {
         //remove selection
         window.getSelection().removeAllRanges();
         //add a feedback message
-        copyText.value = "copied successfully 💪💪";
+        copyText.value = message;
         copyText.classList.toggle("copied");
         setTimeout(function () {
             copyText.value = tmp;
@@ -173,6 +175,7 @@ generate.onclick = function () {
             }
         }
         Is_changed = false;
+        screen.classList.remove("red");
     }
     if (charList !== "") {
         for (let i = 0; i < passLengthInt; i++) {
@@ -180,13 +183,18 @@ generate.onclick = function () {
         }
         isAllowed = true;
     } else {
-        password = "Click the settings button below";
+        if (main.classList.contains("active")) {
+            password = "Enable at least one option";
+        } else {
+            password = "Click the settings button below";
+        }
+        screen.classList.add("red");
         isAllowed = false;
     }
     screen.value = password;
     if (isAllowed) {
         let sentence = "";
-        let noLetters = true;
+        noLetters = true;
         for (let i = 0; i < password.length; i++) {
             let is_letter = false;
             for (let j = 0; j < characters[1].length; j++) {
@@ -212,19 +220,23 @@ generate.onclick = function () {
         }
         remember.classList.add("active");
         if (!noLetters) {
-            remember.classList.remove("red");
+            remember.classList.remove("yellow");
             remember.value = sentence;
         } else {
-            remember.classList.add("red");
-            remember.value = "There is no letter in the password";
+            remember.classList.add("yellow");
+            remember.value = "⚠ There is no letter in the password";
         }
     } else {
         remember.classList.remove("active");
     }
 };
 copyScreen.onclick = function () {
-    copyTextDef(screen);
+    if (isAllowed) {
+        copyTextDef(screen);
+    }
 };
 copySentence.onclick = function () {
-    copyTextDef(remember);
+    if (!noLetters) {
+        copyTextDef(remember);
+    }
 };
