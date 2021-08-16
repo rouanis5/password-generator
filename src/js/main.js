@@ -60,11 +60,21 @@ function show_card(i) {
 //function to copy to the clipboard
 function copyTextDef(copyText) {
     if (isAllowed) {
+        let tmp = copyText.value;
         // Select the text field
         copyText.select();
         copyText.setSelectionRange(0, 99); // For mobile devices
         //Copy the text inside the text field
         document.execCommand("copy");
+        //remove selection
+        window.getSelection().removeAllRanges();
+        //add a feedback message
+        copyText.value = "copied successfully 💪💪";
+        copyText.classList.toggle("copied");
+        setTimeout(function () {
+            copyText.value = tmp;
+            copyText.classList.toggle("copied");
+        }, 700);
     }
 }
 
@@ -214,4 +224,7 @@ generate.onclick = function () {
 };
 copyScreen.onclick = function () {
     copyTextDef(screen);
+};
+copySentence.onclick = function () {
+    copyTextDef(remember);
 };

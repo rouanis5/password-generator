@@ -83,6 +83,11 @@ header {
             outline: none;
             border: none;
         }
+        &.copied {
+            color: var(--clr--white) !important;
+            background-color: var(--clr-crd-green) !important;
+            font-weight: $fw-bold;
+        }
     }
     label {
         @include flex(center);
