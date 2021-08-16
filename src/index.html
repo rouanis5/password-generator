@@ -4,7 +4,33 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>IMO | Password generator</title>
+        <meta name="author" content="LPDWI Groupe 7" />
+        <meta
+            name="description"
+            content="Generate secure, random passwords to stay safe online. easy to memorize"
+        />
+        <meta
+            name="keywords"
+            content="imo password password-generator generator secure random safe open-source free no-ads memorable"
+        />
+        <meta property="og:url" content="https://rouanis5.github.io/password-generator" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Password generator" />
+        <meta property="og:site_name" content="Password generator" />
+        <meta
+            property="og:description"
+            content="Generate secure, random passwords to stay safe online. easy to memorize"
+        />
+        <meta property="og:image" content="./images/thumbnail.jpg" />
+        <meta name="twitter:title" content="Password generator" />
+        <meta
+            name="twitter:description"
+            content="Generate secure, random passwords to stay safe online. easy to memorize"
+        />
+        <meta name="twitter:image" content="./images/thumbnail.jpg" />
+        <meta name="twitter:image:alt" content="100% succes with Password generator" />
+        <meta name="twitter:card" content="password_generator" />
+        <link rel="shortcut icon" type="image/svg" href="./images/favicon.svg" />
         <link
             rel="stylesheet"
             href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css"
@@ -17,6 +43,7 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="./scss/style.scss" />
+        <title>IMO | Password generator</title>
     </head>
     <body class="light">
         <header class="parent" id="main">
@@ -24,7 +51,7 @@
                 <div class="container">
                     <div class="logo">
                         <div class="img">
-                            <img src="./images/logo.jpg" alt="imo logo" />
+                            <img src="./images/logo50.jpg" alt="imo logo" />
                         </div>
                         <h3>IMO</h3>
                     </div>
@@ -75,9 +102,16 @@
                 <div class="left_box">
                     <div class="title">
                         <h1>Password generator</h1>
-                        <p>Generate secure, random passwords to stay safe online</p>
+                        <p>
+                            Generate secure, random passwords to stay safe online. easy to
+                            memorize
+                        </p>
                     </div>
-                    <form class="generator __clipboard">
+                    <form
+                        class="generator __clipboard"
+                        method="POST"
+                        action="javascript:void(0)"
+                    >
                         <div class="screen">
                             <input type="text" name="fscreen" id="screen" value="" />
                             <label for="fscreen" id="copyScreen">
@@ -96,7 +130,11 @@
                         </div>
                     </form>
                     <hr />
-                    <form class="remember __clipboard">
+                    <form
+                        class="remember __clipboard"
+                        method="POST"
+                        action="javascript:void(0)"
+                    >
                         <p>
                             Remember your password with the first character of each word
                             in the generated sentence
@@ -489,7 +527,7 @@
                     Thank you for your interest in our services. Please fill out the form
                     below
                 </p>
-                <form class="form" action="form.py" method="post">
+                <form class="form" action="form.py" method="POST">
                     <input
                         type="text"
                         name="fsubject"
@@ -516,7 +554,7 @@
             <div class="footer__main parent">
                 <div class="container">
                     <div class="img">
-                        <img src="./images/logo.jpg" alt="IMO logo" />
+                        <img src="./images/logo128.jpg" alt="IMO logo" />
                     </div>
                     <section>
                         <h3>Information</h3>
