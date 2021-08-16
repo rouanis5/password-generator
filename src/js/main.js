@@ -20,7 +20,7 @@ let minPlus = document.querySelectorAll(".settings .select button");
 let footerNavLinks = document.querySelectorAll("#footerNav a");
 
 let screen = document.getElementById("screen");
-let copyPermition = false;
+let isAllowed = false;
 let Is_changed = true;
 let charList = "";
 
@@ -59,7 +59,7 @@ function show_card(i) {
 
 //function to copy to the clipboard
 function copyTextDef(copyText) {
-    if (copyPermition) {
+    if (isAllowed) {
         // Select the text field
         copyText.select();
         copyText.setSelectionRange(0, 99); // For mobile devices
@@ -168,29 +168,31 @@ generate.onclick = function () {
         for (let i = 0; i < passLengthInt; i++) {
             password += charList[Math.round(Math.random() * (charList.length - 1))];
         }
-        copyPermition = true;
+        isAllowed = true;
     } else {
         password = "Click the settings button below";
-        copyPermition = false;
+        isAllowed = false;
     }
     screen.value = password;
-    if (screen.value !== "Click the settings button below") {
+    if (isAllowed) {
         let sentence = "";
+        let noLetters = true;
         for (let i = 0; i < password.length; i++) {
             let is_letter = false;
             for (let j = 0; j < characters[1].length; j++) {
                 if (password[i].toLowerCase() === characters[1][j]) {
                     if (password[i] === password[i].toLowerCase()) {
                         sentence +=
-                            words[j][Math.floor(Math.random() * (words[j].length - 1))] +
+                            words[j][Math.round(Math.random() * (words[j].length - 1))] +
                             " ";
                     } else {
                         sentence +=
                             words[j][
-                                Math.floor(Math.random() * (words[j].length - 1))
+                                Math.round(Math.random() * (words[j].length - 1))
                             ].toUpperCase() + " ";
                     }
                     is_letter = true;
+                    noLetters = false;
                     break;
                 }
             }
@@ -198,7 +200,16 @@ generate.onclick = function () {
                 sentence += password[i] + " ";
             }
         }
-        console.log(sentence);
+        remember.classList.add("active");
+        if (!noLetters) {
+            remember.classList.remove("red");
+            remember.value = sentence;
+        } else {
+            remember.classList.add("red");
+            remember.value = "There is no letter in the password";
+        }
+    } else {
+        remember.classList.remove("active");
     }
 };
 copyScreen.onclick = function () {
