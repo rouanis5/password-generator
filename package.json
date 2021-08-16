@@ -1,14 +1,15 @@
 {
     "name": "password-generator",
     "version": "1.0.0",
-    "description": "",
+    "description": "create a website where you can generate a random password ## features: - Modern design - Free (no ads) - Choose the password's length - Choose characters that you need (numbers,letters,capital letters and special charcters) ## what i used: - Visual studio code - Figma - parcel v2_beta - autoprifixer - sass",
+    "homepage": "https://github.com/rouanis5/password-generator#readme",
     "scripts": {
         "start": "rm -rf dist && parcel ./src/index.html",
-        "build": "rm -rf dist && parcel build ./src/index.html --public-url ./",
+        "build": "rm -rf dist && parcel build ./src/index.html --public-url https://rouanis5.github.io/password-generator/",
         "deploy": "npm run build && gh-pages -d dist"
     },
-    "author": "",
-    "license": "ISC",
+    "author": "IDJA Mohamed Ouanis",
+    "license": "AGPL3",
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
         "@parcel/transformer-sass": "^2.0.0-beta.3.1",
@@ -17,5 +18,12 @@
         "parcel": "^2.0.0-beta.3.1",
         "postcss-preset-env": "^6.7.0",
         "sass": "^1.35.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rouanis5/password-generator.git"
+    },
+    "bugs": {
+        "url": "https://github.com/rouanis5/password-generator/issues"
     }
 }
