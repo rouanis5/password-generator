@@ -1,3 +1,4 @@
+import { wordMap as words } from "./words";
 let tabletWidth = "900px";
 let questions = document.querySelectorAll(".faqs .question input");
 let answers = document.querySelectorAll(".faqs li");
@@ -173,6 +174,32 @@ generate.onclick = function () {
         copyPermition = false;
     }
     screen.value = password;
+    if (screen.value !== "Click the settings button below") {
+        let sentence = "";
+        for (let i = 0; i < password.length; i++) {
+            let is_letter = false;
+            for (let j = 0; j < characters[1].length; j++) {
+                if (password[i].toLowerCase() === characters[1][j]) {
+                    if (password[i] === password[i].toLowerCase()) {
+                        sentence +=
+                            words[j][Math.floor(Math.random() * (words[j].length - 1))] +
+                            " ";
+                    } else {
+                        sentence +=
+                            words[j][
+                                Math.floor(Math.random() * (words[j].length - 1))
+                            ].toUpperCase() + " ";
+                    }
+                    is_letter = true;
+                    break;
+                }
+            }
+            if (!is_letter) {
+                sentence += password[i] + " ";
+            }
+        }
+        console.log(sentence);
+    }
 };
 copyScreen.onclick = function () {
     copyTextDef(screen);

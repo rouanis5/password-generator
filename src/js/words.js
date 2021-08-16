@@ -1,6 +1,6 @@
 //986 words + x as a letter
-export const wordMap = {
-    a: [
+export const wordMap = [
+    [
         "a",
         "able",
         "about",
@@ -67,7 +67,7 @@ export const wordMap = {
         "away",
         "awful",
     ],
-    b: [
+    [
         "baby",
         "back",
         "bad",
@@ -127,7 +127,7 @@ export const wordMap = {
         "buy",
         "by",
     ],
-    c: [
+    [
         "cake",
         "call",
         "can",
@@ -212,7 +212,7 @@ export const wordMap = {
         "current",
         "cut",
     ],
-    d: [
+    [
         "dad",
         "danger",
         "date",
@@ -257,7 +257,7 @@ export const wordMap = {
         "due",
         "during",
     ],
-    e: [
+    [
         "each",
         "early",
         "east",
@@ -304,7 +304,7 @@ export const wordMap = {
         "extra",
         "eye",
     ],
-    f: [
+    [
         "face",
         "fact",
         "fair",
@@ -360,7 +360,7 @@ export const wordMap = {
         "further",
         "future",
     ],
-    g: [
+    [
         "game",
         "garden",
         "gas",
@@ -385,7 +385,7 @@ export const wordMap = {
         "guess",
         "guy",
     ],
-    h: [
+    [
         "hair",
         "half",
         "hall",
@@ -425,7 +425,7 @@ export const wordMap = {
         "hundred",
         "husband",
     ],
-    i: [
+    [
         "idea",
         "identify",
         "if",
@@ -452,9 +452,9 @@ export const wordMap = {
         "it",
         "item",
     ],
-    j: ["jesus", "job", "join", "judge", "jump", "just"],
-    k: ["keep", "key", "kid", "kill", "kind", "king", "kitchen", "knock", "know"],
-    l: [
+    ["jesus", "job", "join", "judge", "jump", "just"],
+    ["keep", "key", "kid", "kill", "kind", "king", "kitchen", "knock", "know"],
+    [
         "labour",
         "lad",
         "lady",
@@ -501,7 +501,7 @@ export const wordMap = {
         "luck",
         "lunch",
     ],
-    m: [
+    [
         "machine",
         "main",
         "major",
@@ -548,7 +548,7 @@ export const wordMap = {
         "music",
         "must",
     ],
-    n: [
+    [
         "name",
         "nation",
         "nature",
@@ -573,7 +573,7 @@ export const wordMap = {
         "now",
         "number",
     ],
-    o: [
+    [
         "obvious",
         "occasion",
         "odd",
@@ -603,7 +603,7 @@ export const wordMap = {
         "over",
         "own",
     ],
-    p: [
+    [
         "pack",
         "page",
         "paint",
@@ -677,8 +677,8 @@ export const wordMap = {
         "push",
         "put",
     ],
-    q: ["quality", "quarter", "question", "quick", "quid", "quiet", "quite"],
-    r: [
+    ["quality", "quarter", "question", "quick", "quid", "quiet", "quite"],
+    [
         "radio",
         "rail",
         "raise",
@@ -726,7 +726,7 @@ export const wordMap = {
         "rule",
         "run",
     ],
-    s: [
+    [
         "safe",
         "sale",
         "same",
@@ -847,7 +847,7 @@ export const wordMap = {
         "switch",
         "system",
     ],
-    t: [
+    [
         "table",
         "take",
         "talk",
@@ -914,7 +914,7 @@ export const wordMap = {
         "two",
         "type",
     ],
-    u: [
+    [
         "under",
         "understand",
         "union",
@@ -928,8 +928,8 @@ export const wordMap = {
         "use",
         "usual",
     ],
-    v: ["value", "various", "very", "video", "view", "village", "visit", "vote"],
-    w: [
+    ["value", "various", "very", "video", "view", "village", "visit", "vote"],
+    [
         "wage",
         "wait",
         "walk",
@@ -984,7 +984,7 @@ export const wordMap = {
         "write",
         "wrong",
     ],
-    x: ["x", "xerox"],
-    y: ["year", "yes", "yesterday", "yet", "you", "young"],
-    z: ["zebra", "zed", "zone", "zoo", "zoom"],
-};
+    ["x", "xerox"],
+    ["year", "yes", "yesterday", "yet", "you", "young"],
+    ["zebra", "zed", "zone", "zoo", "zoom"],
+];
