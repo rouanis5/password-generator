@@ -10,15 +10,13 @@ header {
             display: block;
             margin-top: 24px;
             @include mq($lg) {
-                margin-top: 10px;
+                margin-top: 0;
                 width: -$w-leftBox + 100;
-                padding-top: -$w-leftBox + 100;
-                position: relative;
+                padding: 4.4% 0;
                 .settings {
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    margin-top: 0 !important;
+                    width: 90%;
+                    max-width: $mq-settings;
+                    margin-inline: auto 0;
                 }
             }
         }
