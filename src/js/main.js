@@ -1,6 +1,6 @@
 import { wordMap as words } from "./words";
 let tabletWidth = "900px";
-let questions = document.querySelectorAll(".faqs .question input");
+let questions = document.querySelectorAll(".faqs .question");
 let answers = document.querySelectorAll(".faqs li");
 
 let profile = document.querySelector(".aboutUs .profile");
