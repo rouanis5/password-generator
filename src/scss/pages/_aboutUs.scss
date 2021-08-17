@@ -142,9 +142,6 @@
                 display: none;
             }
         }
-        .desc {
-            width: 71.8% !important;
-        }
         .content {
             align-items: center;
             &,
@@ -172,6 +169,11 @@
                 width: 249px;
                 margin: 0;
             }
+        }
+    }
+    @include mq($lg) {
+        .desc {
+            width: 71.8% !important;
         }
     }
 }
