@@ -13,7 +13,7 @@ let feature_card = document.querySelectorAll(".features .card");
 let topnavLinks = document.querySelectorAll(".topnav .links a");
 
 let settingsBtn = document.querySelectorAll(".settings ul li.button");
-let pTop = 68;
+let topnavH = 64;
 
 let minPlus = document.querySelectorAll(".settings .select button");
 
@@ -38,7 +38,7 @@ function topnavDef() {
 function goLocation(link) {
     let id = link.getAttribute("data-id");
     let element = document.getElementById(id);
-    window.scrollTo(0, element.offsetTop - pTop);
+    window.scrollTo(0, element.offsetTop - topnavH);
 }
 function faq_answer(i) {
     for (let j = 0; j < questions.length; j++) {
@@ -116,14 +116,17 @@ for (let i = 0; i < topnavLinks.length; i++) {
 }
 emailButton.onclick = popupFormDef;
 closePopupForm.onclick = popupFormDef;
-
+main = document.getElementById("main");
 //sticky navbar
 window.onscroll = function () {
+    let p = getComputedStyle(main).paddingTop;
     if (popupForm.classList.value != "contactForm active") {
-        topnav.classList.toggle("sticky", window.scrollY > 68);
+        topnav.classList.toggle(
+            "sticky",
+            window.scrollY > parseFloat(p.substr(0, p.indexOf("px")))
+        );
     }
 };
-
 //settings functions
 for (let i = 0; i < settingsBtn.length; i++) {
     settingsBtn[i].onclick = function () {
