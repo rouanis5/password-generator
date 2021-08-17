@@ -4,9 +4,9 @@
         display: block;
     }
     position: fixed;
-    top: 68px;
+    top: $h-topnav;
     left: 0;
-    @include size(100%, calc(100% - 68px));
+    @include size(100%, calc(100% - #{$h-topnav}));
     background: #000000dd;
     backdrop-filter: blur(10px);
     .container {

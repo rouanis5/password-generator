@@ -2,7 +2,7 @@
     width: 100%;
     top: 0;
     z-index: 7;
-    padding: 10px 0;
+    padding: $pt-topnav 0;
     position: relative;
     &.sticky {
         position: fixed;
@@ -17,7 +17,7 @@
         }
         //add padding to the next element
         & + * {
-            padding-top: 68px;
+            padding-top: $h-topnav;
         }
     }
     .container {
@@ -30,7 +30,7 @@
         @include flex(center);
         .img {
             @include flex(center);
-            @include size(48px);
+            @include size($h-logo);
             border-radius: $radius;
             background: var(--clr--title);
         }
@@ -74,7 +74,7 @@
         display: none;
         background: var(--clr--bg);
         position: absolute;
-        top: 68px;
+        top: $h-topnav;
         right: 50%;
         width: 100%;
         padding: 11.5px 0;
