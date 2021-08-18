@@ -10,8 +10,6 @@
         }
     }
     .card {
-        // @include flex(space-between, null, column);
-        @include flex(null, center, column);
         overflow: hidden;
         position: relative;
         width: 100%;
