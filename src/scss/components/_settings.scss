@@ -95,6 +95,23 @@
         }
         h4 {
             margin: 0;
+            appearance: textfield;
+        }
+        input[type="number"] {
+            margin: 0;
+            width: 50%;
+            outline: none;
+            border: none;
+            background: var(--clr-crd-purple);
+            color: var(--clr--white);
+            text-align: center;
+            font-size: $fs2;
+            font-weight: $fw-bold;
+            appearance: textfield;
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+            }
         }
     }
 }

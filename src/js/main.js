@@ -25,6 +25,14 @@ let Is_changed = true;
 let noLetters = true;
 let charList = "";
 
+//function that wait 2s
+function timer() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("resolved");
+        }, 2000);
+    });
+}
 //function to show or hide menu
 function topnavDef() {
     if (window.matchMedia(`(max-width: ${tabletWidth})`).matches) {
@@ -143,12 +151,33 @@ closeSettings.onclick = function () {
 };
 for (let i = 0; i < minPlus.length; i++) {
     minPlus[i].onclick = function () {
+        let num = parseInt(passLength.value);
+        let min = parseInt(passLength.min);
+        let max = parseInt(passLength.max);
         let op = minPlus[i].getAttribute("data-op");
-        let num = passLength.textContent;
-        let result = parseInt(num) + parseInt(op);
-        if (result >= 6 && result <= 99) passLength.textContent = result;
+        let result = num + parseInt(op);
+        if (result >= min && result <= max) {
+            passLength.value = result;
+        } else if (result > max) {
+            passLength.value = min;
+        } else {
+            passLength.value = max;
+        }
     };
 }
+passLength.oninput = async function () {
+    const result = await timer();
+    let min = parseInt(passLength.min);
+    let max = parseInt(passLength.max);
+    let num = parseInt(passLength.value);
+    if (num > max) {
+        passLength.value = max;
+    } else if (num < min) {
+        passLength.value = min;
+    } else if (isNaN(num)) {
+        passLength.value = min;
+    }
+};
 //footer navigation
 for (let i = 0; i < footerNavLinks.length; i++) {
     footerNavLinks[i].onclick = function () {
@@ -169,7 +198,7 @@ let characters = [
 
 generate.onclick = function () {
     password = "";
-    passLengthInt = parseInt(passLength.textContent);
+    passLengthInt = parseInt(passLength.value);
     if (Is_changed) {
         charList = "";
         for (let i = 0; i < settingsBtn.length; i++) {
