@@ -2,11 +2,28 @@
     background: var(--clr--primary);
     color: var(--clr--white);
     ul {
-        @include flex(space-between, null);
+        margin: -7px;
+        @include flex(space-around, null) {
+            flex-wrap: wrap;
+        }
+        @include mq($sm) {
+            justify-content: space-between !important;
+        }
+    }
+    @include mq($md) {
+        ul {
+        }
+        li {
+            flex-direction: row !important;
+        }
     }
     li {
+        margin: 7px;
         @include flex(center) {
-            flex-wrap: wrap;
+            flex-direction: column;
+            // flex-basis: calc(33.33% - 14px);
+            // flex-wrap: 100px;
+            // flex-grow: 100%;
         }
     }
     .square {
