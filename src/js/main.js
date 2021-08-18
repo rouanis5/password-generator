@@ -13,6 +13,7 @@ let feature_card = document.querySelectorAll(".features .card");
 let topnavLinks = document.querySelectorAll(".topnav .links a");
 
 let settingsBtn = document.querySelectorAll(".settings ul li.button");
+let settingsLi = document.querySelectorAll(".settings ul li");
 let topnavH = 64;
 
 let minPlus = document.querySelectorAll(".settings .select button");
@@ -24,13 +25,22 @@ let isAllowed = false;
 let Is_changed = true;
 let noLetters = true;
 let charList = "";
+let password = "";
+let passwordLength = 12;
+let characters = [
+    "0123456789",
+    "abcdefghijklmnopqrstuvwxyz",
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    "!@#$%^&*_-+=",
+    "{}[]()/\\'\"`~,;:.<>",
+];
 
 //function that wait 2s
 function timer() {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve("resolved");
-        }, 2000);
+        }, 1200);
     });
 }
 //function to show or hide menu
@@ -136,14 +146,27 @@ window.onscroll = function () {
     }
 };
 //settings functions
+
 for (let i = 0; i < settingsBtn.length; i++) {
     settingsBtn[i].onclick = function () {
         settingsBtn[i].classList.toggle("active");
         Is_changed = true;
     };
 }
+let settingsH3 = document.querySelector(".settings h3");
+let settingsH3Data = settingsH3.innerHTML;
+let settingsH3Clr = getComputedStyle(settingsH3).color;
+for (let i = 0; i < settingsLi.length; i++) {
+    settingsLi[i].onmouseover = function () {
+        settingsH3.innerHTML = settingsLi[i].getAttribute("data-onhover");
+        settingsH3.style.color = getComputedStyle(settingsLi[i]).backgroundColor;
+    };
+    settingsLi[i].onmouseout = function () {
+        settingsH3.innerHTML = settingsH3Data;
+        settingsH3.style.color = settingsH3Clr;
+    };
+}
 showSettings.onclick = function () {
-    // main.classList.value = "parent active";
     main.classList.toggle("active");
 };
 closeSettings.onclick = function () {
@@ -186,16 +209,6 @@ for (let i = 0; i < footerNavLinks.length; i++) {
 }
 
 //generator
-let password = "";
-let passwordLength = 12;
-let characters = [
-    "0123456789",
-    "abcdefghijklmnopqrstuvwxyz",
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    "!@#$%^&*_-+=",
-    "{}[]()/\\'\"`~,;:.<>",
-];
-
 generate.onclick = function () {
     password = "";
     passLengthInt = parseInt(passLength.value);
