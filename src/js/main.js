@@ -20,7 +20,6 @@ let minPlus = document.querySelectorAll(".settings .select button");
 
 let footerNavLinks = document.querySelectorAll("#footerNav a");
 
-let screen = document.getElementById("screen");
 let isAllowed = false;
 let Is_changed = true;
 let noLetters = true;
@@ -134,7 +133,7 @@ for (let i = 0; i < topnavLinks.length; i++) {
 }
 emailButton.onclick = popupFormDef;
 closePopupForm.onclick = popupFormDef;
-main = document.getElementById("main");
+let main = document.querySelector("#main");
 //sticky navbar
 window.onscroll = function () {
     let p = getComputedStyle(main).paddingTop;
@@ -188,7 +187,7 @@ for (let i = 0; i < minPlus.length; i++) {
         }
     };
 }
-passLength.oninput = async function () {
+passLength.addEventListener("input", async function () {
     const result = await timer();
     let min = parseInt(passLength.min);
     let max = parseInt(passLength.max);
@@ -200,18 +199,18 @@ passLength.oninput = async function () {
     } else if (isNaN(num)) {
         passLength.value = min;
     }
-};
+});
 //footer navigation
 for (let i = 0; i < footerNavLinks.length; i++) {
     footerNavLinks[i].onclick = function () {
         goLocation(this);
     };
 }
-
+screen = document.querySelector("#screen");
 //generator
 generate.onclick = function () {
     password = "";
-    passLengthInt = parseInt(passLength.value);
+    let passLengthInt = parseInt(passLength.value);
     if (Is_changed) {
         charList = "";
         for (let i = 0; i < settingsBtn.length; i++) {
