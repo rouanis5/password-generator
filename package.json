@@ -25,5 +25,8 @@
     },
     "bugs": {
         "url": "https://github.com/rouanis5/password-generator/issues"
+    },
+    "dependencies": {
+        "babel-polyfill": "^6.26.0"
     }
 }
