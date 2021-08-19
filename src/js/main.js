@@ -1,3 +1,5 @@
+// import "babel-polyfill" to solve parcel&browserlist problem with async/await;
+import "babel-polyfill";
 import { wordMap as words } from "./words";
 let tabletWidth = "900px";
 let questions = document.querySelectorAll(".faqs .question");
@@ -33,6 +35,28 @@ let characters = [
     "!@#$%^&*_-+=",
     "{}[]()/\\'\"`~,;:.<>",
 ];
+
+//add id
+let main = document.getElementById("main");
+let topnav = document.getElementById("topnav");
+let popupForm = document.getElementById("popupForm");
+let switchTheme = document.getElementById("switchTheme");
+let menu = document.getElementById("menu");
+let emailButton = document.getElementById("emailButton");
+let closePopupForm = document.getElementById("closePopupForm");
+let showSettings = document.getElementById("showSettings");
+let closeSettings = document.getElementById("closeSettings");
+let passLength = document.getElementById("passLength");
+let generate = document.getElementById("generate");
+let screen = document.getElementById("screen");
+let remember = document.getElementById("remember");
+let copyScreen = document.getElementById("copyScreen");
+let copySentence = document.getElementById("copySentence");
+
+//setting h3 pr...
+let settingsH3 = document.querySelector(".settings h3");
+let settingsH3Data = settingsH3.innerHTML;
+let settingsH3Clr = getComputedStyle(settingsH3).color;
 
 //function that wait 2s
 function timer() {
@@ -82,7 +106,7 @@ function copyTextDef(copyText) {
         let tmp = copyText.value;
         // Select the text field
         copyText.select();
-        copyText.setSelectionRange(0, 99); // For mobile devices
+        copyText.setSelectionRange(0, tmp.length); // For mobile devices
         //Copy the text inside the text field
         document.execCommand("copy");
         //remove selection
@@ -99,11 +123,7 @@ function copyTextDef(copyText) {
 
 //change between themes and creating a local storage
 function changeTheme() {
-    if (document.body.classList.value == "light") {
-        document.body.classList.value = "dark";
-    } else {
-        document.body.classList.value = "light";
-    }
+    document.body.classList.toggle("dark");
     localStorage.setItem("themePasswordGenerator", document.body.classList.value);
 }
 if (themePasswordGenerator) {
@@ -133,8 +153,6 @@ for (let i = 0; i < topnavLinks.length; i++) {
 }
 emailButton.onclick = popupFormDef;
 closePopupForm.onclick = popupFormDef;
-let main = document.querySelector("#main");
-//sticky navbar
 window.onscroll = function () {
     let p = getComputedStyle(main).paddingTop;
     if (popupForm.classList.value != "contactForm active") {
@@ -152,9 +170,6 @@ for (let i = 0; i < settingsBtn.length; i++) {
         Is_changed = true;
     };
 }
-let settingsH3 = document.querySelector(".settings h3");
-let settingsH3Data = settingsH3.innerHTML;
-let settingsH3Clr = getComputedStyle(settingsH3).color;
 for (let i = 0; i < settingsLi.length; i++) {
     settingsLi[i].onmouseover = function () {
         settingsH3.innerHTML = settingsLi[i].getAttribute("data-onhover");
@@ -206,7 +221,6 @@ for (let i = 0; i < footerNavLinks.length; i++) {
         goLocation(this);
     };
 }
-screen = document.querySelector("#screen");
 //generator
 generate.onclick = function () {
     password = "";
