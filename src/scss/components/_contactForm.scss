@@ -15,13 +15,11 @@
         min-height: 538px;
         @extend %center;
         background: var(--clr--bg);
-        padding: 43px 56px;
+        padding: 43px 4.5%;
         border-radius: $radius;
     }
-    .close {
-        position: absolute;
-        top: 43px + 5;
-        right: 56px;
+    .title {
+        @include flex(space-between, center);
     }
     h3 {
         text-align: left !important;
