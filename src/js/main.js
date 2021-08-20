@@ -349,3 +349,15 @@ window.addEventListener(
     },
     false
 );
+let shortcutBtn = document.querySelectorAll(".shortcutPop button");
+let shortcutPop = document.getElementById("shortcutPop");
+// window.onload = function () {
+//     setTimeout(() => {
+//         shortcutPop.classList.toggle("active");
+//     }, 15000);
+// };
+for (let i = 0; i < shortcutBtn.length; i++) {
+    shortcutBtn[i].onclick = function () {
+        shortcutPop.classList.toggle("active");
+    };
+}
