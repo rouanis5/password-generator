@@ -4,6 +4,8 @@ import { wordMap as words } from "./words";
 let tabletWidth = "900px";
 let questions = document.querySelectorAll(".faqs .question");
 let answers = document.querySelectorAll(".faqs li");
+let parents = document.querySelectorAll(".parent");
+let page = 0;
 
 let profile = document.querySelector(".aboutUs .profile");
 let profile_public = document.querySelector(".aboutUs .profile .public");
@@ -76,9 +78,7 @@ function topnavDef() {
     popupForm.classList.remove("active");
 }
 //go to a location minus the top padding
-function goLocation(link) {
-    let id = link.getAttribute("data-id");
-    let element = document.getElementById(id);
+function goLocation(element) {
     window.scrollTo(0, element.offsetTop - topnavH);
 }
 function faq_answer(i) {
@@ -120,7 +120,20 @@ function copyTextDef(copyText) {
         }, 700);
     }
 }
-
+//set page index
+function setPage() {
+    page = 0;
+    let num = 0;
+    let min = Math.abs(parents[0].getBoundingClientRect().top);
+    for (let i = 0; i < parents.length; i++) {
+        num = Math.abs(parents[i].getBoundingClientRect().top);
+        if (min > num) {
+            min = num;
+            page = i;
+        }
+    }
+    return page;
+}
 //change between themes and creating a local storage
 function changeTheme() {
     document.body.classList.toggle("dark");
@@ -148,7 +161,9 @@ menu.onclick = topnavDef;
 for (let i = 0; i < topnavLinks.length; i++) {
     topnavLinks[i].onclick = function () {
         topnavDef();
-        goLocation(this);
+        let id = this.getAttribute("data-id");
+        let link = document.getElementById(id);
+        goLocation(link);
     };
 }
 emailButton.onclick = popupFormDef;
@@ -298,3 +313,24 @@ copySentence.onclick = function () {
         copyTextDef(remember);
     }
 };
+window.addEventListener(
+    "keydown",
+    function (e) {
+        if (!e.target.form) {
+            page = setPage();
+            if (page >= 0 && page < parents.length) {
+                if ((e.code == "ArrowUp" || e.code == "ArrowLeft") && page !== 0) {
+                    e.preventDefault();
+                    goLocation(parents[--page]);
+                } else if (
+                    (e.code == "ArrowDown" || e.code == "ArrowRight") &&
+                    page !== parents.length - 1
+                ) {
+                    e.preventDefault();
+                    goLocation(parents[++page]);
+                }
+            }
+        }
+    },
+    false
+);
