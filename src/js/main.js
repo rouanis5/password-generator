@@ -68,6 +68,73 @@ function timer() {
         }, 1200);
     });
 }
+//function that generate the password
+function generateDef() {
+    password = "";
+    let passLengthInt = parseInt(passLength.value);
+    if (Is_changed) {
+        charList = "";
+        for (let i = 0; i < settingsBtn.length; i++) {
+            if (settingsBtn[i].classList.contains("active")) {
+                charList += characters[i];
+            }
+        }
+        Is_changed = false;
+        screen.classList.remove("red");
+    }
+    if (charList !== "") {
+        for (let i = 0; i < passLengthInt; i++) {
+            password += charList[Math.round(Math.random() * (charList.length - 1))];
+        }
+        isAllowed = true;
+    } else {
+        if (main.classList.contains("active")) {
+            password = "Enable at least one option";
+        } else {
+            password = "Click the settings button below";
+        }
+        screen.classList.add("red");
+        isAllowed = false;
+    }
+    screen.value = password;
+    if (isAllowed) {
+        let sentence = "";
+        noLetters = true;
+        for (let i = 0; i < password.length; i++) {
+            let is_letter = false;
+            for (let j = 0; j < characters[1].length; j++) {
+                if (password[i].toLowerCase() === characters[1][j]) {
+                    if (password[i] === password[i].toLowerCase()) {
+                        sentence +=
+                            words[j][Math.round(Math.random() * (words[j].length - 1))] +
+                            " ";
+                    } else {
+                        sentence +=
+                            words[j][
+                                Math.round(Math.random() * (words[j].length - 1))
+                            ].toUpperCase() + " ";
+                    }
+                    is_letter = true;
+                    noLetters = false;
+                    break;
+                }
+            }
+            if (!is_letter) {
+                sentence += password[i] + " ";
+            }
+        }
+        remember.classList.add("active");
+        if (!noLetters) {
+            remember.classList.remove("yellow");
+            remember.value = sentence;
+        } else {
+            remember.classList.add("yellow");
+            remember.value = "⚠ There is no letter in the password";
+        }
+    } else {
+        remember.classList.remove("active");
+    }
+}
 //function to show or hide menu
 function topnavDef() {
     if (window.matchMedia(`(max-width: ${tabletWidth})`).matches) {
@@ -237,72 +304,8 @@ for (let i = 0; i < footerNavLinks.length; i++) {
     };
 }
 //generator
-generate.onclick = function () {
-    password = "";
-    let passLengthInt = parseInt(passLength.value);
-    if (Is_changed) {
-        charList = "";
-        for (let i = 0; i < settingsBtn.length; i++) {
-            if (settingsBtn[i].classList.contains("active")) {
-                charList += characters[i];
-            }
-        }
-        Is_changed = false;
-        screen.classList.remove("red");
-    }
-    if (charList !== "") {
-        for (let i = 0; i < passLengthInt; i++) {
-            password += charList[Math.round(Math.random() * (charList.length - 1))];
-        }
-        isAllowed = true;
-    } else {
-        if (main.classList.contains("active")) {
-            password = "Enable at least one option";
-        } else {
-            password = "Click the settings button below";
-        }
-        screen.classList.add("red");
-        isAllowed = false;
-    }
-    screen.value = password;
-    if (isAllowed) {
-        let sentence = "";
-        noLetters = true;
-        for (let i = 0; i < password.length; i++) {
-            let is_letter = false;
-            for (let j = 0; j < characters[1].length; j++) {
-                if (password[i].toLowerCase() === characters[1][j]) {
-                    if (password[i] === password[i].toLowerCase()) {
-                        sentence +=
-                            words[j][Math.round(Math.random() * (words[j].length - 1))] +
-                            " ";
-                    } else {
-                        sentence +=
-                            words[j][
-                                Math.round(Math.random() * (words[j].length - 1))
-                            ].toUpperCase() + " ";
-                    }
-                    is_letter = true;
-                    noLetters = false;
-                    break;
-                }
-            }
-            if (!is_letter) {
-                sentence += password[i] + " ";
-            }
-        }
-        remember.classList.add("active");
-        if (!noLetters) {
-            remember.classList.remove("yellow");
-            remember.value = sentence;
-        } else {
-            remember.classList.add("yellow");
-            remember.value = "⚠ There is no letter in the password";
-        }
-    } else {
-        remember.classList.remove("active");
-    }
-};
+generate.onclick = generateDef;
+
 copyScreen.onclick = function () {
     if (isAllowed) {
         copyTextDef(screen);
@@ -318,17 +321,29 @@ window.addEventListener(
     function (e) {
         if (!e.target.form) {
             page = setPage();
-            if (page >= 0 && page < parents.length) {
-                if ((e.code == "ArrowUp" || e.code == "ArrowLeft") && page !== 0) {
+            if ((e.code === "ArrowUp" || e.code === "ArrowLeft") && page !== 0) {
+                e.preventDefault();
+                goLocation(parents[--page]);
+            } else if (
+                (e.code === "ArrowDown" || e.code === "ArrowRight") &&
+                page !== parents.length - 1
+            ) {
+                e.preventDefault();
+                goLocation(parents[++page]);
+            } else if (e.code === "KeyT") {
+                e.preventDefault();
+                changeTheme();
+            } else if (e.code === "Enter" || e.code === "NumpadEnter") {
+                let xywh = main.getBoundingClientRect();
+                //function work only if the user in the main page
+                if (Math.abs(xywh.y) + topnavH < xywh.height) {
                     e.preventDefault();
-                    goLocation(parents[--page]);
-                } else if (
-                    (e.code == "ArrowDown" || e.code == "ArrowRight") &&
-                    page !== parents.length - 1
-                ) {
-                    e.preventDefault();
-                    goLocation(parents[++page]);
+                    generateDef();
+                    console.log(main.getBoundingClientRect());
                 }
+            } else if (e.code === "Tab") {
+                e.preventDefault();
+                main.classList.toggle("active");
             }
         }
     },
