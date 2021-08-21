@@ -5,11 +5,14 @@ let questions = document.querySelectorAll(".faqs .question");
 let answers = document.querySelectorAll(".faqs li");
 let parents = document.querySelectorAll(".parent");
 let page = 0;
+let trans = 700;
+let lastKey;
 
 let profile = document.querySelector(".aboutUs .profile");
 let profile_public = document.querySelector(".aboutUs .profile .public");
 
 let themePasswordGenerator = localStorage.getItem("themePasswordGenerator");
+let shortcutsPasswordGenerator = localStorage.getItem("shortcutsPasswordGenerator");
 
 let feature_card = document.querySelectorAll(".features .card");
 
@@ -53,6 +56,10 @@ let screen = document.getElementById("screen");
 let remember = document.getElementById("remember");
 let copyScreen = document.getElementById("copyScreen");
 let copySentence = document.getElementById("copySentence");
+let shortcutPopBtn = document.querySelectorAll(".shortcutPop button");
+let shortcutPop = document.getElementById("shortcutPop");
+let shortcuts = document.getElementById("shortcuts");
+let shortcutsClose = document.getElementById("shortcutsClose");
 
 //setting h3 pr...
 let settingsH3 = document.querySelector(".settings h3");
@@ -133,6 +140,13 @@ function generateDef() {
     } else {
         remember.classList.remove("active");
     }
+}
+//function to remove shortcutpopup and toggle shortcuts
+function shortcutDef(t) {
+    shortcutPop.classList.remove("active");
+    setTimeout(() => {
+        shortcuts.classList.toggle("active");
+    }, t);
 }
 //function to show or hide menu
 function topnavDef() {
@@ -332,7 +346,7 @@ window.addEventListener(
             } else if (e.code === "KeyT") {
                 e.preventDefault();
                 changeTheme();
-            } else if (e.code === "Enter" || e.code === "NumpadEnter") {
+            } else if (e.key === "Enter") {
                 let xywh = main.getBoundingClientRect();
                 //function work only if the user in the main page
                 if (Math.abs(xywh.y) + topnavH < xywh.height) {
@@ -343,20 +357,38 @@ window.addEventListener(
             } else if (e.code === "Tab") {
                 e.preventDefault();
                 main.classList.toggle("active");
+            } else if (lastKey === "Control") {
+                if (e.key === "/") {
+                    e.preventDefault();
+                    let t = 0;
+                    if (shortcutPop.classList.contains("active")) {
+                        t = trans;
+                    }
+                    shortcutDef(t);
+                }
             }
+            lastKey = e.key;
         }
     },
     false
 );
-let shortcutBtn = document.querySelectorAll(".shortcutPop button");
-let shortcutPop = document.getElementById("shortcutPop");
-// window.onload = function () {
-//     setTimeout(() => {
-//         shortcutPop.classList.toggle("active");
-//     }, 15000);
-// };
-for (let i = 0; i < shortcutBtn.length; i++) {
-    shortcutBtn[i].onclick = function () {
-        shortcutPop.classList.toggle("active");
+window.onload = function () {
+    if (!shortcutsPasswordGenerator) {
+        setTimeout(() => {
+            if (!shortcuts.classList.contains("active")) {
+                shortcutPop.classList.add("active");
+            }
+        }, 15000);
+    }
+};
+shortcutsClose.onclick = function () {
+    shortcuts.classList.remove("active");
+};
+for (let i = 0; i < shortcutPopBtn.length; i++) {
+    shortcutPopBtn[i].onclick = function () {
+        shortcutDef(trans);
+        if (i === 1) {
+            localStorage.setItem("shortcutsPasswordGenerator", true);
+        }
     };
 }

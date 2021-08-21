@@ -1,21 +1,60 @@
 @use "sass:math";
 //shortcut popup
-.shortcutPop {
+body.dark {
+    .shortcutPop,
+    .shortcuts {
+        .container {
+            box-shadow: 1px 2px 10px -7px #ffffff9e;
+        }
+    }
+}
+.shortcutPop,
+.shortcuts {
     width: 100%;
     position: fixed;
     z-index: 10;
     bottom: math.div($h-topnav, 2);
-    transform: translateY(#{math.div($h-topnav, 2) + $h-topnav * 2});
+    transform: translateY(calc(100% + #{math.div($h-topnav, 2)}));
     transition: transform $trans ease-in;
+    &.active {
+        @include mq($lg) {
+            transform: translateY(0);
+        }
+    }
     .container {
-        @include flex(space-between, center);
         background: var(--clr--bg);
-        background: var(--clr--white);
         border-radius: $radius;
         padding: $pt-topnav 24px;
-        min-height: $h-topnav;
         box-shadow: 1px 2px 14px -8px #0000009e;
-        color: var(--clr-f-1);
+        color: var(--clr-f-2);
+    }
+    .keys {
+        margin: -2px;
+        @include flex(center);
+    }
+    span {
+        @include size(math.div($h-topnav, 2));
+        @include size(36px);
+        @include flex(center);
+        display: inline-block;
+        background: var(--clr-f-2);
+        color: var(--clr--bg);
+        margin: 2px;
+        user-select: none;
+        cursor: pointer;
+        border-radius: 3px;
+        box-shadow: 3px 3px var(--clr-btn-grey);
+        transition: $trans;
+        &:hover {
+            transform: translate(3px, 3px);
+            box-shadow: unset;
+        }
+    }
+}
+.shortcutPop {
+    .container {
+        @include flex(space-between, center);
+        min-height: $h-topnav;
     }
     p {
         font-size: $fs4;
@@ -25,26 +64,13 @@
     .message {
         @include flex(center);
     }
-    .keys {
-        margin: -2px;
-        @include flex(center);
-    }
-    span {
-        @include size(math.div($h-topnav, 2));
-        @include size(35px);
-        @include flex(center);
-        display: inline-block;
-        border: 2px solid var(--clr-f-1);
-        margin: 2px;
-        font-weight: $fw-bold;
-        user-select: none;
-    }
 
     button {
         border-radius: $radius;
         &:nth-child(1) {
             background: inherit;
             font-weight: $fw-light;
+            color: inherit;
         }
         &:nth-child(2) {
             margin-left: 10px;
@@ -54,10 +80,34 @@
             color: var(--clr--white);
         }
     }
-    &.active {
-        @include mq($lg) {
-            display: block;
-            transform: translateY(0);
-        }
+}
+.shortcuts {
+    $margin: 5px;
+    .container {
+        padding: 24px;
+    }
+    .title {
+        @include flex(space-between, center);
+        margin-bottom: $margin * 2;
+        padding-bottom: $margin * 2;
+        border-bottom: 2px solid var(--clr--grey);
+    }
+    h3 {
+        text-align: left;
+        color: var(--clr--title);
+    }
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: -$margin;
+    }
+    li {
+        margin: $margin;
+        width: calc(45% - #{$margin * 2});
+        @include flex(space-between, center);
+    }
+    h6 {
+        font-weight: $fw-regular;
     }
 }
