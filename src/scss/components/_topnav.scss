@@ -8,9 +8,19 @@
         position: fixed;
         box-shadow: 0px 4px 10px -5px #0000009e;
         background: var(--clr--primary);
-        .logo,
-        .buttons {
-            --clr--title: var(--clr--white);
+        .logo {
+            .img {
+                background: var(--clr--white);
+            }
+            img {
+                border: 2px solid var(--clr--white);
+            }
+            h3 {
+                color: var(--clr--white);
+            }
+        }
+        button {
+            background: var(--clr--white);
         }
         i {
             color: var(--clr--primary);
@@ -96,9 +106,13 @@
     }
     @include mq($md) {
         &.sticky {
-            --clr--title: var(--clr--white);
             a {
                 color: var(--clr--primary);
+            }
+            li {
+                a {
+                    background: var(--clr--white);
+                }
             }
         }
         .left {
@@ -111,11 +125,11 @@
             width: 88%;
             display: block;
             position: static;
-            box-shadow: unset;
+            box-shadow: initial;
             padding: 0;
             transform: unset;
-            background: unset;
-            border-bottom: unset;
+            background: initial;
+            border-bottom: initial;
             li {
                 margin: unset;
                 width: 72px;

@@ -250,11 +250,12 @@ emailButton.onclick = popupFormDef;
 closePopupForm.onclick = popupFormDef;
 window.onscroll = function () {
     let p = getComputedStyle(main).paddingTop;
-    if (popupForm.classList.value != "contactForm active") {
-        topnav.classList.toggle(
-            "sticky",
-            window.scrollY > parseFloat(p.substr(0, p.indexOf("px")))
-        );
+    if (!popupForm.classList.contains("active")) {
+        if (window.scrollY > parseFloat(p.substr(0, p.indexOf("px")))) {
+            topnav.classList.add("sticky");
+        } else {
+            topnav.classList.remove("sticky");
+        }
     }
 };
 //settings functions
@@ -387,7 +388,6 @@ window.addEventListener(
     false
 );
 window.onload = function () {
-    console.log(window.getComputedStyle(shortcuts).getPropertyValue("transform"));
     if (window.getComputedStyle(shortcuts).getPropertyValue("transform") === "none") {
         shortcutPop.classList.add("ie");
         shortcuts.classList.add("ie");
