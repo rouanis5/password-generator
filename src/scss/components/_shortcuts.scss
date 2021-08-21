@@ -16,6 +16,9 @@ body.dark {
     bottom: math.div($h-topnav, 2);
     transform: translateY(calc(100% + #{math.div($h-topnav, 2)}));
     transition: transform $trans ease-in;
+    &.ie {
+        display: none;
+    }
     &.active {
         @include mq($lg) {
             transform: translateY(0);

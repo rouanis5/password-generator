@@ -373,7 +373,9 @@ window.addEventListener(
                         let settingsBtnLetters = "nlusa";
                         for (let i = 0; i < settingsBtnLetters.length; i++) {
                             if (e.key.toLowerCase() === settingsBtnLetters[i]) {
+                                main.classList.add("active");
                                 settingsBtn[i].click();
+                                break;
                             }
                         }
                     }
@@ -385,11 +387,14 @@ window.addEventListener(
     false
 );
 window.onload = function () {
+    console.log(window.getComputedStyle(shortcuts).getPropertyValue("transform"));
+    if (window.getComputedStyle(shortcuts).getPropertyValue("transform") === "none") {
+        shortcutPop.classList.add("ie");
+        shortcuts.classList.add("ie");
+    }
     if (!shortcutsPasswordGenerator) {
         setTimeout(() => {
-            if (!shortcuts.classList.contains("active")) {
-                shortcutPop.classList.add("active");
-            }
+            shortcutPop.classList.add("active");
         }, 15000);
     }
 };
