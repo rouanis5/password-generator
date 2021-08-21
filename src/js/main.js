@@ -1,5 +1,4 @@
-// import "babel-polyfill" to solve parcel&browserlist problem with async/await;
-import "babel-polyfill";
+// add .babelrc config to solve parcel&browserlist problem with async/await;
 import { wordMap as words } from "./words";
 let tabletWidth = "900px";
 let questions = document.querySelectorAll(".faqs .question");
