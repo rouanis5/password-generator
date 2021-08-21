@@ -333,30 +333,23 @@ window.addEventListener(
     "keydown",
     function (e) {
         if (!e.target.form) {
-            page = setPage();
             if ((e.code === "ArrowUp" || e.code === "ArrowLeft") && page !== 0) {
                 e.preventDefault();
+                page = setPage();
                 goLocation(parents[--page]);
             } else if (
                 (e.code === "ArrowDown" || e.code === "ArrowRight") &&
                 page !== parents.length - 1
             ) {
                 e.preventDefault();
+                page = setPage();
                 goLocation(parents[++page]);
             } else if (e.code === "KeyT") {
                 e.preventDefault();
                 changeTheme();
-            } else if (e.key === "Enter") {
-                let xywh = main.getBoundingClientRect();
-                //function work only if the user in the main page
-                if (Math.abs(xywh.y) + topnavH < xywh.height) {
-                    e.preventDefault();
-                    generateDef();
-                    console.log(main.getBoundingClientRect());
-                }
-            } else if (e.code === "Tab") {
+            } else if (e.code === "KeyH") {
                 e.preventDefault();
-                main.classList.toggle("active");
+                goLocation(main);
             } else if (lastKey === "Control") {
                 if (e.key === "/") {
                     e.preventDefault();
@@ -365,6 +358,25 @@ window.addEventListener(
                         t = trans;
                     }
                     shortcutDef(t);
+                }
+            } else {
+                let xywh = main.getBoundingClientRect();
+                //function work only if the user in the main page
+                if (Math.abs(xywh.y) + topnavH < xywh.height) {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        generateDef();
+                    } else if (e.code === "Tab") {
+                        e.preventDefault();
+                        main.classList.toggle("active");
+                    } else {
+                        let settingsBtnLetters = "nlusa";
+                        for (let i = 0; i < settingsBtnLetters.length; i++) {
+                            if (e.key.toLowerCase() === settingsBtnLetters[i]) {
+                                settingsBtn[i].click();
+                            }
+                        }
+                    }
                 }
             }
             lastKey = e.key;
