@@ -159,15 +159,16 @@ function topnavDef() {
     popupForm.classList.remove("active");
 }
 //go to a location minus the top padding
-function goLocation(target) {
+function goLocation(target, duration = null) {
     let targetPos = target.offsetTop - topnavH;
     let startPos = window.pageYOffset;
     let distance = targetPos - startPos;
     let startTime = null;
-    // let duration = 1000;
-    let duration = Math.abs(distance) / ScrollingSpeed;
-    if (duration < 100) {
-        duration = 500;
+    if (duration === null) {
+        duration = Math.abs(distance) / ScrollingSpeed;
+        if (duration < 100) {
+            duration = 500;
+        }
     }
     function animation(currentTime) {
         if (startTime === null) {
@@ -383,7 +384,7 @@ window.addEventListener(
                 changeTheme();
             } else if (e.code === "KeyH") {
                 e.preventDefault();
-                goLocation(main);
+                goLocation(main, 1000);
             } else if (lastKey === "Control") {
                 if (e.key === "/") {
                     e.preventDefault();
