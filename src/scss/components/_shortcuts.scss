@@ -100,26 +100,45 @@ body.dark {
     }
     .title {
         @include flex(space-between, center);
-        margin-bottom: $margin * 2;
         padding-bottom: $margin * 2;
-        border-bottom: 2px solid var(--clr--grey);
     }
-    h3 {
+    .sections {
+        @include flex;
+        margin: -$margin;
+    }
+    button {
+        margin-bottom: -4px;
         text-align: left;
         color: var(--clr--title);
-    }
-    .main {
-        @include flex(space-between, null);
+        margin: $margin;
+        padding-bottom: $margin;
+        font-weight: $fw-light;
+        background: initial;
+        font-size: $fs3;
+        &.active {
+            border-bottom: 5px solid var(--clr--title);
+            font-weight: $fw-bold !important;
+        }
     }
     .column {
-        width: calc(45% - #{$margin});
+        display: none;
+        &.active {
+            display: block;
+        }
     }
     ul {
         margin: -$margin;
+        @include flex(space-between, center) {
+            flex-wrap: wrap;
+        }
     }
     li {
-        margin: $margin;
         @include flex(space-between, center);
+        width: calc(45% - #{$margin});
+        margin: $margin;
+        &.hidden {
+            visibility: hidden;
+        }
     }
     h6 {
         text-align: left;

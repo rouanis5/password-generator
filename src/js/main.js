@@ -382,7 +382,7 @@ window.addEventListener(
             } else if (e.code === "KeyT") {
                 e.preventDefault();
                 changeTheme();
-            } else if (e.code === "KeyH") {
+            } else if (e.code === "KeyM") {
                 e.preventDefault();
                 goLocation(main, 1000);
             } else if (lastKey === "Control") {
@@ -440,6 +440,21 @@ for (let i = 0; i < shortcutPopBtn.length; i++) {
         shortcutDef(trans);
         if (i === 1) {
             localStorage.setItem("shortcutsPasswordGenerator", true);
+        }
+    };
+}
+let sections = document.querySelectorAll(".shortcuts .main .column");
+let sectionsBtn = document.querySelectorAll(".shortcuts .title button");
+
+for (let i = 0; i < sectionsBtn.length; i++) {
+    sectionsBtn[i].onclick = function () {
+        sectionsBtn[i].classList.add("active");
+        sections[i].classList.add("active");
+        for (let j = 0; j < sectionsBtn.length; j++) {
+            if (j !== i) {
+                sectionsBtn[j].classList.remove("active");
+                sections[j].classList.remove("active");
+            }
         }
     };
 }

@@ -40,14 +40,17 @@
         <title>IMO | Password generator</title>
     </head>
     <body>
-        <div class="shortcuts" id="shortcuts">
+        <div class="shortcuts active" id="shortcuts">
             <div class="container">
                 <div class="title">
-                    <h3>shortcuts</h3>
+                    <div class="sections">
+                        <button class="active">Essentail</button>
+                        <button>Settings</button>
+                    </div>
                     <i class="close fas fa-times-circle" id="shortcutsClose"></i>
                 </div>
                 <div class="main">
-                    <div class="column">
+                    <div class="column active">
                         <ul>
                             <li>
                                 <h6>Change theme</h6>
@@ -56,17 +59,9 @@
                                 </div>
                             </li>
                             <li>
-                                <h6>Open keyboard shortcuts Panel</h6>
+                                <h6>Scroll to the main page</h6>
                                 <div class="keys">
-                                    <span>Ctrl</span>
-                                    <div class="char">+</div>
-                                    <span>/</span>
-                                </div>
-                            </li>
-                            <li>
-                                <h6>Scroll to the home page</h6>
-                                <div class="keys">
-                                    <span>H</span>
+                                    <span>M</span>
                                 </div>
                             </li>
                             <li>
@@ -83,6 +78,32 @@
                                     <span><i class="fas fa-arrow-down"></span>
                                     <div class="char">/</div>
                                     <span><i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </li>
+                            <li>
+                                <h6>Open keyboard shortcuts Panel</h6>
+                                <div class="keys">
+                                    <span>Ctrl</span>
+                                    <div class="char">+</div>
+                                    <span>/</span>
+                                </div>
+                            </li>
+                            <li>
+                                <h6>Open settings</h6>
+                                <div class="keys">
+                                    <span>Tab</span>
+                                </div>
+                            </li>
+                            <li class="hidden">
+                                <h6>*</h6>
+                                <div class="keys">
+                                    <span>*</span>
+                                </div>
+                            </li>
+                            <li class="hidden">
+                                <h6>*</h6>
+                                <div class="keys">
+                                    <span>*</span>
                                 </div>
                             </li>
                         </ul>
@@ -247,7 +268,7 @@
                     </form>
                 </div>
                 <div class="hidden">
-                    <div class="settings">
+                    <form class="settings">
                         <div class="title">
                             <h3>
                                 settings
@@ -307,7 +328,7 @@
                                 <button type="button" data-op="1">+</button>
                             </li>
                         </ul>
-                    </div>
+                    </form>
                 </div>
                 <div class="img bg">
                     <img
