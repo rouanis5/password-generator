@@ -187,9 +187,9 @@ function goLocation(target) {
         t--;
         return (-c / 2) * (t * (t - 2) - 1) + b;
     }
-    // function linear(t, b, c, d) {
-    //     return (c * t) / d + b;
-    // }
+    function linear(t, b, c, d) {
+        return (c * t) / d + b;
+    }
 
     requestAnimationFrame(animation);
 }
