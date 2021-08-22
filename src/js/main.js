@@ -167,15 +167,14 @@ function goLocation(target) {
     // let duration = 1000;
     let duration = Math.abs(distance) / ScrollingSpeed;
     if (duration < 100) {
-        duration = 1000;
+        duration = 500;
     }
-    console.log(duration);
     function animation(currentTime) {
         if (startTime === null) {
             startTime = currentTime;
         }
         let timeElapsed = currentTime - startTime;
-        let run = easeInOut(timeElapsed, startPos, distance, duration);
+        let run = linear(timeElapsed, startPos, distance, duration);
         window.scrollTo(0, run);
         if (timeElapsed < duration) {
             requestAnimationFrame(animation);
@@ -188,6 +187,10 @@ function goLocation(target) {
         t--;
         return (-c / 2) * (t * (t - 2) - 1) + b;
     }
+    // function linear(t, b, c, d) {
+    //     return (c * t) / d + b;
+    // }
+
     requestAnimationFrame(animation);
 }
 ///
@@ -233,10 +236,8 @@ function copyTextDef(copyText) {
 //set page index
 page = 0;
 function setPage() {
-    console.log("next ");
     //set the first positive number the min num
     for (let i = 0; i < parents.length; i++) {
-        console.log(parents[i].getBoundingClientRect().top + topnavH);
         if (parents[i].getBoundingClientRect().top + topnavH >= 0) {
             page = i;
             break;
@@ -344,7 +345,9 @@ passLength.addEventListener("input", async function () {
 //footer navigation
 for (let i = 0; i < footerNavLinks.length; i++) {
     footerNavLinks[i].onclick = function () {
-        goLocation(this);
+        let id = this.getAttribute("data-id");
+        let link = document.getElementById(id);
+        goLocation(link);
     };
 }
 //generator
