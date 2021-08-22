@@ -6,6 +6,7 @@ let answers = document.querySelectorAll(".faqs li");
 let parents = document.querySelectorAll(".parent");
 let page = 0;
 let trans = 700;
+let ScrollingSpeed = 750 / 1000; //750px per second
 let lastKey;
 
 let profile = document.querySelector(".aboutUs .profile");
@@ -158,9 +159,39 @@ function topnavDef() {
     popupForm.classList.remove("active");
 }
 //go to a location minus the top padding
-function goLocation(element) {
-    window.scrollTo(0, element.offsetTop - topnavH);
+let lastTarget;
+function goLocation(target) {
+    if (target !== lastTarget) {
+        let speed = ScrollingSpeed;
+        let targetPos = target.offsetTop - topnavH;
+        let startPos = window.pageYOffset;
+        let distance = targetPos - startPos;
+        let startTime = null;
+        // let duration = 1000;
+        let duration = Math.abs(distance) / speed;
+        function animation(currentTime) {
+            if (startTime === null) {
+                startTime = currentTime;
+            }
+            let timeElapsed = currentTime - startTime;
+            let run = easeInOut(timeElapsed, startPos, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animation);
+            }
+        }
+        function easeInOut(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return (c / 2) * t * t + b;
+            t--;
+            return (-c / 2) * (t * (t - 2) - 1) + b;
+        }
+        requestAnimationFrame(animation);
+        lastTarget = target;
+    }
 }
+
+///
 function faq_answer(i) {
     for (let j = 0; j < questions.length; j++) {
         if (j === i) continue;
@@ -201,15 +232,15 @@ function copyTextDef(copyText) {
     }
 }
 //set page index
+page = 0;
 function setPage() {
-    page = 0;
-    let num = 0;
-    let min = Math.abs(parents[0].getBoundingClientRect().top);
+    console.log("next ");
+    //set the first positive number the min num
     for (let i = 0; i < parents.length; i++) {
-        num = Math.abs(parents[i].getBoundingClientRect().top);
-        if (min > num) {
-            min = num;
+        console.log(parents[i].getBoundingClientRect().top + topnavH);
+        if (parents[i].getBoundingClientRect().top + topnavH >= 0) {
             page = i;
+            break;
         }
     }
     return page;
@@ -334,17 +365,17 @@ window.addEventListener(
     "keydown",
     function (e) {
         if (!e.target.form) {
-            if ((e.code === "ArrowUp" || e.code === "ArrowLeft") && page !== 0) {
+            if (e.code.includes("Arrow")) {
                 e.preventDefault();
                 page = setPage();
-                goLocation(parents[--page]);
-            } else if (
-                (e.code === "ArrowDown" || e.code === "ArrowRight") &&
-                page !== parents.length - 1
-            ) {
-                e.preventDefault();
-                page = setPage();
-                goLocation(parents[++page]);
+                if ((e.code === "ArrowUp" || e.code === "ArrowLeft") && page !== 0) {
+                    goLocation(parents[--page]);
+                } else if (
+                    (e.code === "ArrowDown" || e.code === "ArrowRight") &&
+                    page !== parents.length - 1
+                ) {
+                    goLocation(parents[++page]);
+                }
             } else if (e.code === "KeyT") {
                 e.preventDefault();
                 changeTheme();
