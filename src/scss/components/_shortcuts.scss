@@ -35,15 +35,24 @@ body.dark {
         margin: -2px;
         @include flex(center);
     }
-    span {
-        @include size(math.div($h-topnav, 2));
+    .char {
+        user-select: none;
         @include size(36px);
         @include flex(center);
         display: inline-block;
+        font-size: $fs4;
+        margin: -7px;
+    }
+    span {
+        user-select: none;
+        @include min-size(36px);
+        padding: 0 5px;
+        @include flex(center);
+        display: inline-block;
+        font-size: $fs5;
+        margin: 2px;
         background: var(--clr-f-2);
         color: var(--clr--bg);
-        margin: 2px;
-        user-select: none;
         cursor: pointer;
         border-radius: 3px;
         box-shadow: 3px 3px var(--clr-btn-grey);
@@ -85,7 +94,7 @@ body.dark {
     }
 }
 .shortcuts {
-    $margin: 5px;
+    $margin: 5px * 2;
     .container {
         padding: 24px;
     }
@@ -99,18 +108,21 @@ body.dark {
         text-align: left;
         color: var(--clr--title);
     }
+    .main {
+        @include flex(space-between, null);
+    }
+    .column {
+        width: calc(45% - #{$margin});
+    }
     ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
         margin: -$margin;
     }
     li {
         margin: $margin;
-        width: calc(45% - #{$margin * 2});
         @include flex(space-between, center);
     }
     h6 {
+        text-align: left;
         font-weight: $fw-regular;
     }
 }
