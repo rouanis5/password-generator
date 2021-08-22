@@ -159,38 +159,37 @@ function topnavDef() {
     popupForm.classList.remove("active");
 }
 //go to a location minus the top padding
-let lastTarget;
 function goLocation(target) {
-    if (target !== lastTarget) {
-        let speed = ScrollingSpeed;
-        let targetPos = target.offsetTop - topnavH;
-        let startPos = window.pageYOffset;
-        let distance = targetPos - startPos;
-        let startTime = null;
-        // let duration = 1000;
-        let duration = Math.abs(distance) / speed;
-        function animation(currentTime) {
-            if (startTime === null) {
-                startTime = currentTime;
-            }
-            let timeElapsed = currentTime - startTime;
-            let run = easeInOut(timeElapsed, startPos, distance, duration);
-            window.scrollTo(0, run);
-            if (timeElapsed < duration) {
-                requestAnimationFrame(animation);
-            }
-        }
-        function easeInOut(t, b, c, d) {
-            t /= d / 2;
-            if (t < 1) return (c / 2) * t * t + b;
-            t--;
-            return (-c / 2) * (t * (t - 2) - 1) + b;
-        }
-        requestAnimationFrame(animation);
-        lastTarget = target;
+    let targetPos = target.offsetTop - topnavH;
+    let startPos = window.pageYOffset;
+    let distance = targetPos - startPos;
+    let startTime = null;
+    // let duration = 1000;
+    let duration = Math.abs(distance) / ScrollingSpeed;
+    if (duration < 100) {
+        duration = 1000;
     }
+    console.log(duration);
+    function animation(currentTime) {
+        if (startTime === null) {
+            startTime = currentTime;
+        }
+        let timeElapsed = currentTime - startTime;
+        let run = easeInOut(timeElapsed, startPos, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animation);
+        }
+    }
+    function easeInOut(t, b, c, d) {
+        //the problem was the division by zero when the duration is 0
+        t /= d / 2;
+        if (t < 1) return (c / 2) * t * t + b;
+        t--;
+        return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+    requestAnimationFrame(animation);
 }
-
 ///
 function faq_answer(i) {
     for (let j = 0; j < questions.length; j++) {
