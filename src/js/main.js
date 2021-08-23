@@ -117,6 +117,7 @@ function clipboardDef() {
     if (isAllowed) {
         let sentence = "";
         noLetters = true;
+        password = screen.value;
         for (let i = 0; i < password.length; i++) {
             let is_letter = false;
             for (let j = 0; j < characters[1].length; j++) {
