@@ -9,6 +9,7 @@ let trans = 700;
 let ScrollingSpeed = 750 / 1000; //750px per second
 let lastKey;
 let scrollAnimation;
+let onScrolling;
 
 let profile = document.querySelector(".aboutUs .profile");
 let profile_public = document.querySelector(".aboutUs .profile .public");
@@ -163,8 +164,9 @@ function topnavDef() {
     popupForm.classList.remove("active");
 }
 //go to a location minus the top padding
-function goLocation(target, duration = null) {
+async function goLocation(target, duration = null) {
     cancelAnimationFrame(scrollAnimation);
+    onScrolling = true;
     let targetPos = target.offsetTop - topnavH;
     let startPos = window.pageYOffset;
     let distance = targetPos - startPos;
@@ -196,7 +198,6 @@ function goLocation(target, duration = null) {
     function linear(t, b, c, d) {
         return (c * t) / d + b;
     }
-
     scrollAnimation = requestAnimationFrame(animation);
 }
 ///
@@ -373,6 +374,7 @@ window.addEventListener(
     "keydown",
     function (e) {
         if (!e.target.form) {
+            console.log();
             if (e.code.includes("Arrow")) {
                 e.preventDefault();
                 page = setPage();
@@ -383,6 +385,12 @@ window.addEventListener(
                     page !== parents.length - 1
                 ) {
                     goLocation(parents[++page]);
+                }
+            } else if (e.code === "Space") {
+                if (onScrolling) {
+                    e.preventDefault();
+                    cancelAnimationFrame(scrollAnimation);
+                    onScrolling = false;
                 }
             } else if (e.code === "KeyT") {
                 e.preventDefault();

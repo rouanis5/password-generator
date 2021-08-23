@@ -46,7 +46,6 @@ body.dark {
     span {
         user-select: none;
         @include min-size(36px);
-        padding: 0 5px;
         @include flex(center);
         display: inline-block;
         font-size: $fs5;
@@ -60,6 +59,12 @@ body.dark {
         &:hover {
             transform: translate(3px, 3px);
             box-shadow: unset;
+        }
+        &.large-1 {
+            min-width: 54px;
+        }
+        &.large-3 {
+            min-width: 108px;
         }
     }
 }
@@ -136,9 +141,6 @@ body.dark {
         @include flex(space-between, center);
         width: calc(45% - #{$margin});
         margin: $margin;
-        &.hidden {
-            visibility: hidden;
-        }
     }
     h6 {
         text-align: left;
