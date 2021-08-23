@@ -8,6 +8,7 @@ let page = 0;
 let trans = 700;
 let ScrollingSpeed = 750 / 1000; //750px per second
 let lastKey;
+let scrollAnimation;
 
 let profile = document.querySelector(".aboutUs .profile");
 let profile_public = document.querySelector(".aboutUs .profile .public");
@@ -57,10 +58,13 @@ let screen = document.getElementById("screen");
 let remember = document.getElementById("remember");
 let copyScreen = document.getElementById("copyScreen");
 let copySentence = document.getElementById("copySentence");
+
 let shortcutPopBtn = document.querySelectorAll(".shortcutPop button");
 let shortcutPop = document.getElementById("shortcutPop");
 let shortcuts = document.getElementById("shortcuts");
 let shortcutsClose = document.getElementById("shortcutsClose");
+let sections = document.querySelectorAll(".shortcuts .main .column");
+let sectionsBtn = document.querySelectorAll(".shortcuts .title button");
 
 //setting h3 pr...
 let settingsH3 = document.querySelector(".settings h3");
@@ -160,6 +164,7 @@ function topnavDef() {
 }
 //go to a location minus the top padding
 function goLocation(target, duration = null) {
+    cancelAnimationFrame(scrollAnimation);
     let targetPos = target.offsetTop - topnavH;
     let startPos = window.pageYOffset;
     let distance = targetPos - startPos;
@@ -178,7 +183,7 @@ function goLocation(target, duration = null) {
         let run = linear(timeElapsed, startPos, distance, duration);
         window.scrollTo(0, run);
         if (timeElapsed < duration) {
-            requestAnimationFrame(animation);
+            scrollAnimation = requestAnimationFrame(animation);
         }
     }
     function easeInOut(t, b, c, d) {
@@ -192,7 +197,7 @@ function goLocation(target, duration = null) {
         return (c * t) / d + b;
     }
 
-    requestAnimationFrame(animation);
+    scrollAnimation = requestAnimationFrame(animation);
 }
 ///
 function faq_answer(i) {
@@ -435,6 +440,7 @@ window.onload = function () {
 shortcutsClose.onclick = function () {
     shortcuts.classList.remove("active");
 };
+//add a shortcut session when you click [i got it]
 for (let i = 0; i < shortcutPopBtn.length; i++) {
     shortcutPopBtn[i].onclick = function () {
         shortcutDef(trans);
@@ -443,9 +449,7 @@ for (let i = 0; i < shortcutPopBtn.length; i++) {
         }
     };
 }
-let sections = document.querySelectorAll(".shortcuts .main .column");
-let sectionsBtn = document.querySelectorAll(".shortcuts .title button");
-
+//change between shortcuts sections
 for (let i = 0; i < sectionsBtn.length; i++) {
     sectionsBtn[i].onclick = function () {
         sectionsBtn[i].classList.add("active");
