@@ -75,7 +75,7 @@ header {
     }
     input {
         width: 100%;
-        padding: 2px $input-h 2px $radius;
+        padding: 2px $input-h * 2 2px $radius;
         height: $input-h;
         border-radius: $radius;
         &,
@@ -90,6 +90,11 @@ header {
         }
     }
     label {
+        color: var(--clr--white) !important;
+        background: var(--clr-btn-grey) !important;
+    }
+    label,
+    .reSentence {
         @include flex(center);
         position: absolute;
         cursor: pointer;
@@ -115,10 +120,6 @@ header {
             --clr-btn-grey: var(--clr-crd-red);
             --clr-f-1: var(--clr--white);
         }
-    }
-    label {
-        color: var(--clr--white); //1
-        background: var(--clr-btn-grey); //1
     }
     .buttons {
         margin-inline: 0 - $btn-m;
@@ -165,24 +166,36 @@ header {
         font-size: $fs4;
         &,
         &:focus,
-        & + label {
+        & + label,
+        & + label + .reSentence {
             border: 3px solid var(--clr--grey);
             background: var(--clr--bg);
         }
         &.active,
-        &.active + label {
+        &.active + label,
+        &.active + label + .reSentence {
             visibility: visible;
         }
         &.yellow,
-        &.yellow + label {
+        &.yellow + label,
+        &.yellow + label + .reSentence {
             --clr--grey: var(--clr-crd-yellow);
             --clr-btn-grey: var(--clr-crd-yellow);
             --clr-f-2: var(--clr-crd-yellow);
         }
     }
     label {
+        border: none;
+    }
+    label,
+    .reSentence {
         visibility: hidden;
-        color: var(--clr-btn-grey);
+    }
+    .reSentence {
+        color: var(--clr-f-2);
+        right: $input-h;
+        border-radius: $radius 0px 0px $radius;
+        border-right: none !important;
     }
     p {
         margin-bottom: 9px;

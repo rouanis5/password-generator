@@ -59,6 +59,7 @@ let screen = document.getElementById("screen");
 let remember = document.getElementById("remember");
 let copyScreen = document.getElementById("copyScreen");
 let copySentence = document.getElementById("copySentence");
+let reSentence = document.getElementById("reSentence");
 
 let shortcutPopBtn = document.querySelectorAll(".shortcutPop button");
 let shortcutPop = document.getElementById("shortcutPop");
@@ -109,6 +110,10 @@ function generateDef() {
         isAllowed = false;
     }
     screen.value = password;
+    clipboardDef();
+}
+//create a clipboard function
+function clipboardDef() {
     if (isAllowed) {
         let sentence = "";
         noLetters = true;
@@ -359,6 +364,8 @@ for (let i = 0; i < footerNavLinks.length; i++) {
 }
 //generator
 generate.onclick = generateDef;
+///regenerate the sentence
+reSentence.onclick = clipboardDef;
 
 copyScreen.onclick = function () {
     if (isAllowed) {
