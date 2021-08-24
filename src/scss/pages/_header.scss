@@ -192,7 +192,8 @@ header {
         visibility: hidden;
     }
     .reSentence {
-        color: var(--clr-f-2);
+        color: var(--clr-btn-grey);
+        text-shadow: 0 0.5px 0 #0000009e;
         right: $input-h;
         border-radius: $radius 0px 0px $radius;
         border-right: none !important;
