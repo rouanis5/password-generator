@@ -186,6 +186,7 @@ header {
     }
     label {
         border: none;
+        z-index: 2;
     }
     label,
     .reSentence {
@@ -194,7 +195,7 @@ header {
     .reSentence {
         color: var(--clr-btn-grey);
         text-shadow: 0 0.5px 0 #0000009e;
-        right: $input-h;
+        right: $input-h - 2;
         border-radius: $radius 0px 0px $radius;
         border-right: none !important;
     }

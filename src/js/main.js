@@ -170,7 +170,7 @@ function topnavDef() {
     popupForm.classList.remove("active");
 }
 //go to a location minus the top padding
-async function goLocation(target, duration = null) {
+function goLocation(target, duration = null) {
     cancelAnimationFrame(scrollAnimation);
     onScrolling = true;
     let targetPos = target.offsetTop - topnavH;
