@@ -3,8 +3,14 @@ $colors: (
     #{null}: (
             cyan: #407bff,
             cyan30: #407bff30,
-            grey: #dedede,
-            white: #ffffff,
+            grey: (
+                #dedede,
+                #cecece,
+            ),
+            white: (
+                #ffffff,
+                #fcf5e8,
+            ),
             primary: (
                 var(--clr--cyan),
                 #0a1836,
