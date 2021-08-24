@@ -159,3 +159,19 @@
         }
     }
 }
+// when the user click the theme toggle btn
+// the icon will change
+body {
+    .theme-button i.sun {
+        display: none;
+    }
+    //theme class name
+    &.dark {
+        .theme-button i.sun {
+            display: block;
+        }
+        .theme-button i.moon {
+            display: none;
+        }
+    }
+}
