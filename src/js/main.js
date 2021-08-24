@@ -23,7 +23,7 @@ let topnavLinks = document.querySelectorAll(".topnav .links a");
 
 let settingsBtn = document.querySelectorAll(".settings ul li.button");
 let settingsLi = document.querySelectorAll(".settings ul li");
-let topnavH = 64;
+let topnavH = 64 + 14;
 
 let minPlus = document.querySelectorAll(".settings .select button");
 

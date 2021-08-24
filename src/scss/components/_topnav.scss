@@ -4,10 +4,14 @@
     z-index: 7;
     padding: $pt-topnav 0;
     position: relative;
+    margin: $sticky-m 0;
     &.sticky {
         position: fixed;
         box-shadow: 0px 4px 10px -5px #0000009e;
         background: var(--clr--primary);
+        width: calc(100% - #{$sticky-m * 2});
+        border-radius: 0.775rem;
+        margin: $sticky-m;
         .logo {
             .img {
                 background: var(--clr--white);

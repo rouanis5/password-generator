@@ -27,7 +27,7 @@ header {
         padding-top: 8.5px !important;
     }
     .container:nth-child(2) {
-        margin-top: 45px;
+        margin-top: 45px - $sticky-m;
     }
     .hidden {
         display: none;
