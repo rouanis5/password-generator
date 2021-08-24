@@ -38,3 +38,24 @@
         top: 30%;
     }
 }
+.fade-in {
+    opacity: 0;
+    transition: opacity 700ms ease-in;
+    &.appear {
+        opacity: 1;
+    }
+}
+.from-left {
+    transform: translateX(-50%);
+}
+.from-right {
+    transform: translateX(50%);
+}
+.slide-in {
+    opacity: 0;
+    transition: transform 700ms ease-in, opacity 700ms ease-in;
+    &.appear {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
