@@ -90,11 +90,13 @@
         opacity: 1;
     }
 }
-.from-left {
-    transform: translateX(-50%);
-}
-.from-right {
-    transform: translateX(50%);
+@include mq($lg) {
+    .from-left {
+        transform: translateX(-50%);
+    }
+    .from-right {
+        transform: translateX(50%);
+    }
 }
 .slide-in {
     opacity: 0;

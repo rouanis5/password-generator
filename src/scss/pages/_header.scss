@@ -75,7 +75,7 @@ header {
     }
     input {
         width: 100%;
-        padding: 2px $input-h * 2 2px $radius;
+        padding: 2px $input-h 2px $radius;
         height: $input-h;
         border-radius: $radius;
         &,
@@ -163,6 +163,7 @@ header {
     input {
         visibility: hidden;
         color: var(--clr-f-2);
+        padding-right: $input-h * 2;
         font-size: $fs4;
         &,
         &:focus,
