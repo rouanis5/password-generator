@@ -73,6 +73,25 @@ let settingsH3 = document.querySelector(".settings h3");
 let settingsH3Data = settingsH3.innerHTML;
 let settingsH3Clr = getComputedStyle(settingsH3).color;
 
+let faders = document.querySelectorAll(".fade-in");
+let sliders = document.querySelectorAll(".slide-in");
+let loading = document.querySelector(".loading");
+//onload
+window.onload = function () {
+    if (window.getComputedStyle(shortcuts).getPropertyValue("transform") === "none") {
+        shortcutPop.classList.add("ie");
+        shortcuts.classList.add("ie");
+    }
+    if (!shortcutsPasswordGenerator) {
+        setTimeout(() => {
+            shortcutPop.classList.add("active");
+        }, 15000);
+    }
+    loading.classList.add("fade-in");
+    setTimeout(() => {
+        loading.classList.add("hide");
+    }, trans);
+};
 //function that wait 2s
 function timer() {
     return new Promise((resolve) => {
@@ -442,17 +461,6 @@ window.addEventListener(
     },
     false
 );
-window.onload = function () {
-    if (window.getComputedStyle(shortcuts).getPropertyValue("transform") === "none") {
-        shortcutPop.classList.add("ie");
-        shortcuts.classList.add("ie");
-    }
-    if (!shortcutsPasswordGenerator) {
-        setTimeout(() => {
-            shortcutPop.classList.add("active");
-        }, 15000);
-    }
-};
 shortcutsClose.onclick = function () {
     shortcuts.classList.remove("active");
 };
@@ -479,7 +487,6 @@ for (let i = 0; i < sectionsBtn.length; i++) {
     };
 }
 //create fade-in animation
-const faders = document.querySelectorAll(".fade-in");
 const appearOptions = {
     threshold: 0.5,
     // rootMargin: "0px 0px 45px 0px",
@@ -498,7 +505,6 @@ const appearOnScroll = new IntersectionObserver(function (entries, appearOnScrol
 faders.forEach((fader) => {
     appearOnScroll.observe(fader);
 });
-const sliders = document.querySelectorAll(".slide-in");
 sliders.forEach((slider) => {
     appearOnScroll.observe(slider);
 });

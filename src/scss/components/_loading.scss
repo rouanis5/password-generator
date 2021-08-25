@@ -1,0 +1,31 @@
+/* Thanks to Mr tashfene https://codepen.io/tashfene. Source code: https://codepen.io/tashfene/pen/raEqrJ (edited version) */
+.loading {
+    @include size(100%);
+    @include flex(center);
+    position: fixed;
+    z-index: 33;
+    background-color: var(--clr--bg);
+    &.hide {
+        display: none;
+    }
+    h3 {
+        margin-top: 15px;
+        color: var(--clr--title);
+    }
+}
+
+.loader {
+    @include size(50px);
+    margin-inline: auto;
+    border-radius: $radius;
+    border: 4px solid var(--clr--title);
+    animation: loader 2s infinite ease;
+}
+
+.loader-inner {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    background-color: var(--clr--title);
+    animation: loader-inner 2s infinite ease-in;
+}
