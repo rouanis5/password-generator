@@ -91,6 +91,18 @@ window.onload = function () {
     setTimeout(() => {
         loading.classList.add("hide");
     }, trans);
+
+    //test if the IntersectionObserver is working
+    if (showSettings.classList.contains("appear")) {
+        return;
+    } else {
+        for (let i = 0; i < faders.length; i++) {
+            faders[i].classList.add("appear");
+        }
+        for (let i = 0; i < sliders.length; i++) {
+            sliders[i].classList.add("appear");
+        }
+    }
 };
 //function that wait 2s
 function timer() {
@@ -508,3 +520,7 @@ faders.forEach((fader) => {
 sliders.forEach((slider) => {
     appearOnScroll.observe(slider);
 });
+
+//test if IntersectionObserver is working
+appearOnScroll.observe(showSettings);
+/////////////////////////////////////////////
