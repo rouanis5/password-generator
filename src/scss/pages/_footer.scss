@@ -1,4 +1,9 @@
 .footer__main {
+    &.ie .container {
+        @include flex(space-around, center) {
+            flex-wrap: wrap;
+        }
+    }
     .container {
         display: grid;
         grid-gap: 50px;

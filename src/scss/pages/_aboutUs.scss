@@ -118,9 +118,9 @@
 @include mq($md) {
     .profile {
         display: flex;
-        max-width: unset;
+        max-width: initial;
         .img {
-            width: 100%;
+            min-width: 249px;
             @include before("IDJA MOHAMED OUANIS") {
                 @include center;
                 color: var(--clr--white);

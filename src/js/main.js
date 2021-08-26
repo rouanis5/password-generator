@@ -23,10 +23,12 @@ let topnavLinks = document.querySelectorAll(".topnav .links a");
 
 let settingsBtn = document.querySelectorAll(".settings ul li.button");
 let settingsLi = document.querySelectorAll(".settings ul li");
+let settingsUl = document.querySelector(".settings ul");
 let topnavH = 64;
 
 let minPlus = document.querySelectorAll(".settings .select button");
 
+let footer = document.querySelector(".footer__main");
 let footerNavLinks = document.querySelectorAll("#footerNav a");
 
 let isAllowed = false;
@@ -68,6 +70,8 @@ let shortcutsClose = document.getElementById("shortcutsClose");
 let sections = document.querySelectorAll(".shortcuts .main .column");
 let sectionsBtn = document.querySelectorAll(".shortcuts .title button");
 
+let contactUs = document.querySelector(".contactUs");
+
 //setting h3 pr...
 let settingsH3 = document.querySelector(".settings h3");
 let settingsH3Data = settingsH3.innerHTML;
@@ -81,6 +85,11 @@ window.onload = function () {
     if (window.getComputedStyle(shortcuts).getPropertyValue("transform") === "none") {
         shortcutPop.classList.add("ie");
         shortcuts.classList.add("ie");
+    }
+    //contactUs if the browser dont support Grid
+    if (typeof settingsUl.style.grid !== "string") {
+        contactUs.classList.remove("allow");
+        footer.classList.add("ie");
     }
     if (!shortcutsPasswordGenerator) {
         setTimeout(() => {
@@ -413,7 +422,6 @@ window.addEventListener(
     "keydown",
     function (e) {
         if (!e.target.form) {
-            console.log();
             if (e.code.includes("Arrow")) {
                 e.preventDefault();
                 page = setPage();

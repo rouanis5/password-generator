@@ -43,40 +43,45 @@
         display: none;
     }
     @include mq($lg) {
-        .container {
-            display: grid;
-            grid-template-columns: 35% auto;
-            column-gap: 3.3%;
-            & > *:not(:last-child) {
-                margin-bottom: 15px;
+        &.allow {
+            max-width: 100%;
+            .container {
+                display: grid;
+                grid-template-columns: 35% auto;
+                column-gap: 3.3%;
+                & > *:not(:last-child) {
+                    margin-bottom: 15px;
+                }
+            }
+            h2 {
+                text-align: left;
+                font-size: clamp(10px, 3vw, #{$fs2});
+            }
+            button {
+                max-width: 144px;
+                margin-inline: auto;
+                margin-bottom: 0 !important;
+                max-height: 48px;
+            }
+            li:not(:last-child) {
+                margin-bottom: 12px;
+            }
+            br {
+                display: initial;
+            }
+            .img {
+                grid-column-start: 1;
+                grid-row: 1 / span 3;
+                &:before {
+                    top: 0 !important;
+                    left: 0 !important;
+                    transform: unset !important;
+                    padding-top: 0 !important;
+                    height: 100%;
+                }
             }
         }
-        h2 {
-            text-align: left;
-            font-size: clamp(10px, 3vw, #{$fs2});
-        }
-        button {
-            max-width: 144px;
-            margin-inline: auto;
-            margin-bottom: 0 !important;
-            max-height: 48px;
-        }
-        li:not(:last-child) {
-            margin-bottom: 12px;
-        }
-        br {
-            display: initial;
-        }
-        .img {
-            grid-column-start: 1;
-            grid-row: 1 / span 3;
-            &:before {
-                top: 0 !important;
-                left: 0 !important;
-                transform: unset !important;
-                padding-top: 0 !important;
-                height: 100%;
-            }
-        }
+        max-width: 700px;
+        margin-inline: auto;
     }
 }

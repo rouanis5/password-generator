@@ -5,7 +5,7 @@
         color: var(--clr--white);
     }
     ul {
-        @include flex(space-evenly, center) {
+        @include flex(space-around, center) {
             flex-wrap: wrap;
         }
     }
