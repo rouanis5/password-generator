@@ -82,10 +82,6 @@ let sliders = document.querySelectorAll(".slide-in");
 let loading = document.querySelector(".loading");
 //onload
 window.onload = function () {
-    if (window.getComputedStyle(shortcuts).getPropertyValue("transform") === "none") {
-        shortcutPop.classList.add("ie");
-        shortcuts.classList.add("ie");
-    }
     //contactUs if the browser dont support Grid
     if (typeof settingsUl.style.grid !== "string") {
         contactUs.classList.remove("allow");
@@ -93,7 +89,9 @@ window.onload = function () {
     }
     if (!shortcutsPasswordGenerator) {
         setTimeout(() => {
-            shortcutPop.classList.add("active");
+            if (! shortcuts.classList.contains("active")) {
+                shortcutPop.classList.add("active");
+            }
         }, 15000);
     }
     loading.classList.add("fade-in");

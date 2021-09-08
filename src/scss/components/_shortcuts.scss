@@ -14,14 +14,12 @@ body.dark {
     position: fixed;
     z-index: 10;
     bottom: math.div($h-topnav, 2);
-    transform: translateY(calc(100% + #{math.div($h-topnav, 2)}));
+    transform: translate(0,150%);
+    transform: translate(0,calc(100% + #{math.div($h-topnav, 2)}));
     transition: transform $trans ease-in;
-    &.ie {
-        display: none;
-    }
     &.active {
         @include mq($lg) {
-            transform: translateY(0);
+            transform: translate(0,0);
         }
     }
     .container {
