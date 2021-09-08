@@ -100,18 +100,20 @@ window.onload = function () {
     setTimeout(() => {
         loading.classList.add("hide");
     }, trans);
-
+    
     //test if the IntersectionObserver is working
-    if (testObserver.classList.contains("appear")) {
-        return;
-    } else {
-        for (let i = 0; i < faders.length; i++) {
-            faders[i].classList.add("appear");
+    setTimeout(() => {
+        if (testObserver.classList.contains("appear")) {
+            return;
+        } else {
+            for (let i = 0; i < faders.length; i++) {
+                faders[i].classList.add("appear");
+            }
+            for (let i = 0; i < sliders.length; i++) {
+                sliders[i].classList.add("appear");
+            }
         }
-        for (let i = 0; i < sliders.length; i++) {
-            sliders[i].classList.add("appear");
-        }
-    }
+    }, trans);
 };
 //function that wait 2s
 function timer() {
