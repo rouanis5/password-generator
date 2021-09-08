@@ -53,7 +53,7 @@ let switchTheme = document.getElementById("switchTheme");
 let menu = document.getElementById("menu");
 let emailButton = document.getElementById("emailButton");
 let closePopupForm = document.getElementById("closePopupForm");
-let showSettings = document.getElementById("showSettings");
+let testObserver = document.getElementById("testObserver");
 let closeSettings = document.getElementById("closeSettings");
 let passLength = document.getElementById("passLength");
 let generate = document.getElementById("generate");
@@ -102,7 +102,7 @@ window.onload = function () {
     }, trans);
 
     //test if the IntersectionObserver is working
-    if (showSettings.classList.contains("appear")) {
+    if (testObserver.classList.contains("appear")) {
         return;
     } else {
         for (let i = 0; i < faders.length; i++) {
@@ -360,7 +360,7 @@ for (let i = 0; i < settingsLi.length; i++) {
         settingsH3.style.color = settingsH3Clr;
     };
 }
-showSettings.onclick = function () {
+testObserver.onclick = function () {
     main.classList.toggle("active");
 };
 closeSettings.onclick = function () {
@@ -530,5 +530,5 @@ sliders.forEach((slider) => {
 });
 
 //test if IntersectionObserver is working
-appearOnScroll.observe(showSettings);
+appearOnScroll.observe(testObserver);
 /////////////////////////////////////////////
