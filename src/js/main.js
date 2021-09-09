@@ -53,7 +53,7 @@ let switchTheme = document.getElementById("switchTheme");
 let menu = document.getElementById("menu");
 let emailButton = document.getElementById("emailButton");
 let closePopupForm = document.getElementById("closePopupForm");
-let testObserver = document.getElementById("testObserver");
+let showSettings = document.getElementById("showSettings");
 let closeSettings = document.getElementById("closeSettings");
 let passLength = document.getElementById("passLength");
 let generate = document.getElementById("generate");
@@ -62,6 +62,7 @@ let remember = document.getElementById("remember");
 let copyScreen = document.getElementById("copyScreen");
 let copySentence = document.getElementById("copySentence");
 let reSentence = document.getElementById("reSentence");
+let testObserver = document.getElementById("testObserver");
 
 let shortcutPopBtn = document.querySelectorAll(".shortcutPop button");
 let shortcutPop = document.getElementById("shortcutPop");
@@ -101,9 +102,7 @@ window.onload = function () {
     
     //test if the IntersectionObserver is working
     setTimeout(() => {
-        if (testObserver.classList.contains("appear")) {
-            return;
-        } else {
+        if (!testObserver.classList.contains("appear")) {
             for (let i = 0; i < faders.length; i++) {
                 faders[i].classList.add("appear");
             }
@@ -360,7 +359,7 @@ for (let i = 0; i < settingsLi.length; i++) {
         settingsH3.style.color = settingsH3Clr;
     };
 }
-testObserver.onclick = function () {
+showSettings.onclick = function () {
     main.classList.toggle("active");
 };
 closeSettings.onclick = function () {
