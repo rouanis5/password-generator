@@ -92,6 +92,20 @@
         min-height: $height;
     }
 }
+@mixin aspect-ratio($width: null, $ratio: 1,$useCssCalc: false) {
+    //Dont use numbers who had percentage !!!
+    @if ($width == null) {
+		@error $width + " / null width is unallowed";
+    } @else if ($ratio == null or $ratio == 0){
+		@error "null/zero ratio is unallowed";
+	} @else if($useCssCalc){
+		width: $width;
+		height:calc(#{$width} / #{$ratio});
+	} @else{	
+		width: $width;
+		height: math.div($width,$ratio);
+	}
+}
 @mixin mq($screen, $attr: min) {
     @if ($attr != max and $attr != min) {
         @error "#{$attr} not acceptable, use max or min";
@@ -100,28 +114,3 @@
         @content;
     }
 }
-
-// an old project
-// $xl: 1366px;
-// $lg: 1055px;
-// $md: 799px;
-// $sm: 576px;
-// $screens: (
-//     $xl: 1014px,
-//     $lg: 769px,
-//     $md: 480px,
-//     $sm: 352px,
-// );
-// @each $screen, $width in $screens {
-//     @include mq(#{$screen}) {
-//         .container {
-//             max-width: #{$width};
-//         }
-//     }
-//     @if ($screen == $sm) {
-//         @include mq($width + 28,min) {
-//             .container {width: 90%}
-//             .hide-xs {display: none}
-//         }
-//     }
-// }
