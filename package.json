@@ -6,7 +6,7 @@
     "scripts": {
         "start": "rm -rf dist && parcel ./src/index.html",
         "build": "rm -rf dist && parcel build ./src/index.html --public-url ./",
-        "buildForWeb": "rm -rf dist && parcel build ./src/index.html --public-url https://rouanis5.github.io/password-generator/",
+        "buildForWeb": "rm -rf dist && parcel build ./src/index.html --public-url https://rouanis5.github.io/password-generator/ --no-source-maps",
         "deploy": "npm run buildForWeb && gh-pages -d dist"
     },
     "author": "IDJA Mohamed Ouanis",
