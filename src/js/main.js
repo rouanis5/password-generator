@@ -11,6 +11,7 @@ let lastKey;
 let scrollAnimation;
 let onScrolling;
 
+let dataId = document.querySelectorAll("[data-id]");
 let profile = document.querySelector(".aboutUs .profile");
 let profile_public = document.querySelector(".aboutUs .profile .public");
 
@@ -30,7 +31,6 @@ let topnavH = 64,
 let minPlus = document.querySelectorAll(".settings .select button");
 
 let footer = document.querySelector(".footer__main");
-let footerNavLinks = document.querySelectorAll("#footerNav a");
 
 let isAllowed = false;
 let Is_changed = true;
@@ -323,12 +323,7 @@ for (let i = 0; i < feature_card.length; i++) {
 }
 menu.onclick = topnavDef;
 for (let i = 0; i < topnavLinks.length; i++) {
-    topnavLinks[i].onclick = function () {
-        topnavDef();
-        let id = this.getAttribute("data-id");
-        let link = document.getElementById(id);
-        goLocation(link);
-    };
+    topnavLinks[i].addEventListener("click", topnavDef);
 }
 emailButton.onclick = popupFormDef;
 closePopupForm.onclick = popupFormDef;
@@ -397,13 +392,13 @@ passLength.addEventListener("input", async function () {
         passLength.value = min;
     }
 });
-//footer navigation
-for (let i = 0; i < footerNavLinks.length; i++) {
-    footerNavLinks[i].onclick = function () {
-        let id = this.getAttribute("data-id");
+//data-id navigation
+for (let i = 0; i < dataId.length; i++) {
+    dataId[i].addEventListener("click", () => {
+        let id = dataId[i].getAttribute("data-id");
         let link = document.getElementById(id);
         goLocation(link);
-    };
+    });
 }
 //generator
 generate.onclick = generateDef;

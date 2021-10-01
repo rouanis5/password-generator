@@ -38,6 +38,7 @@
     }
     .logo {
         @include flex(center);
+        cursor: pointer;
         .img {
             @include flex(center);
             @include size($h-logo);
