@@ -5,6 +5,10 @@ h1 {
     line-height: 35px;
 }
 header {
+    min-height: 100vh;
+    @include flex(center) {
+        flex-direction: column;
+    }
     &.active {
         .hidden {
             display: block;

@@ -24,7 +24,8 @@ let topnavLinks = document.querySelectorAll(".topnav .links a");
 let settingsBtn = document.querySelectorAll(".settings ul li.button");
 let settingsLi = document.querySelectorAll(".settings ul li");
 let settingsUl = document.querySelector(".settings ul");
-let topnavH = 64;
+let topnavH = 64,
+    topnavOffsetTop;
 
 let minPlus = document.querySelectorAll(".settings .select button");
 
@@ -90,7 +91,7 @@ window.onload = function () {
     }
     if (!shortcutsPasswordGenerator) {
         setTimeout(() => {
-            if (! shortcuts.classList.contains("active")) {
+            if (!shortcuts.classList.contains("active")) {
                 shortcutPop.classList.add("active");
             }
         }, 15000);
@@ -99,7 +100,7 @@ window.onload = function () {
     setTimeout(() => {
         loading.classList.add("hide");
     }, trans);
-    
+
     //test if the IntersectionObserver is working
     setTimeout(() => {
         if (!testObserver.classList.contains("appear")) {
@@ -332,9 +333,11 @@ for (let i = 0; i < topnavLinks.length; i++) {
 emailButton.onclick = popupFormDef;
 closePopupForm.onclick = popupFormDef;
 window.onscroll = function () {
-    let p = getComputedStyle(main).paddingTop;
+    if (!topnav.classList.contains("sticky")) {
+        topnavOffsetTop = topnav.offsetTop;
+    }
     if (!popupForm.classList.contains("active")) {
-        if (window.scrollY > parseFloat(p.substr(0, p.indexOf("px")))) {
+        if (window.scrollY > topnavOffsetTop) {
             topnav.classList.add("sticky");
         } else {
             topnav.classList.remove("sticky");
