@@ -20,6 +20,10 @@ $colors: (
                 // #212121,
                 #171f29,
             ),
+            bg-alt: (
+              #e1e1e1,
+              var(--clr--primary),
+            ),
             title: (
                 var(--clr--cyan),
                 var(--clr--white),
