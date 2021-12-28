@@ -11,7 +11,6 @@
         z-index: -1;
         transition: width $trans * 1.2;
         box-shadow: rgb(0 0 0 / 62%) 0px 1px 13px -9px;
-        background: #ffffffd2;
         background: var(--clr--topnav);
         backdrop-filter: blur(10px);
     }

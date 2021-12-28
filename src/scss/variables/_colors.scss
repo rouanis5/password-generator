@@ -8,8 +8,10 @@ $colors: (
                 #cecece,
             ),
             topnav: (
-                rgba(255, 255, 255, 0.8),
-                hsla(213, 28%, 13%, 0.8),
+                // rgba(255, 255, 255, 0.8),
+                // hsla(213, 28%, 13%, 0.8),
+                var(--clr--white),
+                var(--clr--primary)
             ),
             white: (
                 #ffffff,
