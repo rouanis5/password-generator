@@ -19,7 +19,8 @@
     li {
         background: var(--clr--grey);
         border-radius: $radius;
-        box-shadow: 0px 4px 10px -8px #0000009e;
+        box-shadow: 0px 2px 10px -6px rgb(0 0 0 / 62%);
+        transition: $trans;
         &:not(:last-child) {
             margin-bottom: 20px;
         }
@@ -63,12 +64,35 @@
         margin-left: $qst-h;
     }
 }
-// :onclick
-.faqs li.active {
-    input + label i {
-        transform: scaleY(-1);
+.faqs li {
+    .question{
+        input + label i {
+            transition: $trans;
+        }
+        &:hover{
+            input + label i {
+                transform: rotate(-90deg);
+            }
+        }
     }
-    p.answer {
-        display: block;
+    // :onhover and not clicked
+    &:not(.active):hover{
+        margin-right: 30px;
+    }
+    // :onclick
+    &.active{
+        .question{
+            input + label i {
+                transform: rotate(-180deg);
+            }
+            &:hover{
+                input + label i {
+                    transform: rotate(-90deg);
+                }
+            }
+        }
+        p.answer {
+            display: block;
+        }
     }
 }
