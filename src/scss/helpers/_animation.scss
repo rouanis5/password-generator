@@ -38,6 +38,20 @@
         top: 30%;
     }
 }
+@keyframes bouncing {
+    0%,
+    10%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+    40%,
+    60% {
+        transform: translateY(-15px);
+    }
+}
 /* loading animation by Mr tashfene https://codepen.io/tashfene */
 @keyframes loader {
     0% {
