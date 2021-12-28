@@ -3,28 +3,42 @@
     top: 0;
     z-index: 7;
     padding: $pt-topnav 0;
-    position: relative;
+    // position: relative;
+    @include before{
+        top: 0;
+        left: 0;
+        @include size(0,100%);
+        z-index: -1;
+        transition: width $trans * 1.2;
+        box-shadow: rgb(0 0 0 / 62%) 0px 1px 13px -9px;
+        background: #ffffffd2;
+        background: var(--clr--topnav);
+        backdrop-filter: blur(10px);
+    }
     &.sticky {
         position: fixed;
-        box-shadow: 0px 4px 10px -5px #0000009e;
-        background: var(--clr--primary);
-        .logo {
-            .img {
-                background: var(--clr--white);
-            }
-            img {
-                border: 2px solid var(--clr--white);
-            }
-            h3 {
-                color: var(--clr--white);
-            }
+        &::before{
+            width: 100%;
+
         }
-        button {
-            background: var(--clr--white);
-        }
-        i {
-            color: var(--clr--primary);
-        }
+        // background: var(--clr--primary);
+        // .logo {
+        //     .img {
+        //         background: var(--clr--white);
+        //     }
+        //     img {
+        //         border: 2px solid var(--clr--white);
+        //     }
+        //     h3 {
+        //         color: var(--clr--white);
+        //     }
+        // }
+        // button {
+        //     background: var(--clr--white);
+        // }
+        // i {
+        //     color: var(--clr--primary);
+        // }
         //add padding to the next element
         & + * {
             padding-top: $h-topnav;
@@ -106,16 +120,16 @@
         }
     }
     @include mq($md) {
-        &.sticky {
-            a {
-                color: var(--clr--primary);
-            }
-            li {
-                a {
-                    background: var(--clr--white);
-                }
-            }
-        }
+        // &.sticky {
+        //     a {
+        //         color: var(--clr--primary);
+        //     }
+        //     li {
+        //         a {
+        //             background: var(--clr--white);
+        //         }
+        //     }
+        // }
         .left {
             width: 88%;
             max-width: 519px;

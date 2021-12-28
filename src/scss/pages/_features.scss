@@ -1,8 +1,9 @@
 @use "sass:list";
 .features {
-    background: var(--clr--primary);
+    background: var(--clr--bg-alt);
     h2 {
-        color: var(--clr--white);
+        // color: var(--clr--white);
+        color: var(--clr--title);
     }
     ul {
         @include flex(space-around, center) {

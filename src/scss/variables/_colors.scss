@@ -7,6 +7,10 @@ $colors: (
                 #dedede,
                 #cecece,
             ),
+            topnav: (
+                rgba(255, 255, 255, 0.8),
+                hsla(213, 28%, 13%, 0.8),
+            ),
             white: (
                 #ffffff,
                 #fcf5e8,
@@ -16,12 +20,13 @@ $colors: (
                 #0a1836,
             ),
             bg: (
-                #f2f2f2,
+                // #f2f2f2,
+                #fff,
                 // #212121,
                 #171f29,
             ),
             bg-alt: (
-              #e1e1e1,
+              #ececec,
               var(--clr--primary),
             ),
             title: (
