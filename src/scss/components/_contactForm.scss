@@ -1,4 +1,5 @@
 .contactForm {
+    z-index: 5;
     display: none;
     &.active {
         display: block;
