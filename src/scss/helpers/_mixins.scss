@@ -20,6 +20,14 @@
         @content;
     }
 }
+@mixin before-after($content: "", $pos: absolute) {
+    @include pseudo(before, $content, $pos) {
+        @content;
+    }
+    @include pseudo(after, $content, $pos) {
+        @content;
+    }
+}
 @mixin flex-builder($x, $y, $direction) {
     %flex-#{$x}-#{$y}-#{$direction} {
         display: flex;
