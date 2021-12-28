@@ -14,9 +14,6 @@
 %hover_scale {
     animation: scale $trans linear infinite alternate;
 }
-%animation_moveY {
-    animation: moveY 2 * $trans linear infinite alternate;
-}
 //------------------------------
 %center {
     @include center;
