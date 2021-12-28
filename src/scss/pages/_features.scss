@@ -43,6 +43,7 @@
             }
         }
         p {
+            position: relative;
             opacity: 0;
             margin-top: 25px;
             color: var(--clr--white);
@@ -50,6 +51,7 @@
             font-size: $fs6;
             line-height: 16.4px;
             text-shadow: 1px 1px #00000040;
+            text-shadow: 0.5px 0.5px 2px rgb(0 0 0 / 60%);
             transition: opacity $trans*.5 $trans*.7;
         }
         img {
@@ -84,7 +86,6 @@
                 color: var(--clr--white);
             }
             p {
-                // display: block;
                 opacity: 1;
             }
             img {
