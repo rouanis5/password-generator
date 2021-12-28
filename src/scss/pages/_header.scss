@@ -209,13 +209,16 @@ header {
     }
 }
 .readMore {
-    font-size: $fs5;
+    bottom: 68px;
     text-align: center;
     margin-top: 43px;
     color: var(--clr--title);
-    bottom: 68px;
+    font-size: $fs5;
+    h5{
+        margin-bottom: 20px;
+    }
     i {
-        @extend %animation_moveY;
+        animation: bouncing 1.5s infinite;
         display: block;
         font-size: $fs3;
         &:nth-of-type(1) {
