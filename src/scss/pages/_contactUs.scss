@@ -28,6 +28,9 @@
     a {
         color: inherit;
         text-decoration: underline;
+        &:hover{
+            font-weight: $fw-bold;
+        }
     }
     button {
         background: var(--clr-crd-green);
@@ -38,6 +41,10 @@
         font-size: $fs-contact;
         font-weight: $fw-bold;
         cursor: pointer;
+        transition: $trans;
+        &:hover{
+            background: var(--clr-crd-hover-green);
+        }
     }
     br {
         display: none;
