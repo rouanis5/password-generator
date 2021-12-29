@@ -70,6 +70,13 @@
     left: 50%;
     transform: translateX(-50%);
 }
+@mixin center-y($hadPosition: true) {
+    @if not $hadPosition {
+        position: absolute;
+    }
+    top: 50%;
+    transform: translateY(-50%);
+}
 @mixin size($width: null, $height: $width) {
     @if ($width != null and $height != null) {
         width: $width;
