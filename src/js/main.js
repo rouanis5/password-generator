@@ -255,6 +255,7 @@ function faq_answer(i) {
 }
 function popupFormDef() {
     popupForm.classList.toggle("active");
+    topnav.classList.remove("scrolling-down");
 }
 function show_card(i) {
     for (let j = 0; j < feature_card.length; j++) {
@@ -336,16 +337,16 @@ window.onscroll = function () {
         } else {
             topnav.classList.remove("sticky");
         }
-        //hidw the topnav on scrolling-down
+        //hide the topnav on scrolling-down
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop) {
-            topnav.classList.add("scrolling-down");
-        } else{
-            topnav.classList.remove("scrolling-down");
+        if (!topnav.classList.contains("active")) {
+            if (scrollTop > lastScrollTop) {
+                topnav.classList.add("scrolling-down");
+            } else{
+                topnav.classList.remove("scrolling-down");
+            }
         }
         lastScrollTop = scrollTop;
-    }else{
-        topnav.classList.remove("scrolling-down");
     }
 };
 //settings functions

@@ -3,27 +3,32 @@
     top: 0;
     z-index: 7;
     padding: $pt-topnav 0;
-    transition: transform $trans;
-    @include before{
-        top: 0;
-        left: 0;
-        @include size(0,100%);
-        z-index: -1;
-        transition: width $trans * 2;
-        box-shadow: rgb(0 0 0 / 62%) 0px 1px 13px -9px;
-        background: var(--clr--topnav);
-        backdrop-filter: blur(10px);
-    }
+    position: relative;
     &.sticky {
+        @include before{
+            top: 0;
+            left: 0;
+            @include size(100%);
+            z-index: -1;
+            box-shadow: rgb(0 0 0 / 62%) 0px 1px 13px -9px;
+            background: var(--clr--topnav);
+        }
         position: fixed;
-        &::before{
-            width: 100%;
+        .container {
+            transition: transform $fast-trans $fast-trans ease;
+        }
+        &::before {
+            transition: width $fast-trans ease;
         }
         //if the user is scrolling down, hide the topnav, else: display it
-        &.scrolling-down{
-            transform: translateY(-$h-topnav);
+        &.scrolling-down { //onhide
+            .container {
+                transform: translate(0,-$h-topnav);
+                transition: transform $fast-trans ease;
+            }
             &::before{
                 width: 0;
+                transition: width $fast-trans $fast-trans ease;
             }
         }
         //add padding to the next element
@@ -90,7 +95,7 @@
         right: 50%;
         width: 100%;
         padding: 11.5px 0;
-        transform: translateX(50%);
+        transform: translate(50%,0);
         z-index: -1;
         border-bottom: 7px solid var(--clr--primary);
         border-radius: 0 0 $radius $radius;
