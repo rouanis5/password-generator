@@ -1,63 +1,75 @@
-.statistics {
-    //old
-    // background: var(--clr--primary);
-    // color: var(--clr--white);
-    //new
-    background: var(--clr--bg-alt);
-    color: var(--clr--title);
-    //new 2
-    ul {
-        margin: -7px;
-        @include flex(space-around, null) {
-            flex-wrap: wrap;
-        }
-        @include mq($sm) {
-            justify-content: space-between !important;
-        }
+.stats {
+    background-image: url("../images/Statistics/1.jpg");
+    background-size: cover;
+    min-height: 300px;
+    z-index: 1;
+    text-align: center;
+    @include before {
+        @include size(100%);
+        top: 0;
+        left: 0;
+        background: var(--clr--bg-alt);
+        opacity: 0.95;
+        z-index: -1;
     }
-    @include mq($md) {
-        ul {
-        }
-        li {
-            flex-direction: row !important;
-        }
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 30px;
     }
-    li {
-        margin: 7px;
-        @include flex(center) {
-            flex-direction: column;
-            // flex-basis: calc(33.33% - 14px);
-            // flex-wrap: 100px;
-            // flex-grow: 100%;
-        }
+    h2 {
+        font-weight: $fw-bold;
+        font-size: $fs2 + 2;
+        margin: 0 auto 50px;
+        color: var(--clr--title);
     }
-    .square {
-        @include size(81px);
-        @include flex(center);
+    .box {
+        // background: var(--clr--bg);
+        // color: var(--clr-f-2);
         background: var(--clr--white);
-        color: var(--clr--primary);
+        color: var(--clr-f-1);
+        padding: 30px;
         border-radius: $radius;
-        font-size: $fs1;
-        // box-shadow: 2px 2px 2px rgb(0 0 0 / 25%);
-        box-shadow: 2px 2px 8px -4px rgb(0 0 0 / 25%);
-        div {
-            @include flex(center, center, column);
-            line-height: 32px;
+        overflow: hidden;
+        box-shadow: 3px 3px 10px -8px #888888;
+        @include before-after {
+            @include size(4px, 0);
+            // background: var(--clr--title);
+            background: var(--clr--cyan);
+            transition: $trans ease-in-out;
         }
-        span {
+        &::before {
+            bottom: 0;
+            left: 0;
+        }
+        &::after {
+            top: 0;
+            right: 0;
+        }
+        &:hover {
+            &::before,
+            &::after {
+                height: 100%;
+            }
+        }
+        i {
+            font-size: $fs2;
+        }
+        & > * {
+            display: block;
+            margin-inline: auto;
+        }
+        .number {
+            font-size: $fs1;
+            font-weight: $fw-bold;
+            margin: 15px 0;
+        }
+        .text {
+            font-size: $fs5;
+            font-style: italic;
+            // color: var(--clr--title);
+            color: var(--clr--cyan);
             font-weight: $fw-bold;
         }
-    }
-    .details {
-        margin: 8px;
-        line-height: 30px;
-    }
-    h5,
-    h4 {
-        font-weight: $fw-regular;
-        font-size: 40px;
-    }
-    h4 {
-        font-size: $fs3;
     }
 }
