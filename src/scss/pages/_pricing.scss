@@ -1,0 +1,115 @@
+.pricing {
+    background: var(--clr--bg-alt);
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 30px;
+        margin-top: 56px;
+    }
+    .box {
+        background: var(--clr--white);
+        box-shadow: 0px 12px 20px 0px rgb(0, 0, 0, 13%), 0px 2px 4px 0px rgb(0, 0, 0, 12%);
+        text-align: center;
+        padding: 50px 0;
+        z-index: 1;
+        @include mq($xl) {
+            &.popular {
+                top: -20px;
+            }
+        }
+        @include before-after {
+            @include size(0, 50%);
+            background: #f3f3f3; //---------------------------------
+            transition: $trans;
+            z-index: -1;
+        }
+        &:after {
+            top: 0;
+            left: 0;
+        }
+        &:before {
+            bottom: 0;
+            right: 0;
+        }
+        &:hover {
+            &::after,
+            &::before {
+                width: 100%;
+            }
+        }
+        .title {
+            font-weight: $fw-bold;
+            font-size: $fs-contact;
+        }
+        .label {
+            position: absolute !important;
+            user-select: none;
+            top: 0;
+            right: 20px;
+            writing-mode: vertical-rl;
+            padding: 15px 10px 30px;
+            background: var(--clr--cyan); 
+            color: var(--clr--white);
+            font-size: $fs5;
+            font-weight: $fw-bold;
+            @include before {
+                bottom: -20px;
+                width: 1px;
+                left: 0px;
+                border: solid;
+                border-width: 0 20px 20px;
+                border-color: var(--clr--cyan) var(--clr--cyan) transparent var(--clr--cyan);
+            }
+        }
+        .price {
+            & > * {
+                display: block;
+            }
+            .amount {
+                font-size: $fs1 * 1.5;
+                font-weight: $fw-bold;
+                color: var(--clr--cyan);
+            }
+            .time {
+                color: #777; ////-------------
+            }
+        }
+        img {
+            width: 75px;
+            margin: 25px 0;
+        }
+        ul {
+            margin: 50px 0;
+            margin-bottom: fill-content;
+            li {
+                padding: 20px 30px;
+                border-top: 1px solid #dedede;
+                text-align: left;
+                &.bold{
+                    font-weight: $fw-bold;
+                }
+                @include before("\f00c", false) {
+                    margin-right: 10px;
+                    @extend %center-y;
+                    font-family: "Font Awesome 5 Free";
+                    font-weight: 900;
+                    font-size: 20px;
+                    color: var(--clr--cyan);
+                }
+            }
+        }
+        a {
+            padding: 10px 17px;
+            background: transparent;
+            color: var(--clr--cyan);
+            border-radius: 5px;
+            font-weight: $fw-bold;
+            border: 2px solid var(--clr--cyan);
+            transition: $trans;
+            &:hover {
+                background: var(--clr--cyan);
+                color: var(--clr--white);
+            }
+        }
+    }
+}
