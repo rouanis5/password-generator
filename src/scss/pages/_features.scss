@@ -1,13 +1,10 @@
 @use "sass:list";
 .features {
     background: var(--clr--bg-alt);
-    h2 {
-        // color: var(--clr--white);
-        color: var(--clr--title);
-    }
     ul {
         @include flex(space-around, center) {
             flex-wrap: wrap;
+            row-gap: 56px;
         }
     }
     .card {
@@ -16,7 +13,7 @@
         width: 100%;
         max-width: 231px;
         min-height: 231px;
-        margin-top: 56px;
+        // margin-top: 56px;
         padding: 29px;
         border-radius: $radius;
         background: var(--clr--white);

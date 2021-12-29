@@ -17,12 +17,6 @@
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 30px;
     }
-    h2 {
-        font-weight: $fw-bold;
-        font-size: $fs2 + 2;
-        margin: 0 auto 50px;
-        color: var(--clr--title);
-    }
     .box {
         // background: var(--clr--bg);
         // color: var(--clr-f-2);
