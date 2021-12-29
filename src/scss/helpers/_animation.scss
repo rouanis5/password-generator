@@ -52,6 +52,17 @@
         transform: translateY(-15px);
     }
 }
+@keyframes flashing {
+    0%,
+    40% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(20);
+        // @include size(200%);
+    }
+}
 /* loading animation by Mr tashfene https://codepen.io/tashfene */
 @keyframes loader {
     0% {
