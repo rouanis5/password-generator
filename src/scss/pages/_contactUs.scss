@@ -41,9 +41,12 @@
         font-size: $fs-contact;
         font-weight: $fw-bold;
         cursor: pointer;
-        transition: $trans;
+        transition: background $trans;
         &:hover{
             background: var(--clr-crd-hover-green);
+        }
+        &:active,&:focus{
+            @extend %on_click;
         }
     }
     br {
