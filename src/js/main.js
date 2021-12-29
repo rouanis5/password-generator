@@ -25,8 +25,7 @@ let topnavLinks = document.querySelectorAll(".topnav .links a");
 let settingsBtn = document.querySelectorAll(".settings ul li.button");
 let settingsLi = document.querySelectorAll(".settings ul li");
 let settingsUl = document.querySelector(".settings ul");
-let topnavH = 64,
-    topnavOffsetTop;
+let topnavH = 64, topnavOffsetTop , lastScrollTop = 0; //topnav variables
 
 let minPlus = document.querySelectorAll(".settings .select button");
 
@@ -337,6 +336,16 @@ window.onscroll = function () {
         } else {
             topnav.classList.remove("sticky");
         }
+        //hidw the topnav on scrolling-down
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+            topnav.classList.add("scrolling-down");
+        } else{
+            topnav.classList.remove("scrolling-down");
+        }
+        lastScrollTop = scrollTop;
+    }else{
+        topnav.classList.remove("scrolling-down");
     }
 };
 //settings functions

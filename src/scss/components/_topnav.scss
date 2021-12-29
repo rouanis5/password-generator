@@ -3,13 +3,13 @@
     top: 0;
     z-index: 7;
     padding: $pt-topnav 0;
-    // position: relative;
+    transition: transform $trans;
     @include before{
         top: 0;
         left: 0;
         @include size(0,100%);
         z-index: -1;
-        transition: width $trans * 1.2;
+        transition: width $trans * 2;
         box-shadow: rgb(0 0 0 / 62%) 0px 1px 13px -9px;
         background: var(--clr--topnav);
         backdrop-filter: blur(10px);
@@ -18,26 +18,14 @@
         position: fixed;
         &::before{
             width: 100%;
-
         }
-        // background: var(--clr--primary);
-        // .logo {
-        //     .img {
-        //         background: var(--clr--white);
-        //     }
-        //     img {
-        //         border: 2px solid var(--clr--white);
-        //     }
-        //     h3 {
-        //         color: var(--clr--white);
-        //     }
-        // }
-        // button {
-        //     background: var(--clr--white);
-        // }
-        // i {
-        //     color: var(--clr--primary);
-        // }
+        //if the user is scrolling down, hide the topnav, else: display it
+        &.scrolling-down{
+            transform: translateY(-$h-topnav);
+            &::before{
+                width: 0;
+            }
+        }
         //add padding to the next element
         & + * {
             padding-top: $h-topnav;
@@ -119,16 +107,6 @@
         }
     }
     @include mq($md) {
-        // &.sticky {
-        //     a {
-        //         color: var(--clr--primary);
-        //     }
-        //     li {
-        //         a {
-        //             background: var(--clr--white);
-        //         }
-        //     }
-        // }
         .left {
             width: 88%;
             max-width: 519px;
@@ -176,8 +154,16 @@
 // when the user click the theme toggle btn
 // the icon will change
 body {
-    .theme-button i.sun {
-        display: none;
+    .theme-button{
+        i{
+            transition: $trans;
+        }
+        &:hover i{
+            transform: rotate(-45deg) scale(1.2);
+        }
+        i.sun {
+            display: none;
+        }
     }
     //theme class name
     &.dark {
