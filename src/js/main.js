@@ -212,9 +212,12 @@ function topnavDef() {
 function goLocation(target, duration = null) {
     cancelAnimationFrame(scrollAnimation);
     onScrolling = true;
-    let targetPos = target.offsetTop - topnavH;
+    let targetPos = target.offsetTop;
     let startPos = window.pageYOffset;
-    let distance = targetPos - startPos;
+    let is_topnav = targetPos > startPos ? 0 : -topnavH; 
+    //check if the topnav will activated or not
+    //if the targetPos is higher than the startPos, so we're descending --> disactivated
+    let distance = targetPos - startPos + is_topnav;
     let startTime = null;
     if (duration === null) {
         duration = Math.abs(distance) / ScrollingSpeed;
