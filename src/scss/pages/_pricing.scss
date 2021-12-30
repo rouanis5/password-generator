@@ -8,6 +8,8 @@
     }
     .box {
         background: var(--clr--white);
+        border-radius: $radius;
+        overflow: hidden;
         box-shadow: 0px 12px 20px 0px rgb(0, 0, 0, 13%), 0px 2px 4px 0px rgb(0, 0, 0, 12%);
         text-align: center;
         padding: 50px 0;
@@ -102,7 +104,8 @@
             padding: 10px 17px;
             background: transparent;
             color: var(--clr--cyan);
-            border-radius: 5px;
+            // border-radius: 5px;
+            border-radius: $radius*.5;
             font-weight: $fw-bold;
             border: 2px solid var(--clr--cyan);
             transition: $trans;
