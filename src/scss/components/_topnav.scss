@@ -4,31 +4,36 @@
     z-index: 7;
     padding: $pt-topnav 0;
     position: relative;
+    .container {
+        @include flex(space-between, center);
+        transition: transform $fast-trans ease;
+    }
     &.sticky {
         @include before{
             top: 0;
             left: 0;
-            @include size(100%);
+            @include size(0,100%);
             z-index: -1;
             box-shadow: rgb(0 0 0 / 62%) 0px 1px 13px -9px;
             background: var(--clr--topnav);
         }
         position: fixed;
         .container {
-            transition: transform $fast-trans $fast-trans ease;
+            transform: translate(0,-$h-topnav);
+            transition: none;
         }
         &::before {
-            transition: width $fast-trans ease;
+            transition: width $fast-trans $fast-trans ease;
         }
         //if the user is scrolling down, hide the topnav, else: display it
-        &.scrolling-down { //onhide
+        &.scrolling-up { //onhide
             .container {
-                transform: translate(0,-$h-topnav);
-                transition: transform $fast-trans ease;
+                transform: none;
+                transition: transform $fast-trans $fast-trans ease;
             }
             &::before{
-                width: 0;
-                transition: width $fast-trans $fast-trans ease;
+                width: 100%;
+                transition: width $fast-trans ease;
             }
         }
         //add padding to the next element
@@ -36,11 +41,9 @@
             padding-top: $h-topnav;
         }
     }
-    .container {
-        @include flex(space-between, center);
-    }
     .left {
         @include flex(space-between, null);
+        // position: relative;
     }
     .logo {
         @include flex(center);
@@ -92,6 +95,7 @@
         background: var(--clr--bg);
         position: absolute;
         top: $h-topnav;
+        // top: 0;
         right: 50%;
         width: 100%;
         padding: 11.5px 0;

@@ -331,8 +331,9 @@ for (let i = 0; i < topnavLinks.length; i++) {
 emailButton.onclick = popupFormDef;
 closePopupForm.onclick = popupFormDef;
 window.onscroll = function () {
+    let is_topnav_active = topnav.classList.contains("active") ? 0 : topnavH;
     if (!topnav.classList.contains("sticky")) {
-        topnavOffsetTop = topnav.offsetTop;
+        topnavOffsetTop = topnav.offsetTop + is_topnav_active;
     }
     if (!popupForm.classList.contains("active")) {
         if (window.scrollY > topnavOffsetTop) {
@@ -343,10 +344,10 @@ window.onscroll = function () {
         //hide the topnav on scrolling-down
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         if (!topnav.classList.contains("active")) {
-            if (scrollTop > lastScrollTop) {
-                topnav.classList.add("scrolling-down");
+            if (scrollTop < lastScrollTop) {
+                topnav.classList.add("scrolling-up");
             } else{
-                topnav.classList.remove("scrolling-down");
+                topnav.classList.remove("scrolling-up");
             }
         }
         lastScrollTop = scrollTop;
