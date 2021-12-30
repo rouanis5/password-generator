@@ -10,7 +10,7 @@ h6 {
 h1,
 h2 {
     // font-size: $fs1;
-    font-size: clamp(5px, 15vw, #{$fs1});
+    font-size: clamp(5px, 15vw, #{$fs2});
 }
 h3 {
     font-size: $fs3;
