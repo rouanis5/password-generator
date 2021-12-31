@@ -1,14 +1,30 @@
 .reviews {
     background: var(--clr--bg-alt);
     .container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 40px;
+        @include flex{
+            padding: 3rem 0;
+        }
     }
-    .box {
+    .card {
+        width: 400px;
+        min-width: 330px;
+        $nCard : 3;
+        transition: $trans;
+        box-shadow: -1rem 0 3rem rgb(0 0 0 / 20%);
+        
+        &:not(:first-of-type){
+            margin-left: -130px;
+        }
+        &:hover{
+            transform: translate(0,-1rem);
+            &~.card{
+                transform: translate(130px,0);
+            }
+        }
+
         padding: 40px 20px 20px;
         background-color: var(--clr--white);
-        box-shadow: 0 2px 4px rgb(0 0 0 / 7%);
+        // box-shadow: 0 2px 4px rgb(0 0 0 / 7%);
         border-radius: 6px;
         position: relative;
         img {
