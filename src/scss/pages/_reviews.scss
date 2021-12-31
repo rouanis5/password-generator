@@ -1,27 +1,42 @@
 .reviews {
     background: var(--clr--bg-alt);
     .container {
-        @include flex{
-            padding: 3rem 0;
+        padding: 3rem 0 120px;
+        @include mq($md){
+            padding-bottom: 3rem !important;
+            display: flex;
+            overflow-x: scroll;
+        }
+        @include mq($lg){
+            overflow-x: unset;
         }
     }
     .card {
-        width: 400px;
-        min-width: 330px;
         $nCard : 3;
-        transition: $trans;
+        transition: $fast-trans;
         box-shadow: -1rem 0 3rem rgb(0 0 0 / 20%);
-        
         &:not(:first-of-type){
-            margin-left: -130px;
+            margin-top: -120px;
         }
         &:hover{
-            transform: translate(0,-1rem);
+            transform: translate(0,-20px);
             &~.card{
-                transform: translate(130px,0);
+                transform: translate(0,120px);
             }
         }
-
+        @include mq($md){
+            min-width: 330px;
+            margin-top: 0 !important;
+            &:not(:first-of-type){
+                margin-left: -130px;
+            }
+            &:hover{
+                transform: translate(0,-1rem);
+                &~.card{
+                    transform: translate(130px,0);
+                }
+            }
+        }
         padding: 40px 20px 20px;
         background-color: var(--clr--white);
         // box-shadow: 0 2px 4px rgb(0 0 0 / 7%);
