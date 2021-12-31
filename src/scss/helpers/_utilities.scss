@@ -17,39 +17,53 @@
     }
     margin-inline: auto;
 }
-h2.main-title{
-    color: var(--clr--title);
+.main-title{
     margin: 0 auto 50px;
-    padding: 10px 30px;
-    width: fit-content;
-    user-select: none;
-    z-index: 1;
-    transition: color $trans ease;
-    &.filled{
-        background: var(--clr--cyan);
-        color: var(--clr--white);
-        padding: 4.6px 20px;
-        border-radius: $radius;
-    }
-    @include before{
-        left: 0;
-        @include size(0,100%);
-        background: var(--clr--white);
-        @extend %center-y;
-        z-index: -1;
-        box-shadow: rgb(0 0 0 / 62%) 0px 1px 13px -9px;
-        transition: width $trans $trans ease,
-                    border-radius $trans ease;
-    }
-    &:hover{
-        color: var(--clr--cyan) !important;
-        transition: color $trans $trans ease;
-        &::before{
-            border-radius: $radius*3;
-            transition: width $trans ease,
-                        border-radius $trans $trans ease;
-            width: 100%;
+    h2{
+        color: var(--clr--title);
+        padding: 10px 30px;
+        width: fit-content;
+        user-select: none;
+        z-index: 1;
+        margin-inline: auto;
+        transition: color $trans ease;
+        &.filled{
+            background: var(--clr--cyan);
+            color: var(--clr--white);
+            padding: 4.6px 20px;
+            border-radius: $radius;
         }
+        @include before{
+            left: 0;
+            @include size(0,100%);
+            background: var(--clr--white);
+            @extend %center-y;
+            z-index: -1;
+            box-shadow: rgb(0 0 0 / 62%) 0px 1px 13px -9px;
+            transition: width $trans $trans ease,
+                        border-radius $trans ease;
+        }
+        &:hover{
+            color: var(--clr--cyan) !important;
+            transition: color $trans $trans ease;
+            &::before{
+                border-radius: $radius*3;
+                transition: width $trans ease,
+                            border-radius $trans $trans ease;
+                width: 100%;
+            }
+            & + p{
+                opacity: 0;
+            }
+        }
+    }
+    p{
+        color: #acafaf;
+        margin: 3px auto 0;
+        width: fit-content;
+        transition: opacity $trans ease;
+        font-weight: $fw-light;
+        font-size: $fs5;
     }
 }
 a {
