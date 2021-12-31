@@ -1,0 +1,39 @@
+.reviews {
+    background: var(--clr--bg-alt);
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 40px;
+    }
+    .box {
+        padding: 40px 20px 20px;
+        background-color: var(--clr--white);
+        box-shadow: 0 2px 4px rgb(0 0 0 / 7%);
+        border-radius: 6px;
+        position: relative;
+        img {
+            position: absolute;
+            top: 33px;
+            right: 27px;
+            @include size(90px);
+            border-radius: 17%;
+            border: 4px solid var(--clr--bg-alt);
+        }
+        h3 {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .title {
+            color: #333;
+        }
+        .rate .filled {
+            color: #ffc107;
+        }
+        p {
+            line-height: 1.5;
+            color: #777;
+            margin-top: 35px;
+            // margin-bottom: 0;
+        }
+    }
+}
