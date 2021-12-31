@@ -7,9 +7,10 @@
         margin-top: 56px;
     }
     .box {
-        background: var(--clr--white);
+        background: var(--clr--bg);
         border-radius: $radius;
         overflow: hidden;
+        color: var(--clr-f-2);
         box-shadow: 0px 12px 20px 0px rgb(0, 0, 0, 13%), 0px 2px 4px 0px rgb(0, 0, 0, 12%);
         text-align: center;
         padding: 50px 0;
@@ -21,8 +22,10 @@
         }
         @include before-after {
             @include size(0, 50%);
-            background: #f3f3f3; //---------------------------------
-            transition: $trans;
+            // background: #f3f3f3; //---------------------------------
+            background: inherit;
+            filter: brightness(95%);
+            transition: width $trans;
             z-index: -1;
         }
         &:after {
