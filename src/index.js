@@ -3,3 +3,4 @@ import "../node_modules/normalize.css/normalize.css";
 import "./scss/style.scss";
 import "./js/main.js";
 import "./js/increaseNums.js";
+import "./js/grab.js";
