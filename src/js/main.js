@@ -5,7 +5,7 @@ let questions = document.querySelectorAll(".faqs .question");
 let answers = document.querySelectorAll(".faqs li");
 let parents = document.querySelectorAll(".parent");
 let page = 0;
-let trans = 700;
+let trans = 700; export {trans};
 let ScrollingSpeed = 750 / 1000; //750px per second
 let lastKey;
 let scrollAnimation;
@@ -62,7 +62,6 @@ let remember = document.getElementById("remember");
 let copyScreen = document.getElementById("copyScreen");
 let copySentence = document.getElementById("copySentence");
 let reSentence = document.getElementById("reSentence");
-let testObserver = document.getElementById("testObserver");
 
 let shortcutPopBtn = document.querySelectorAll(".shortcutPop button");
 let shortcutPop = document.getElementById("shortcutPop");
@@ -78,11 +77,9 @@ let settingsH3 = document.querySelector(".settings h3");
 let settingsH3Data = settingsH3.innerHTML;
 let settingsH3Clr = getComputedStyle(settingsH3).color;
 
-let faders = document.querySelectorAll(".fade-in");
-let sliders = document.querySelectorAll(".slide-in");
 let loading = document.querySelector(".loading");
 //onload
-window.onload = function () {
+window.addEventListener("load",()=>{
     //contactUs if the browser dont support Grid
     if (typeof settingsUl.style.grid !== "string") {
         contactUs.classList.remove("allow");
@@ -99,19 +96,7 @@ window.onload = function () {
     setTimeout(() => {
         loading.classList.add("hide");
     }, trans);
-
-    //test if the IntersectionObserver is working
-    setTimeout(() => {
-        if (!testObserver.classList.contains("appear")) {
-            for (let i = 0; i < faders.length; i++) {
-                faders[i].classList.add("appear");
-            }
-            for (let i = 0; i < sliders.length; i++) {
-                sliders[i].classList.add("appear");
-            }
-        }
-    }, trans);
-};
+});
 //function that wait 2s
 function timer() {
     return new Promise((resolve) => {
@@ -517,29 +502,3 @@ for (let i = 0; i < sectionsBtn.length; i++) {
         }
     };
 }
-//create fade-in animation
-const appearOptions = {
-    threshold: 0.5,
-    // rootMargin: "0px 0px 45px 0px",
-};
-const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
-    entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-            return;
-        } else {
-            entry.target.classList.add("appear");
-            appearOnScroll.unobserve(entry.target);
-        }
-    });
-}, appearOptions);
-
-faders.forEach((fader) => {
-    appearOnScroll.observe(fader);
-});
-sliders.forEach((slider) => {
-    appearOnScroll.observe(slider);
-});
-
-//test if IntersectionObserver is working
-appearOnScroll.observe(testObserver);
-/////////////////////////////////////////////

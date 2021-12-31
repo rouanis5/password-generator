@@ -1,4 +1,4 @@
-import { appearOptions } from "./main";
+import { appearOptions, testObserver} from "./scrollAnim";
 const statsNum = document.querySelectorAll("[data-goal]");
 const increaseOnScroll = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -8,7 +8,6 @@ const increaseOnScroll = new IntersectionObserver((entries) => {
         setInterval(() => {
             if (parseInt(entry.target.textContent, 10) < parseInt(entry.target.getAttribute("data-goal"), 10)) {
                 entry.target.textContent = parseInt(entry.target.textContent, 10) + 1;
-                entry.target.getAttribute("data-goal");
             } else {
                 clearInterval();
             }
