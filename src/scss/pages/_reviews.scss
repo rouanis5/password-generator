@@ -17,7 +17,7 @@
     }
     .card {
         user-select: none;
-        transition: transform $fast-trans ease, margin-top $fast-trans ease;
+        transition: transform $fast-trans ease, margin-top $fast-trans ease, opacity $trans;
         box-shadow: -1rem 0 3rem rgb(0 0 0 / 20%);
         &:not(:first-of-type){
             margin-top: -120px;
