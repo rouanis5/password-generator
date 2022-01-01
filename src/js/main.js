@@ -29,7 +29,7 @@ let topnavH = 64, topnavOffsetTop , lastScrollTop = 0; //topnav variables
 
 let minPlus = document.querySelectorAll(".settings .select button");
 
-let footer = document.querySelector(".footer__main");
+let is_ie = document.querySelectorAll(".is_ie");
 
 let isAllowed = false;
 let Is_changed = true;
@@ -83,7 +83,9 @@ window.addEventListener("load",()=>{
     //contactUs if the browser dont support Grid
     if (typeof settingsUl.style.grid !== "string") {
         contactUs.classList.remove("allow");
-        footer.classList.add("ie");
+        for (let i = 0; i < is_ie.length; i++) {
+            is_ie[i].classList.add("ie");
+        }
     }
     if (!shortcutsPasswordGenerator) {
         setTimeout(() => {

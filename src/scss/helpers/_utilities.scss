@@ -1,6 +1,11 @@
 @use "sass:math";
 .parent {
     padding: 68px 0;
+    &.ie .container {
+        @include flex(space-around, center) {
+            flex-wrap: wrap;
+        }
+    }
 }
 .container {
     width: 95%;
