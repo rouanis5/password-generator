@@ -2,7 +2,6 @@ import {trans} from "./main";
 let faders = document.querySelectorAll(".fade-in");
 let sliders = document.querySelectorAll(".slide-in");
 let testObserver = document.getElementById("testObserver");
-export {testObserver};
 window.addEventListener("load",()=>{
     //test if the IntersectionObserver is working
     setTimeout(() => {
@@ -42,3 +41,4 @@ sliders.forEach((slider) => {
 //test if IntersectionObserver is working
 appearOnScroll.observe(testObserver);
 /////////////////////////////////////////////
+export {testObserver, appearOptions};
