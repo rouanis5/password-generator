@@ -1,186 +1,187 @@
 .topnav {
-    width: 100%;
-    top: 0;
-    z-index: 7;
-    padding: $pt-topnav 0;
-    position: relative;
+  width: 100%;
+  top: 0;
+  z-index: 7;
+  padding: $pt-topnav 0;
+  position: relative;
+  .container {
+    @include flex(space-between, center);
+    transition: transform $fast-trans ease;
+  }
+  &.sticky {
+    @include before {
+      top: 0;
+      left: 0;
+      @include size(0, 100%);
+      z-index: -1;
+      box-shadow: rgb(0 0 0 / 62%) 0px 1px 13px -9px;
+      background: var(--clr--topnav);
+    }
+    position: fixed;
     .container {
-        @include flex(space-between, center);
-        transition: transform $fast-trans ease;
+      transform: translate(0, -$h-topnav);
+      transition: none;
     }
-    &.sticky {
-        @include before{
-            top: 0;
-            left: 0;
-            @include size(0,100%);
-            z-index: -1;
-            box-shadow: rgb(0 0 0 / 62%) 0px 1px 13px -9px;
-            background: var(--clr--topnav);
-        }
-        position: fixed;
-        .container {
-            transform: translate(0,-$h-topnav);
-            transition: none;
-        }
-        &::before {
-            transition: width $fast-trans $fast-trans ease;
-        }
-        //if the user is scrolling down, hide the topnav, else: display it
-        &.scrolling-up { //onhide
-            .container {
-                transform: none;
-                transition: transform $fast-trans $fast-trans ease;
-            }
-            &::before{
-                width: 100%;
-                transition: width $fast-trans ease;
-            }
-        }
-        //add padding to the next element
-        & + * {
-            padding-top: $h-topnav;
-        }
+    &::before {
+      transition: width $fast-trans $fast-trans ease;
     }
-    .left {
-        @include flex(space-between, null);
-        // position: relative;
+    //if the user is scrolling down, hide the topnav, else: display it
+    &.scrolling-up {
+      //onhide
+      .container {
+        transform: none;
+        transition: transform $fast-trans $fast-trans ease;
+      }
+      &::before {
+        width: 100%;
+        transition: width $fast-trans ease;
+      }
     }
-    .logo {
-        @include flex(center);
-        cursor: pointer;
-        .img {
-            @include flex(center);
-            @include size($h-logo);
-            border-radius: $radius;
-            background: var(--clr--title);
-        }
-        img {
-            @include size(100%);
-            border-radius: 50%;
-            border: 2px solid var(--clr--title);
-        }
-        h3 {
-            margin-left: 7px;
-            color: var(--clr--title);
-        }
+    //add padding to the next element
+    & + * {
+      padding-top: $h-topnav;
     }
-    .buttons {
-        .menu {
-            margin-left: 11.5px;
-        }
-        ul {
-            @include flex(space-between, null);
-        }
+  }
+  .left {
+    @include flex(space-between, null);
+    // position: relative;
+  }
+  .logo {
+    @include flex(center);
+    cursor: pointer;
+    .img {
+      @include flex(center);
+      @include size($h-logo);
+      border-radius: $radius;
+      // background: var(--clr--title);
+    }
+    img {
+      @include size(100%);
+      //   border-radius: 50%;
+      //   border: 2px solid var(--clr--title);
+    }
+    h3 {
+      margin-left: 7px;
+      color: var(--clr--title);
+    }
+  }
+  .buttons {
+    .menu {
+      margin-left: 11.5px;
+    }
+    ul {
+      @include flex(space-between, null);
+    }
+  }
+  li {
+    a,
+    button {
+      background: var(--clr--title);
+      @include flex(center);
+      color: var(--clr--bg);
+      border-radius: $radius;
+      font-size: 14px;
+      @include size(29px);
+    }
+    background: transparent;
+    a {
+      min-width: 75px;
+    }
+    button {
+      cursor: pointer;
+    }
+  }
+  .links {
+    display: none;
+    background: var(--clr--bg);
+    position: absolute;
+    top: $h-topnav;
+    // top: 0;
+    right: 50%;
+    width: 100%;
+    padding: 11.5px 0;
+    transform: translate(50%, 0);
+    z-index: -1;
+    border-bottom: 7px solid var(--clr--primary);
+    border-radius: 0 0 $radius $radius;
+    box-shadow: 0px 4px 10px -5px #0000009e;
+    ul {
+      display: block;
     }
     li {
-        a,
-        button {
-            background: var(--clr--title);
-            @include flex(center);
-            color: var(--clr--bg);
-            border-radius: $radius;
-            font-size: 14px;
-            @include size(29px);
-        }
-        background: transparent;
-        a {
-            min-width: 75px;
-        }
-        button {
-            cursor: pointer;
-        }
+      margin: 11.5px 0;
+    }
+    li,
+    a {
+      width: 100%;
+    }
+  }
+  @include mq($md) {
+    .left {
+      width: 88%;
+      max-width: 519px;
+      justify-content: flex-end !important;
+      z-index: 3;
     }
     .links {
-        display: none;
-        background: var(--clr--bg);
-        position: absolute;
-        top: $h-topnav;
-        // top: 0;
-        right: 50%;
+      width: 88%;
+      display: block;
+      position: static;
+      box-shadow: initial;
+      padding: 0;
+      transform: unset;
+      background: initial;
+      border-bottom: initial;
+      li {
+        margin: unset;
+        width: 72px;
+      }
+      ul {
+        display: flex;
+        justify-content: space-between;
         width: 100%;
-        padding: 11.5px 0;
-        transform: translate(50%,0);
-        z-index: -1;
-        border-bottom: 7px solid var(--clr--primary);
-        border-radius: 0 0 $radius $radius;
-        box-shadow: 0px 4px 10px -5px #0000009e;
-        ul {
-            display: block;
-        }
-        li {
-            margin: 11.5px 0;
-        }
-        li,
-        a {
-            width: 100%;
-        }
+      }
     }
-    @include mq($md) {
-        .left {
-            width: 88%;
-            max-width: 519px;
-            justify-content: flex-end !important;
-            z-index: 3;
-        }
-        .links {
-            width: 88%;
-            display: block;
-            position: static;
-            box-shadow: initial;
-            padding: 0;
-            transform: unset;
-            background: initial;
-            border-bottom: initial;
-            li {
-                margin: unset;
-                width: 72px;
-            }
-            ul {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-            }
-        }
-        .buttons {
-            width: 10%;
-            ul {
-                justify-content: flex-end !important;
-            }
-        }
-        .menu {
-            display: none;
-        }
+    .buttons {
+      width: 10%;
+      ul {
+        justify-content: flex-end !important;
+      }
     }
-    &.active {
-        .links {
-            @include flex(center);
-        }
-        .menu {
-            transform: rotate(90deg);
-        }
+    .menu {
+      display: none;
     }
+  }
+  &.active {
+    .links {
+      @include flex(center);
+    }
+    .menu {
+      transform: rotate(90deg);
+    }
+  }
 }
 // when the user click the theme toggle btn
 // the icon will change
 body {
-    .theme-button{
-        i{
-            transition: $trans;
-        }
-        &:hover i{
-            transform: rotate(-45deg) scale(1.2);
-        }
-        i.sun {
-            display: none;
-        }
+  .theme-button {
+    i {
+      transition: $trans;
     }
-    //theme class name
-    &.dark {
-        .theme-button i.sun {
-            display: block;
-        }
-        .theme-button i.moon {
-            display: none;
-        }
+    &:hover i {
+      transform: rotate(-45deg) scale(1.2);
     }
+    i.sun {
+      display: none;
+    }
+  }
+  //theme class name
+  &.dark {
+    .theme-button i.sun {
+      display: block;
+    }
+    .theme-button i.moon {
+      display: none;
+    }
+  }
 }
