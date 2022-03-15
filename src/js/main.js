@@ -246,6 +246,8 @@ function faq_answer(i) {
 function popupFormDef() {
     popupForm.classList.toggle("active");
     topnav.classList.remove("scrolling-down");
+    topnav.classList.add("sticky");
+    topnav.classList.add("scrolling-up");
 }
 function show_card(i) {
     for (let j = 0; j < feature_card.length; j++) {
