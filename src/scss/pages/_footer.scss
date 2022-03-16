@@ -67,7 +67,8 @@
   }
 }
 .copyrights {
-  color: var(--clr-f-2);
+  background: var(--clr--bg-cyan);
+  color: var(--clr--white);
   border-bottom: solid 7px var(--clr--bg);
   padding: 21px 0;
   @include mq($lg) {

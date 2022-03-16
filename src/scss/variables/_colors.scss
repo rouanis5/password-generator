@@ -30,6 +30,10 @@ $colors: (
               #ececec,
               var(--clr--primary),
             ),
+            bg-cyan: (
+              var(--clr--cyan),
+              var(--clr--primary),
+            ),
             title: (
                 var(--clr--cyan),
                 var(--clr--white),

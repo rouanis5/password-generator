@@ -38,6 +38,9 @@
             color: var(--clr--white);
             padding: 4.6px 20px;
             border-radius: $radius;
+            &.no-cyan-in-black-theme{
+                background: var(--clr--bg-cyan);
+            }
         }
         @include before{
             left: 0;

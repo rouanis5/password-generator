@@ -1,6 +1,6 @@
 @use "sass:list";
 .features {
-    background: var(--clr--bg-alt);
+    background: var(--clr--bg-cyan);
     ul {
         @include flex(space-around, center) {
             flex-wrap: wrap;
